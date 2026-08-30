@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Engine Room Press — history that explains the machinery</title>
+<style>
+:root{
+  --ink:#14100c; --ink-soft:#4a4038; --paper:#f6f1e8; --paper-2:#efe7da;
+  --brass:#b07a2b; --brass-deep:#8a5c17; --rule:#ddd0bb;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--paper); color:var(--ink);
+  font:400 18px/1.65 "Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  padding:0 22px;
+}
+.wrap{max-width:640px;margin:0 auto}
+header{padding:44px 0 0}
+.mark{
+  font:600 12px/1 ui-sans-serif,system-ui,-apple-system,"Helvetica Neue",sans-serif;
+  letter-spacing:.22em; text-transform:uppercase; color:var(--brass-deep);
+  display:flex; align-items:center; gap:10px;
+}
+.mark svg{flex:none}
+h1{
+  font-size:clamp(31px,7.4vw,46px); line-height:1.12; font-weight:600;
+  letter-spacing:-.015em; margin:30px 0 0; text-wrap:balance;
+}
+h1 em{font-style:normal; color:var(--brass-deep)}
+.sub{font-size:clamp(18px,4.4vw,21px); color:var(--ink-soft); margin-top:18px}
+
+hr.rule{border:0; border-top:1px solid var(--rule); margin:38px 0}
+
+h2{
+  font:600 12px/1 ui-sans-serif,system-ui,-apple-system,sans-serif;
+  letter-spacing:.18em; text-transform:uppercase; color:var(--brass-deep);
+  margin:0 0 16px;
+}
+p+p{margin-top:14px}
+
+ul.promise{list-style:none; margin:4px 0 0}
+ul.promise li{
+  position:relative; padding-left:30px; margin-top:13px; font-size:18px;
+}
+ul.promise li::before{
+  content:""; position:absolute; left:0; top:.62em;
+  width:13px; height:1.5px; background:var(--brass);
+}
+ul.promise b{font-weight:600}
+
+.book{
+  background:var(--paper-2); border:1px solid var(--rule);
+  padding:26px 24px; margin-top:8px;
+}
+.book .kicker{
+  font:600 11px/1 ui-sans-serif,system-ui,sans-serif; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--ink-soft);
+}
+.book h3{font-size:26px; font-weight:600; margin:11px 0 10px; letter-spacing:-.01em}
+.book p{color:var(--ink-soft); font-size:17px}
+
+form{margin-top:22px}
+label{
+  display:block; font:500 15px/1.5 ui-sans-serif,system-ui,sans-serif;
+  color:var(--ink-soft); margin-bottom:9px;
+}
+.row{display:flex; gap:9px; flex-wrap:wrap}
+input[type=email]{
+  flex:1 1 210px; min-width:0; padding:14px 15px; font-size:17px; font-family:inherit;
+  background:#fff; color:var(--ink); border:1px solid #c9bba3; border-radius:2px;
+}
+input[type=email]:focus{outline:2px solid var(--brass); outline-offset:-1px; border-color:var(--brass)}
+button{
+  flex:0 0 auto; padding:14px 24px; border:0; border-radius:2px; cursor:pointer;
+  background:var(--ink); color:var(--paper); border-radius:2px;
+  font:600 16px/1 ui-sans-serif,system-ui,-apple-system,sans-serif;
+}
+button:hover{background:var(--brass-deep)}
+.fine{
+  font:400 14px/1.5 ui-sans-serif,system-ui,sans-serif; color:#7d7166; margin-top:11px;
+}
+
+blockquote{
+  border-left:2px solid var(--brass); padding-left:18px; margin:0;
+  font-size:19px; color:var(--ink-soft); font-style:italic;
+}
+blockquote cite{
+  display:block; font-style:normal; font-size:14px; margin-top:9px; color:#8b7f72;
+  font-family:ui-sans-serif,system-ui,sans-serif;
+}
+
+.refuse{color:var(--ink-soft)}
+.refuse b{color:var(--ink); font-weight:600}
+
+footer{
+  padding:34px 0 56px; font:400 14px/1.6 ui-sans-serif,system-ui,sans-serif; color:#8b7f72;
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="mark">
+    <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <circle cx="8" cy="8" r="3.1" stroke="#8a5c17" stroke-width="1.4"/>
+      <circle cx="8" cy="8" r="7" stroke="#8a5c17" stroke-width="1.4" stroke-dasharray="2.4 2.2"/>
+    </svg>
+    Engine Room Press
+  </div>
+
+  <h1>You can follow the news. You just can't follow <em>why any of it is happening.</em></h1>
+
+  <p class="sub">Short history books about the forces that built the world you live in now. One force per book. No dates to memorise. You'll finish it in an evening.</p>
+</header>
+
+<hr class="rule">
+
+<section>
+  <h2>The problem</h2>
+  <p>School taught you history as a list of things that happened in an order. So you decided history was boring, and you were right — that version is.</p>
+  <p>Then you got older, started reading the news properly, and hit a wall. Why does the dollar decide what a country in another hemisphere can afford to eat? Why do those borders sit exactly there? Nobody ever explained the machinery. They just gave you the dates.</p>
+</section>
+
+<hr class="rule">
+
+<section>
+  <h2>What we make</h2>
+  <ul class="promise">
+    <li><b>One force per book.</b> Not all of history at once. One thing, explained until you can actually use it.</li>
+    <li><b>No dates to memorise.</b> If a name or a year isn't doing real work, it's cut.</li>
+    <li><b>You'll finish it.</b> Short on purpose — an evening, not a season. The point is to understand something, not to own a thick book.</li>
+  </ul>
+</section>
+
+<hr class="rule">
+
+<section>
+  <h2>Book one</h2>
+  <div class="book">
+    <div class="kicker">Coming first</div>
+    <h3>The Dollar Empire</h3>
+    <p>How a promise printed on paper became the thing every country on earth has to obey — and what it costs them to keep obeying it.</p>
+  </div>
+
+  <form id="signup">
+    <label for="email">Get the first three chapters free, the day they're ready.</label>
+    <div class="row">
+      <input id="email" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+      <button type="submit">Send me chapter one</button>
+    </div>
+    <p class="fine">Three real chapters, not a sample page. No spam, no schedule, unsubscribe whenever.</p>
+  </form>
+</section>
+
+<hr class="rule">
+
+<section>
+  <h2>Why this exists</h2>
+  <blockquote>
+    “I want something that explains why things mattered, not when they happened. Every book I get recommended is either 900 pages or a list of facts.”
+    <cite>The request, in one form or another, over and over.</cite>
+  </blockquote>
+  <p style="margin-top:18px">We went looking for the book that answers that, and kept not finding it. So we're making it.</p>
+</section>
+
+<hr class="rule">
+
+<section>
+  <h2>What we won't do</h2>
+  <p class="refuse"><b>No trivia.</b> "Ten facts you won't believe" is not understanding.<br>
+  <b>No completeness.</b> We leave things out on purpose, and we'll say which.<br>
+  <b>No lectures for people who already know.</b> If a specialist is annoyed by what we cut, we cut correctly.</p>
+</section>
+
+<footer>
+  Engine Room Press — the machinery below deck.
+</footer>
+
+</div>
+
+<script>
+document.getElementById('signup').addEventListener('submit', function(e){
+  e.preventDefault();
+  var f = e.target;
+  f.innerHTML = '<p style="font-size:19px"><b>Good.</b> Chapter one lands in your inbox the day it\'s finished.</p>';
+});
+</script>
+</body>
+</html>
