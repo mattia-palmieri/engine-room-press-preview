@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Working mode (away period, from 2026-08-28) — Engine Room Press</title><meta name="description" content="How the agent works while Matt is away and reachable only on Telegram.">
+<title>Working mode — Engine Room Press</title><meta name="description" content="How the agent operates this business unattended — Telegram, the queue, the site, delegation rules, and the traps that already cost a run.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"><style>
 :root{--paper:#F7F6F1;--white:#fff;--ink:#14171A;--signal:#C1440E;--blue:#173B4E;
 --rule:#C7C4B8;--faint:#E4E2D8}
@@ -58,108 +58,113 @@ padding:2px 6px;border:1px solid var(--rule);text-transform:uppercase}
 .badge.done{color:#6b6f73}
 </style></head><body><div class="wrap">
 <div class="mast"><a href="../">Engine Room Press</a><span>Working preview</span></div>
-<a class="crumb" href="../">&larr; All of it</a><p class="lede">How the agent works while Matt is away and reachable only on Telegram.</p><h1>Working mode (away period, from 2026-08-28)</h1>
-<p>Matt is away for ~3 days with <strong>a phone only</strong>. He can read Telegram. He cannot
-open a PC, a local file, or a terminal.</p>
+<a class="crumb" href="../">&larr; All of it</a><p class="lede">How the agent operates this business unattended — Telegram, the queue, the site, delegation rules, and the traps that already cost a run.</p><h1>Working mode</h1>
+<p>Nightshift (<code>~/work/nightshift</code>) runs this project unattended, round after round.
+Each round is a fresh context. <strong>Matt reads two things and nothing else: Telegram
+messages, and HTML pages on the preview site.</strong> He is usually on a phone. He does
+not read code, local files, or terminals.</p>
 <h2>The single goal</h2>
 <p><strong>The fastest first EUR 1 from a paying stranger.</strong> Not a salary model, not an
-audience, not a book. Every decision is judged against how much it shortens the
-path to one stranger paying.</p>
-<h2>Order of work — do not invert it</h2>
-<ol>
-<li><strong>Business</strong> — competitors alive and dead, real demand, how money is made.</li>
-<li><strong>Distribution</strong> — evaluate every channel, then choose one.</li>
-<li><strong>Brand, landing page, offer.</strong></li>
-<li><strong>The book, last.</strong> Whether we can write well is not the open question.</li>
-</ol>
+audience, not a book. Judge every decision by how much it shortens that path.</p>
 <h2>The rule about verdicts</h2>
 <p>Matt's standing instruction: <strong>assume a viable angle exists and find it.</strong>
-Concluding "not viable" almost always means we were too strict or did not
-consider enough options. If a path is blocked, name the next-nearest path.</p>
-<h2>Talking to Matt — Nightshift is live</h2>
-<p>Nightshift (<code>~/work/nightshift</code>) runs this project unattended. One bot, one
-chat, shared with the harness. <strong>This project has no <code>.env</code> and never will.</strong></p>
-<p><strong><code>chat.jsonl</code></strong> (project root) is the whole Telegram conversation, both
-directions: one <code>{ts, from, text}</code> object per line, oldest first, append-only.
-<code>from</code> is <code>matt</code>, <code>agent</code> (you, in an earlier round) or <code>harness</code> (the driver).
-It is your memory of the conversation — Matt refers back to what he said and to
-what you told him. Nothing in it is ever edited, deleted, or marked done.</p>
-<p>Read the <strong>tail</strong>, every round, before anything else:</p>
+Concluding "not viable" almost always means we were too strict or considered too
+few options. If a path is blocked, name the next-nearest path.</p>
+<h2>Talking to Matt</h2>
+<p><code>chat.jsonl</code> (project root) is the whole conversation, both directions: one
+<code>{ts, from, text}</code> object per line, oldest first, append-only. <code>from</code> is <code>matt</code>,
+<code>agent</code> (you, earlier) or <code>harness</code> (the driver). Read the tail every round,
+before anything else:</p>
 <pre><code>tail -n 20 chat.jsonl | jq -r '"\(.from): \(.text)"'
 </code></pre>
 <p><strong>A <code>matt</code> line after the last <code>agent</code> line is unanswered.</strong> Answer it and treat
-it as him speaking. <code>harness</code> lines do not count. That one rule is the whole
-protocol — there is no inbox to clear.</p>
-<p><strong>Speaking</strong> is one action, and the only way to speak:</p>
+it as him speaking. <code>harness</code> lines do not count.</p>
+<p>Speaking is one action, and the only way to speak:</p>
 <pre><code>~/work/nightshift/bin/notify.sh "your text"
 </code></pre>
-<p>It appends your line to <code>chat.jsonl</code> <em>and</em> sends it to Matt. <strong>Never write to
-<code>chat.jsonl</code> by hand.</strong></p>
-<h3>The trap</h3>
-<p>The run stops when <code>QUEUE.json</code> is empty <strong>and</strong> the last speaker was you. So
-speaking closes the conversation. <strong><code>QUEUE.json</code> is the only place unfinished
-work lives — put everything outstanding in it before you send anything.</strong> A
-"working on it" message with an empty queue ends the run.</p>
-<h3>When to speak</h3>
-<p>Adaptive, not scheduled. Speak when <strong>blocked with a real question</strong>, and when
-<strong>something big is unlocked or finished</strong>. Not for status noise.</p>
-<h3>Artifact exception</h3>
-<p>The global rule says never use the Artifact tool for wireframes and mockups.
-That rule is <strong>suspended here</strong>: on a phone, an Artifact link is the only way
-Matt can see a page, a table, or a long document. Publish deliverables as
-Artifacts and send the link. Still write the local file in <code>data/</code> too, for when
-he is back at a PC.</p>
-<h2>What Matt will personally do</h2>
-<p>Decided 2026-08-27. These are hard constraints on any channel recommendation.
-- <strong>Accounts he will run:</strong> text platforms <em>and</em> visual feeds — Reddit, Substack /
-  newsletter, X, Medium, a blog, Amazon KDP, Gumroad/Stripe, <strong>plus Instagram,
-  Pinterest and TikTok</strong>. The agent drafts and generates; Matt pastes and posts.
-- <strong>His time budget: 3–5 hours a week.</strong> Enough to post regularly, reply to
-  comments, and do quality control on drafts. Not enough for anything that needs
-  daily manual production. Every manual step in the plan must justify itself
-  against that budget.</p>
-<h2>Research sources</h2>
-<p>See <code>docs/notes/source-access.md</code> — smoke-tested 2026-08-27. Short version:
-Goodreads, Substack leaderboard, Reddit (<code>reddit-read</code> skill), Wayback (via <code>rb</code>
-only), Kickstarter and domain lookups all work. <strong>Amazon works too</strong>, deep links
-included — the browser profile already holds the cookies that get you past the
-bot wall. Read that file before trusting any sales rank: rank is per edition and
-the spread is huge.</p>
-<h2>Delegating research — the rules that came from a failure</h2>
-<p>The first <code>market-living</code> run was marked <code>done</code> on a file where 84 numbers were
-model-memory guesses labelled "(unverified)". It cost a full re-run to fix. The
-cause was not a blocked source — it was a budget squeeze plus no check at the end.
-Three rules, all non-negotiable:</p>
+<p>It appends to <code>chat.jsonl</code> <em>and</em> sends to Telegram. <strong>Never write to <code>chat.jsonl</code>
+by hand.</strong></p>
+<p><strong>The trap:</strong> the run stops when <code>QUEUE.json</code> has nothing active <strong>and</strong> the last
+speaker was you. Speaking closes the conversation. Put every outstanding thing in
+the queue <em>before</em> you send anything — a "working on it" message with an empty
+queue ends the run.</p>
+<p><strong>When to speak:</strong> blocked with a real question, or something big is finished or
+unlocked. Not status noise. <strong>Never send a long status wall in reply to a bare
+greeting</strong> — that was sent verbatim across four rounds and Matt never engaged
+with one. A greeting gets a short menu of what he can ask for.</p>
+<p><strong>There is no Artifact tool in this session.</strong> The only way to show Matt a page,
+a table or a long document is the preview site.</p>
+<h2>The site is the second channel</h2>
+<p>The whole preview site is <strong>generated</strong> from <code>docs/</code> + <code>data/</code> by
+<code>bin/build_site.py</code>, and pushed by <code>bin/publish.sh</code>. Hub, canonical docs,
+decision log, research notes, session log and the queue are all pages on it.
+Live at <a href="https://mattia-palmieri.github.io/engine-room-press-preview/">https://mattia-palmieri.github.io/engine-room-press-preview/</a>.</p>
+<p><strong>Run <code>bin/publish.sh</code> at the end of any round that changed a doc or a
+deliverable.</strong> A Telegram message with no updated page behind it is half a
+report. Never hand-edit <code>data/site/</code> — it is wiped on every build.</p>
+<h2>What Matt does himself</h2>
+<ul>
+<li><strong>Accounts he runs:</strong> Instagram, TikTok, Pinterest, Reddit, X, Medium,
+  Substack, a blog, Amazon KDP, Gumroad/Stripe. The agent drafts and generates;
+  Matt pastes and posts.</li>
+<li><strong>His time budget: 3–5 hours a week.</strong> Enough to post regularly, reply to
+  comments, and quality-check drafts. Not enough for daily manual production.
+  Every manual step must justify itself against that budget.</li>
+<li><strong>Publish nothing, buy nothing, touch no account.</strong> Domain purchase is approved
+  in principle but <strong>Matt buys it himself</strong> — the agent only shortlists and checks
+  availability.</li>
+</ul>
+<h2>Delegating research — rules that came from a failure</h2>
+<p>The first <code>market-living</code> run was marked done on a file where 84 numbers were
+model-memory guesses labelled "(unverified)". A full re-run to fix. The cause was
+a budget squeeze plus no check at the end.</p>
 <ol>
 <li><strong>Never paraphrase a source doc into a subagent prompt.</strong> Tell it to read
-   <code>docs/notes/source-access.md</code> itself. The failed prompts summarised the recipe;
-   the prompts that worked said "read the file."</li>
+   <code>docs/notes/source-access.md</code> itself. Prompts that summarised the recipe
+   failed; prompts that said "read the file" worked.</li>
 <li><strong>Never offer "mark it unverified" as an escape hatch.</strong> Say: never invent a
    number; if you cannot fetch it, write <code>not found</code> and footnote what you tried.
-   An honest gap beats a guess — a guess poisons every decision downstream.</li>
-<li><strong>A task never marks its own fan-out done.</strong> A separate QA step must read the
-   literal <code>done_when</code> text, grep the output for hedge words, and refetch a
-   random sample of numbers to confirm they are real. Only then flip the status.</li>
+   An honest gap beats a guess; a guess poisons every decision downstream.</li>
+<li><strong>A task never marks its own fan-out done.</strong> A separate QA step reads the
+   literal <code>done_when</code>, greps the output for hedge words, and refetches a random
+   sample to confirm the numbers are real. Only then flip the status.</li>
+<li><strong>A subagent that spawns children cannot wait on them.</strong> It returns "my
+   children are running" and exits. Either fan out from this level, or message
+   the parent again once the children's files land and tell it to compile now.
+   This has already happened twice in one run.</li>
 </ol>
-<p>One subagent per round gets the browser — see the contention note in
-<code>source-access.md</code>. Parallel browser agents hijack each other silently.</p>
-<h2>Cost per round</h2>
-<p>The $2.00/round cap is <strong>gone</strong> — it was removed 2026-08-27 after it broke the
-first research round (<code>$2.0049</code>, <code>error_max_budget_usd</code>). That squeeze is what
-made subagents guess numbers instead of fetching them. Research rounds with
-fan-out need room. If a cap is ever restored, <code>NIGHTSHIFT_MAX_USD</code> (~$5) is the
-setting, and it is Matt's to change — <strong>never shrink the research to fit a cap;
-stop and say so instead.</strong></p>
-<h2>Standing limits (from CLAUDE.md, unchanged)</h2>
-<p>Publish nothing, buy nothing, touch no accounts. Domain purchase is approved in
-principle but <strong>Matt buys it himself</strong> — the agent only shortlists and checks
-availability.</p>
-<h2>The site is the second channel — keep it current</h2>
-<p>Matt reads Telegram and HTML. Nothing else. The whole preview site is <strong>generated</strong>
-from <code>docs/</code> + <code>data/</code> by <code>bin/build_site.py</code>, and pushed by <code>bin/publish.sh</code>.
-Hub, canonical docs, decision log, research notes, session log and the queue are all
-pages on it. <strong>Run <code>bin/publish.sh</code> at the end of any round that changed a doc or a
-deliverable</strong> — a Telegram message with no updated page behind it is half a report.
-Never hand-edit <code>data/site/</code>; it is wiped on every build.</p>
+<p><strong>Model choice:</strong> Sonnet by default. Haiku only for cheap mechanical scans.
+Opus only for real reasoning. Have subagents write to a file, not report prose.</p>
+<h2>Operational traps, already paid for</h2>
+<ul>
+<li><strong><code>rb</code> is one shared Chrome daemon.</strong> Parallel browser subagents hijack each
+  other's navigation mid-flight, and a hijack reads exactly like real data. One
+  browser subagent per round. Always confirm the URL that actually loaded.</li>
+<li><strong>Amazon needs no warm-up.</strong> Cold deep links work; cookie freshness on disk
+  (<code>~/.agent-browser/profiles/real-browser</code>) is what matters, not keeping the
+  browser open.</li>
+<li><strong>Amazon sales rank is per edition.</strong> The same book can be #515 in one format
+  and #62,645 in another. Never compare rank across formats.</li>
+<li><strong>Headless Chrome card renders need <code>--virtual-time-budget=6000</code>.</strong> Google
+  Fonts load over the network; without the wait, type silently falls back to
+  system sans and the render looks fine but is wrong.</li>
+<li><strong><code>python3 -m markdown</code> needs <code>--break-system-packages --user</code></strong>, and
+  <code>build_site.py</code> adds the user site-packages path itself so it works headless.</li>
+<li><strong>Heredocs can hang in the interactive cmux shell.</strong> Write the script to a file
+  first.</li>
+<li><strong>Nothing under <code>~/Documents</code>, <code>~/Desktop</code> or <code>~/Downloads</code>.</strong> A macOS
+  permission dialog on a binary in those folders froze an unattended round for 43
+  hours. That is why the project lives at <code>~/work/history-books</code>. A stall watchdog
+  now kills a round with no log growth for 900s.</li>
+</ul>
+<h2>Cost</h2>
+<p>There is no per-round cap. One was tried ($2.00) and it broke the first research
+round — the squeeze is what made subagents guess numbers instead of fetching them.
+If a cap is ever restored, <code>NIGHTSHIFT_MAX_USD</code> (~$5) is the setting and it is
+Matt's to change. <strong>Never shrink the research to fit a cap; stop and say so.</strong></p>
+<h2>Research sources</h2>
+<p><code>docs/notes/source-access.md</code>, smoke-tested 2026-08-27. Goodreads, the Substack
+leaderboard, Reddit (<code>reddit-read</code> skill), Wayback (via <code>rb</code> only), Kickstarter,
+domain lookups and Amazon all work. Read it before trusting any figure.</p>
 <footer>Draft — built by the agent, judged by Matt</footer>
 </div></body></html>
