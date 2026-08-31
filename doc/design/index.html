@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Design system — Engine Room Press — Engine Room Press</title><meta name="description" content="The Engine Room Press design system — tokens, rules and per-surface templates. Every page and every Instagram card is built from this file.">
+<title>Design system — Engine Room Press — Engine Room Press</title><meta name="description" content="The Engine Room Press design system — tokens, rules and per-surface templates. Every page, card and book cover is built from this file.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"><style>
 :root{--paper:#F7F6F1;--white:#fff;--ink:#14171A;--signal:#C1440E;--blue:#173B4E;
 --rule:#C7C4B8;--faint:#E4E2D8}
@@ -58,12 +58,12 @@ padding:2px 6px;border:1px solid var(--rule);text-transform:uppercase}
 .badge.done{color:#6b6f73}
 </style></head><body><div class="wrap">
 <div class="mast"><a href="../">Engine Room Press</a><span>Working preview</span></div>
-<a class="crumb" href="../">&larr; All of it</a><p class="lede">The Engine Room Press design system — tokens, rules and per-surface templates. Every page and every Instagram card is built from this file.</p><h1>Design system — Engine Room Press</h1>
+<a class="crumb" href="../">&larr; All of it</a><p class="lede">The Engine Room Press design system — tokens, rules and per-surface templates. Every page, card and book cover is built from this file.</p><h1>Design system — Engine Room Press</h1>
 <p><strong>The system is "Technical Drawing": the page is an engineering cutaway of an idea.</strong>
 Thin measured rules, a faint grid, and numbered callouts that label real parts of the
 argument. It comes straight from the name and the promise — hidden machinery, shown.</p>
-<p>Three surfaces, one system, different volume:
-<strong>app//reading = quiet · landing = spoken · Instagram card = shouted.</strong>
+<p>Four surfaces, one system, different volume:
+<strong>reading = quiet · book cover = measured · landing = spoken · Instagram card = shouted.</strong>
 Same tokens throughout. Loudness is carried by scale and flat colour fields, never by
 new fonts or new colours.</p>
 <h2>Tokens</h2>
@@ -72,7 +72,7 @@ new fonts or new colours.</p>
   paper_white:  &quot;#FFFFFF&quot;   # component fields, form inputs
   ink:          &quot;#14171A&quot;   # all body and display text; also a flat field on cards
   signal:       &quot;#C1440E&quot;   # oxide red. Callout tags, one word of emphasis, buttons.
-  field_blue:   &quot;#173B4E&quot;   # second flat field, cards only — stops a 10-card grid
+  field_blue:   &quot;#173B4E&quot;   # second flat field, cards and covers — stops a grid
                             # reading as one block. Never used as text colour on paper.
   rule:         &quot;#C7C4B8&quot;   # hairlines, borders
   rule_faint:   &quot;#E4E2D8&quot;   # the 40px measured grid
@@ -129,6 +129,31 @@ in a scrolling feed.</p>
 <li><strong>The legibility floor:</strong> shrink the card to 270px wide. If the headline is not
   readable, the type is too small. Redo it, do not ship it.</li>
 </ul>
+<h2>Surface: book cover (measured) — 1600 × 2560</h2>
+<p>Sixteen covers must read as <strong>one imprint</strong> at Amazon thumbnail size (~160px). So the
+cover is pure type on a flat field — no illustration, no photograph, no bespoke art per
+title. The series reference is Fitzcarraldo and Penguin Great Ideas: identical
+construction, the title is the only variable.</p>
+<ul>
+<li><strong>Flat field, colour by part.</strong> Tools and Stories on <code>ink</code>, Communication and Power on
+  <code>field_blue</code>. Four rows of four on the shelf alternate, so the parts are visible before
+  a single word is read. No third colour, ever.</li>
+<li>Top rail: <code>ENGINE ROOM PRESS</code> left, <code>NO. 09 / 16</code> right, mono 34px.</li>
+<li><strong>The numbered callout sits directly above the title</strong> and points at it: red tag with
+  the book number, leader line, <code>PART III · STORIES</code>. It is the same device as the card.</li>
+<li>Title: display grotesk, uppercase, ranged left, sized so no word crosses the 1384px
+  column — roughly 230px for <code>CHOKEPOINT</code>, capped at 360px for a short word. A leading
+  <code>THE</code> is set at 0.42em in muted paper, on its own line.</li>
+<li>Deck: one sentence from <code>catalogue.md</code>, Newsreader 52px, max 26ch.</li>
+<li>Bottom rail: hairline, then <code>THE ESSENTIAL SIXTEEN</code> left, <code>COMING SOON</code> right. The
+  right slot is the state field — it becomes the publication line when a book ships.</li>
+<li>The title block sits at roughly 45% height, air above and below. Do not centre it and
+  do not top-anchor it: both were tried and both read as an empty page.</li>
+<li><strong>The legibility floor:</strong> shrink the cover to 160px wide. If the title is not readable,
+  the type is too small.</li>
+</ul>
+<p>Generated by <code>data/covers/build.py</code> from <code>data/covers/covers.json</code>. Never hand-edit
+<code>cover-NN.html</code> — it is overwritten.</p>
 <h2>Logo</h2>
 <p>The wordmark is <code>ENGINE ROOM PRESS</code> in IBM Plex Mono, uppercase, 0.16em tracking, ink
 on paper or paper on a flat field. No mark, no icon, no monogram. It comes last on
