@@ -154,5 +154,12 @@ stop and say so instead.</strong></p>
 <p>Publish nothing, buy nothing, touch no accounts. Domain purchase is approved in
 principle but <strong>Matt buys it himself</strong> — the agent only shortlists and checks
 availability.</p>
+<h2>The site is the second channel — keep it current</h2>
+<p>Matt reads Telegram and HTML. Nothing else. The whole preview site is <strong>generated</strong>
+from <code>docs/</code> + <code>data/</code> by <code>bin/build_site.py</code>, and pushed by <code>bin/publish.sh</code>.
+Hub, canonical docs, decision log, research notes, session log and the queue are all
+pages on it. <strong>Run <code>bin/publish.sh</code> at the end of any round that changed a doc or a
+deliverable</strong> — a Telegram message with no updated page behind it is half a report.
+Never hand-edit <code>data/site/</code>; it is wiped on every build.</p>
 <footer>Draft — built by the agent, judged by Matt</footer>
 </div></body></html>

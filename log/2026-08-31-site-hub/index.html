@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>What is next — Engine Room Press</title><meta name="description" content="">
+<title>Site hub — one link, everything navigable — Engine Room Press</title><meta name="description" content="The whole preview site is now generated from docs/ by bin/build_site.py — one hub links every deliverable, decision, note, session log and the queue.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"><style>
 :root{--paper:#F7F6F1;--white:#fff;--ink:#14171A;--signal:#C1440E;--blue:#173B4E;
 --rule:#C7C4B8;--faint:#E4E2D8}
@@ -58,33 +58,49 @@ padding:2px 6px;border:1px solid var(--rule);text-transform:uppercase}
 .badge.done{color:#6b6f73}
 </style></head><body><div class="wrap">
 <div class="mast"><a href="../">Engine Room Press</a><span>Working preview</span></div>
-<a class="crumb" href="../">&larr; All of it</a><h1>What is next</h1><p class="lede">Everything on my list, and where each item stands. <strong>Active</strong> means you asked for it and I am on it. <strong>Waiting</strong> means it is on the bench until you say go.</p>
-<div class="fig"><span class="mono n">Active</span></div>
-<h3>One link: everything navigable from the main page</h3><p>Matt is on a phone. HTML on GitHub Pages is the only thing he can read besides Telegram, so the site must carry the work AND the reasoning AND the log.</p>
-<p><span class="badge active">Active</span></p>
-<blockquote>v1 built and published. Rerun bin/publish.sh after ANY doc or deliverable change - it rebuilds from source.</blockquote>
-<div class="fig"><span class="mono n">Waiting for you</span></div>
-<h3>STRETCH - outline The Dollar Empire</h3><p>Only if the business questions are genuinely settled. The book is the last piece.</p>
-<p><span class="badge ">Waiting for you</span></p>
-<div class="fig"><span class="mono n">Done</span></div>
-<h3>Census of living competitors</h3><p>We cannot find the gap until we know what already fills the space.</p>
-<h3>The graveyard - who tried this and failed</h3><p>Matt asked for this by name. Dead attempts show where the trap is, and almost nobody researches them.</p>
-<h3>Is the appetite real, and how big</h3><p>Saturation and interest were Matt's explicit questions.</p>
-<h3>How the money actually works - and where the first EUR 1 comes from</h3><p>Goal is not a salary model. It is the fastest single paying stranger.</p>
-<h3>Pick the angle</h3><p>Matt's instruction: assume there IS a viable angle, and find it. Do not conclude 'not viable'.</p>
-<h3>Score every distribution channel</h3><p>Matt: most of the work goes here. Consider them all before choosing.</p>
-<h3>Deep dive the top 3 channels</h3><p>A score is not a playbook.</p>
-<h3>Choose the channel and do the funnel arithmetic</h3><p>The brief's sharpest rule: no books until we know how they reach buyers.</p>
-<h3>Decide the product, format and price</h3><p>Undecided by design in the brief. Now there is evidence to decide with.</p>
-<h3>The 30-day path to the first paying stranger</h3><p>This is the whole point.</p>
-<h3>Imprint name and domain shortlist</h3><p>Faceless brand, no author persona. Needed before any landing page.</p>
-<h3>Draft the landing page</h3><p>The validation device. Emails before a book exists.</p>
-<h3>Publish a preview URL Matt can open on Telegram</h3><p>Matt is on Telegram and cannot see local files. No Artifact tool exists in this session.</p>
-<h3>Derive a real design system for Engine Room Press</h3><p>Matt: must feel unique and really designed, not template or AI-generated.</p>
-<blockquote>design.md written, three directions judged (A chosen), landing page rebuilt on the system, three audits run and all defects fixed. Audits in data/audits/.</blockquote>
-<h3>Instagram card template and the first 10 cards</h3><p>Instagram is the only channel. Week 1 of the plan needs 10 cards ready before Matt posts.</p>
-<blockquote>Template at data/cards/build.py + cards.json (edit JSON, rerun build.py, rerender). 10 PNGs at 1080x1350. Feed-size audit run, 5 defects, all resolved (data/audits/cards-legibility.md). Live at /cards/.</blockquote>
-<h3>Analyse Sapiens - what 'zoom out' actually means</h3><p>Matt asked for it. The house style depends on naming the technique, not admiring it.</p>
-<blockquote>Done at v1 WITHOUT the book — reconstructed from open sources by three parallel researchers (raw in data/harari-*.md). docs/notes/harari-method.md is the synthesis, docs/house-style.md is canonical. Two gaps listed at the end of the method note; close them if the Sapiens file ever lands.</blockquote>
+<a class="crumb" href="../">&larr; All of it</a><p class="lede">The whole preview site is now generated from docs/ by bin/build_site.py — one hub links every deliverable, decision, note, session log and the queue.</p><h1>Site hub — one link, everything navigable</h1>
+<h2>What Matt asked for</h2>
+<p>"I'm on Telegram, on a phone, can only read your messages or check html on github
+pages. Make sure you put everything on html, so that I can open one link, and from
+there see not just your lp and other content proposition, but that's also how you
+communicate what you've done, why, different ui propositions etc, all navigable
+from main page."</p>
+<p>So the site is no longer a place to park two drafts. It is the <strong>report</strong>.</p>
+<h2>What we decided</h2>
+<ul>
+<li><strong>Generate, never hand-write.</strong> <code>bin/build_site.py</code> builds <code>data/site/</code> from
+  <code>docs/*.md</code>, <code>docs/notes/</code>, <code>docs/sessions/</code>, <code>DECISIONS.md</code>, <code>QUEUE.json</code> and the
+  built surfaces in <code>data/</code>. <code>bin/publish.sh</code> runs the build then pushes.
+  Docs stay the single source of truth; the site can never drift from them.</li>
+<li><strong>The hub is five numbered sections</strong>, in Matt's order of interest:
+  01 the work you can look at · 02 what I decided and why · 03 the research under it ·
+  04 what is next (the queue) · 05 what happened, night by night.</li>
+<li><strong>The hub uses the Technical Drawing system.</strong> The old index was parchment-ish —
+  the exact register we banned. Gone.</li>
+<li><strong>A black "Back to everything" bar is injected into the copied surfaces</strong>
+  (landing, cards, design directions) at build time. It breaks the "one action on
+  the landing page" rule on purpose: on a phone, a dead end is worse.</li>
+<li><code>python3 -m markdown</code> is installed with <code>--break-system-packages --user</code>;
+  <code>build_site.py</code> adds the user site-packages path itself, so it works headless.</li>
+</ul>
+<h2>Rejected</h2>
+<ul>
+<li>Hand-maintained HTML pages per doc — guaranteed to go stale within a round.</li>
+<li>A static-site generator (Eleventy/Hugo) — needs node, config, themes. The whole
+  build is 200 lines of Python and produces exactly the design system.</li>
+<li>Exposing <code>chat.jsonl</code> on the site — Matt already has it in Telegram, and it is
+  the one thing that should stay private.</li>
+</ul>
+<h2>Open</h2>
+<ul>
+<li>Phone-render audit was running when this note was written:
+  <code>data/audits/hub-phone-render.md</code>. Fix anything it found, then republish.</li>
+</ul>
+<h2>Pointers</h2>
+<ul>
+<li><code>bin/build_site.py</code> — the generator. <code>bin/publish.sh</code> — build + push.</li>
+<li><code>docs/working-mode.md</code> — new closing section: republish after every round that
+  changes a doc or a deliverable.</li>
+</ul>
 <footer>Draft — built by the agent, judged by Matt</footer>
 </div></body></html>
