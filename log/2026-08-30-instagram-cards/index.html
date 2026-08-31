@@ -1,0 +1,114 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Instagram cards — the first 10 — Engine Room Press</title><meta name="description" content="First 10 Instagram cards built on the Technical Drawing system, audited at feed size, all defects fixed and published to /cards/ — the instagram-cards item is done.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"><style>
+:root{--paper:#F7F6F1;--white:#fff;--ink:#14171A;--signal:#C1440E;--blue:#173B4E;
+--rule:#C7C4B8;--faint:#E4E2D8}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);
+font:400 18px/1.62 Newsreader,Georgia,serif;-webkit-text-size-adjust:100%}
+.wrap{max-width:660px;margin:0 auto;padding:32px 20px 96px}
+a{color:var(--ink)}
+.mast{border-bottom:1px solid var(--ink);padding-bottom:10px;margin-bottom:28px;
+display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.mono,.tag,.mast,.kicker,.crumb,th{font-family:"IBM Plex Mono",ui-monospace,monospace;
+font-weight:500;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.mast a{text-decoration:none}
+h1{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:700;
+font-size:clamp(30px,8vw,44px);line-height:1.06;letter-spacing:-.02em;margin:0 0 14px}
+.lede{font-size:19px;color:#3a3f44;margin-bottom:14px}
+h2{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:23px;
+line-height:1.2;margin:38px 0 12px}
+h3{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:19px;margin:26px 0 8px}
+p,li{margin-bottom:12px}
+ul,ol{padding-left:22px}
+strong{font-weight:600}
+code{font-family:"IBM Plex Mono",monospace;font-size:.85em;background:#ECEAE0;padding:1px 4px}
+pre{background:var(--ink);color:#F7F6F1;padding:16px;overflow-x:auto;margin:16px 0;font-size:13px}
+pre code{background:none;color:inherit;padding:0}
+blockquote{border-left:2px solid var(--signal);padding-left:14px;color:#3a3f44;margin:16px 0}
+hr{border:0;border-top:1px solid var(--rule);margin:32px 0}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:16px 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--rule);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:#ECEAE0;font-size:11px}
+img{max-width:100%;height:auto;display:block}
+/* section head with figure number */
+.fig{display:flex;align-items:baseline;gap:12px;margin:44px 0 4px;
+border-top:1px solid var(--ink);padding-top:10px}
+.fig .n{color:var(--signal)}
+.fig h2{margin:0;font-size:21px}
+.note{color:#3a3f44;font-size:16px;margin:4px 0 14px}
+/* rows */
+a.row{display:block;text-decoration:none;color:inherit;border:1px solid var(--rule);
+border-top:0;background:var(--white);padding:15px 16px}
+a.row:first-of-type{border-top:1px solid var(--rule)}
+a.row:hover{border-color:var(--signal)}
+a.row .t{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:17px}
+a.row .t .arw{color:var(--signal)}
+a.row .s{display:block;color:#3a3f44;font-size:15px;line-height:1.45;margin-top:4px}
+a.row .d{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+color:#6b6f73;text-transform:uppercase;margin-top:6px;display:block}
+.crumb{display:inline-block;margin-bottom:22px;text-decoration:none;color:var(--signal)}
+footer{margin-top:56px;border-top:1px solid var(--rule);padding-top:14px;
+font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+text-transform:uppercase;color:#6b6f73}
+.badge{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;
+padding:2px 6px;border:1px solid var(--rule);text-transform:uppercase}
+.badge.active{border-color:var(--signal);color:var(--signal)}
+.badge.done{color:#6b6f73}
+</style></head><body><div class="wrap">
+<div class="mast"><a href="../">Engine Room Press</a><span>Working preview</span></div>
+<a class="crumb" href="../">&larr; All of it</a><p class="lede">First 10 Instagram cards built on the Technical Drawing system, audited at feed size, all defects fixed and published to /cards/ — the instagram-cards item is done.</p><h1>Instagram cards — the first 10</h1>
+<h2>What we decided</h2>
+<p><strong>The card is a generator, not 10 hand-made files.</strong> <code>data/cards/cards.json</code> holds copy
+(number, field colour, headline with one <code>&lt;em&gt;</code> for the red word, kicker) and
+<code>data/cards/build.py</code> writes the 10 HTML files from one template. To change a card, edit
+the JSON and re-run. Never hand-edit <code>card-NN.html</code> — it is generated and will be
+overwritten.</p>
+<p><strong>Rendering</strong> is headless Chrome at <code>--window-size=1080,1350</code>. Google Fonts load over the
+network, so <code>--virtual-time-budget=6000</code> is required or the type falls back to system
+sans and the render is silently wrong.</p>
+<p><strong>Layout, decided at the render:</strong> flat field (ink / field_blue, strictly alternating so
+the IG profile grid checkerboards), faint 40px grid at 10% opacity, top rail, then the
+signature numbered callout on a leader line pointing straight at the headline, then the
+headline at 90–122px. Type scale is by character count — short headlines get bigger, not
+the same size with more air. Bottom slack is intentional: it is the "generosity with white
+space" counterweight to the cold technical register.</p>
+<p><strong>Copy mix:</strong> 6 cards are hooks for <em>The Dollar Empire</em>, 4 carry the positioning (the
+promise, who it is for, how we write). Two weeks of weekday posting.</p>
+<h2>What we tried and abandoned</h2>
+<ul>
+<li><strong>Vertically centring the headline block</strong> — first render put it dead centre with equal
+  dead space above and below. It read as a quote graphic, not a cover. Anchored the block
+  to the upper two-thirds instead, per <code>docs/design.md</code>.</li>
+<li><strong>Red on a whole phrase</strong> ("printing press", "half the news"). The audit caught it and it
+  is right: rule 3 is one word, and on card 10 the red span wrapped across a line break,
+  which reads as a rendering bug. One word only, and it must not straddle a wrap.</li>
+</ul>
+<h2>The audit</h2>
+<p>One Sonnet subagent, given <code>docs/design.md</code> and the renders, judged the 270px feed crop
+first. 5 defects, 2 blocking. All resolved — 4 fixed, 1 (card 01's one-word line) kept on
+purpose and logged. Full record: <code>data/audits/cards-legibility.md</code>.</p>
+<p>Legibility at 270px, grid alternation and the square profile crop all passed on the first
+render, which is the part that usually fails. The floor rule in design.md did its job.</p>
+<h2>Open questions</h2>
+<ul>
+<li><strong>Card 01 vs card 08 as the launch post.</strong> 01 is the strongest sentence; 08 states the
+  three promises plainly. Untested either way.</li>
+<li><strong>Captions.</strong> The cards have no caption copy yet. Instagram captions carry the CTA to
+  the bio link, so they are needed before Matt posts, not after.</li>
+<li><strong>Cards 11-20.</strong> The plan is 5 a week; 10 covers two weeks. The next batch should wait
+  for real engagement data, per the plan's "replace borrowed guesses with real ones".</li>
+</ul>
+<h2>Pointers</h2>
+<ul>
+<li><code>data/cards/</code> — build.py, cards.json, 10 HTML, 10 PNG, feed-test.html/png, index.html</li>
+<li>Live: <code>https://mattia-palmieri.github.io/engine-room-press-preview/cards/</code></li>
+<li><code>bin/publish.sh</code> now also publishes the site root index from <code>data/site-index.html</code>
+  (previously hand-maintained inside the Pages repo, where it was invisible to us).</li>
+</ul>
+<h2>Still parked</h2>
+<p><code>sapiens-analysis</code> — the file is not on this Mac. Matt must drop it into
+<code>~/work/history-books/data/</code>.</p>
+<footer>Draft — built by the agent, judged by Matt</footer>
+</div></body></html>

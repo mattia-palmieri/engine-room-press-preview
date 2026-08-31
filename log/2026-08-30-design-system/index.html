@@ -1,0 +1,135 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Design system — Engine Room Press — Engine Room Press</title><meta name="description" content="Design system derivation started — strategy brief written, three stylescape directions (technical drawing / ledger / plate) built in parallel for judging.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"><style>
+:root{--paper:#F7F6F1;--white:#fff;--ink:#14171A;--signal:#C1440E;--blue:#173B4E;
+--rule:#C7C4B8;--faint:#E4E2D8}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);
+font:400 18px/1.62 Newsreader,Georgia,serif;-webkit-text-size-adjust:100%}
+.wrap{max-width:660px;margin:0 auto;padding:32px 20px 96px}
+a{color:var(--ink)}
+.mast{border-bottom:1px solid var(--ink);padding-bottom:10px;margin-bottom:28px;
+display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.mono,.tag,.mast,.kicker,.crumb,th{font-family:"IBM Plex Mono",ui-monospace,monospace;
+font-weight:500;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.mast a{text-decoration:none}
+h1{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:700;
+font-size:clamp(30px,8vw,44px);line-height:1.06;letter-spacing:-.02em;margin:0 0 14px}
+.lede{font-size:19px;color:#3a3f44;margin-bottom:14px}
+h2{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:23px;
+line-height:1.2;margin:38px 0 12px}
+h3{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:19px;margin:26px 0 8px}
+p,li{margin-bottom:12px}
+ul,ol{padding-left:22px}
+strong{font-weight:600}
+code{font-family:"IBM Plex Mono",monospace;font-size:.85em;background:#ECEAE0;padding:1px 4px}
+pre{background:var(--ink);color:#F7F6F1;padding:16px;overflow-x:auto;margin:16px 0;font-size:13px}
+pre code{background:none;color:inherit;padding:0}
+blockquote{border-left:2px solid var(--signal);padding-left:14px;color:#3a3f44;margin:16px 0}
+hr{border:0;border-top:1px solid var(--rule);margin:32px 0}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:16px 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--rule);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:#ECEAE0;font-size:11px}
+img{max-width:100%;height:auto;display:block}
+/* section head with figure number */
+.fig{display:flex;align-items:baseline;gap:12px;margin:44px 0 4px;
+border-top:1px solid var(--ink);padding-top:10px}
+.fig .n{color:var(--signal)}
+.fig h2{margin:0;font-size:21px}
+.note{color:#3a3f44;font-size:16px;margin:4px 0 14px}
+/* rows */
+a.row{display:block;text-decoration:none;color:inherit;border:1px solid var(--rule);
+border-top:0;background:var(--white);padding:15px 16px}
+a.row:first-of-type{border-top:1px solid var(--rule)}
+a.row:hover{border-color:var(--signal)}
+a.row .t{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:17px}
+a.row .t .arw{color:var(--signal)}
+a.row .s{display:block;color:#3a3f44;font-size:15px;line-height:1.45;margin-top:4px}
+a.row .d{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+color:#6b6f73;text-transform:uppercase;margin-top:6px;display:block}
+.crumb{display:inline-block;margin-bottom:22px;text-decoration:none;color:var(--signal)}
+footer{margin-top:56px;border-top:1px solid var(--rule);padding-top:14px;
+font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+text-transform:uppercase;color:#6b6f73}
+.badge{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;
+padding:2px 6px;border:1px solid var(--rule);text-transform:uppercase}
+.badge.active{border-color:var(--signal);color:var(--signal)}
+.badge.done{color:#6b6f73}
+</style></head><body><div class="wrap">
+<div class="mast"><a href="../">Engine Room Press</a><span>Working preview</span></div>
+<a class="crumb" href="../">&larr; All of it</a><p class="lede">Design system derivation started — strategy brief written, three stylescape directions (technical drawing / ledger / plate) built in parallel for judging.</p><h1>Design system — Engine Room Press</h1>
+<h2>What we decided</h2>
+<ul>
+<li><strong>Strategy before execution.</strong> Wrote <code>data/design/brief.md</code> first: what the reader
+  feels (quietly stupid, afraid of a 600-page book), what we sell (the click of
+  seeing machinery), and the competitive default to differ from.</li>
+<li><strong>The anti-list is the real decision.</strong> Banned outright: parchment, sepia, gold
+  serif capitals, marble, engraved maps, dark academia — the universal history-brand
+  look, which says "old, important, heavy", the three words our reader bounced off.
+  Also banned: gradient/rounded-card SaaS look (says app, not book), emoji, icon
+  triples, faces, trivia framing.</li>
+<li><strong>The signature device must come from the product's story</strong> — hidden machinery made
+  visible — not be an ornament. Each direction proposes one.</li>
+</ul>
+<h2>Three directions, identical copy</h2>
+<p>Same headline, promises, capture block and Instagram card in all three, so the
+judgement is about design and not writing. Each direction ships a landing hero AND a
+true 1080x1350 card, because the loud surface and the quiet one must read as one brand.</p>
+<ul>
+<li><strong>A — Technical drawing</strong>: engineering cutaway, thin rules, numbered callouts on
+  leader lines. Device: the numbered callout.</li>
+<li><strong>B — The ledger</strong>: ruled account book, everything an entry on a line, tabular
+  figures. Device: the ruled row.</li>
+<li><strong>C — The plate</strong>: mid-century Pelican paperback, one loud flat colour, oversized
+  printed numeral. Device: the plate number.</li>
+</ul>
+<p>Files: <code>data/design/direction-{a,b,c}.html</code> plus a short <code>.md</code> rationale each.</p>
+<h2>What we tried and abandoned</h2>
+<p>Nothing abandoned yet. Noted for the next session: do NOT judge from the stylescapes
+alone — the skill's own warning is that stylescapes always look good. The tie-break is
+the Instagram card at feed size and the page at phone width.</p>
+<h2>The verdict — Direction A wins</h2>
+<p>All three were built and screenshotted, then judged on the landing page and the
+1080x1350 card at once. <strong>Instagram is our only channel, so the card was the tie-break.</strong></p>
+<ul>
+<li><strong>A, Technical drawing — WINS.</strong> Its device (numbered callouts on leader lines) is the
+  only one derived from the business's own story rather than from a genre, and it holds
+  at both volumes.</li>
+<li><strong>B, The Ledger — rejected.</strong> Best landing page of the three, genuinely handsome
+  editorial serif. Its card goes quiet where we need volume and reads as a finance
+  newsletter. A weak card is disqualifying however good the page is.</li>
+<li><strong>C, The Plate — rejected as a whole, absorbed in part.</strong> Loudest card, best stopping
+  power, but the oversized numeral sat on the headline and ate it. Kept: cards must be a
+  full-bleed flat colour field with type far larger than feels comfortable, and its blue
+  #173B4E survives as a second field colour so a 10-card grid has rhythm.</li>
+</ul>
+<p><strong>The system is A's construction at C's volume on the card.</strong> A hybrid of validated
+pieces — the skill's own words — not a compromise.</p>
+<p>Codified in <code>docs/design.md</code> (canonical, now in the index) and logged in <code>DECISIONS.md</code>.</p>
+<h2>Open questions</h2>
+<ul>
+<li>Matt has not judged yet. He was sent the chooser page and told silence means A. If he
+  picks B or C, <strong>rewrite <code>docs/design.md</code>, do not patch it.</strong></li>
+<li>Not yet done: rebuild <code>data/landing/index.html</code> on the system, then the three audits
+  (design critique, accessibility, phone render). The design-system item stays <code>active</code>
+  until those pass.</li>
+<li>Then <code>instagram-cards</code>: template plus the first 10, legibility-audited at 270px wide.</li>
+<li><code>sapiens-analysis</code> is still blocked — the file is not on this Mac.</li>
+</ul>
+<h2>What we tried and abandoned (part two)</h2>
+<p>Judging from the stylescape pages alone. The skill warns that stylescapes always look
+good, and it was right — B is the prettiest page and the worst product. Always judge the
+loud surface and the quiet surface in the same glance.</p>
+<h2>Pointers</h2>
+<ul>
+<li><code>docs/design.md</code> — the system. Build every surface from it.</li>
+<li><code>data/design/index.html</code> — the chooser page sent to Matt, live at /design/.</li>
+<li><code>data/design/shot-{a,b,c}.png</code> — full-page screenshots, cheap to re-judge from.</li>
+<li><code>data/design/brief.md</code> — the strategy layer. Read before touching any pixel.</li>
+<li><code>bin/publish.sh</code> — extended this session to also publish <code>data/design/*.html</code> and
+  <code>data/cards/*</code> to the preview site.</li>
+<li>Preview: https://mattia-palmieri.github.io/engine-room-press-preview/</li>
+</ul>
+<footer>Draft — built by the agent, judged by Matt</footer>
+</div></body></html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>House style — Engine Room Press</title><meta name="description" content="How Engine Room Press books are written — the four zoom-out techniques, the sentence rules, the evidence discipline, and the checklist every chapter must pass.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"><style>
+:root{--paper:#F7F6F1;--white:#fff;--ink:#14171A;--signal:#C1440E;--blue:#173B4E;
+--rule:#C7C4B8;--faint:#E4E2D8}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);
+font:400 18px/1.62 Newsreader,Georgia,serif;-webkit-text-size-adjust:100%}
+.wrap{max-width:660px;margin:0 auto;padding:32px 20px 96px}
+a{color:var(--ink)}
+.mast{border-bottom:1px solid var(--ink);padding-bottom:10px;margin-bottom:28px;
+display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.mono,.tag,.mast,.kicker,.crumb,th{font-family:"IBM Plex Mono",ui-monospace,monospace;
+font-weight:500;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.mast a{text-decoration:none}
+h1{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:700;
+font-size:clamp(30px,8vw,44px);line-height:1.06;letter-spacing:-.02em;margin:0 0 14px}
+.lede{font-size:19px;color:#3a3f44;margin-bottom:14px}
+h2{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:23px;
+line-height:1.2;margin:38px 0 12px}
+h3{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:19px;margin:26px 0 8px}
+p,li{margin-bottom:12px}
+ul,ol{padding-left:22px}
+strong{font-weight:600}
+code{font-family:"IBM Plex Mono",monospace;font-size:.85em;background:#ECEAE0;padding:1px 4px}
+pre{background:var(--ink);color:#F7F6F1;padding:16px;overflow-x:auto;margin:16px 0;font-size:13px}
+pre code{background:none;color:inherit;padding:0}
+blockquote{border-left:2px solid var(--signal);padding-left:14px;color:#3a3f44;margin:16px 0}
+hr{border:0;border-top:1px solid var(--rule);margin:32px 0}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:16px 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--rule);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:#ECEAE0;font-size:11px}
+img{max-width:100%;height:auto;display:block}
+/* section head with figure number */
+.fig{display:flex;align-items:baseline;gap:12px;margin:44px 0 4px;
+border-top:1px solid var(--ink);padding-top:10px}
+.fig .n{color:var(--signal)}
+.fig h2{margin:0;font-size:21px}
+.note{color:#3a3f44;font-size:16px;margin:4px 0 14px}
+/* rows */
+a.row{display:block;text-decoration:none;color:inherit;border:1px solid var(--rule);
+border-top:0;background:var(--white);padding:15px 16px}
+a.row:first-of-type{border-top:1px solid var(--rule)}
+a.row:hover{border-color:var(--signal)}
+a.row .t{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:17px}
+a.row .t .arw{color:var(--signal)}
+a.row .s{display:block;color:#3a3f44;font-size:15px;line-height:1.45;margin-top:4px}
+a.row .d{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+color:#6b6f73;text-transform:uppercase;margin-top:6px;display:block}
+.crumb{display:inline-block;margin-bottom:22px;text-decoration:none;color:var(--signal)}
+footer{margin-top:56px;border-top:1px solid var(--rule);padding-top:14px;
+font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+text-transform:uppercase;color:#6b6f73}
+.badge{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;
+padding:2px 6px;border:1px solid var(--rule);text-transform:uppercase}
+.badge.active{border-color:var(--signal);color:var(--signal)}
+.badge.done{color:#6b6f73}
+</style></head><body><div class="wrap">
+<div class="mast"><a href="../">Engine Room Press</a><span>Working preview</span></div>
+<a class="crumb" href="../">&larr; All of it</a><p class="lede">How Engine Room Press books are written — the four zoom-out techniques, the sentence rules, the evidence discipline, and the checklist every chapter must pass.</p><h1>House style</h1>
+<p>Write against this. You do not need to have read Sapiens to use it — the
+research behind it is in <code>docs/notes/harari-method.md</code>.</p>
+<h2>The promise this style has to keep</h2>
+<p>One force per book. Why it mattered, how it changed the world. No dates to
+memorise. You finish it in an evening. Every rule below exists to deliver one
+of those four.</p>
+<p>Target: <strong>~35,000 words, 8 chapters of ~4,000.</strong> Shorter than Sapiens by design —
+Sapiens is ~6,000 words a chapter over 20 chapters, and "too dense, no chance to
+absorb" is the exact complaint our reader made about it.</p>
+<hr />
+<h2>1. The pendulum</h2>
+<p><strong>Swing between one named human and the whole species. Never rest in the middle.</strong></p>
+<p>This is the technique the reader calls "big picture." It is not a wide-angle
+lens. It is a fast cut between the widest shot and the tightest one.</p>
+<p>The move, in three beats:</p>
+<ol>
+<li><strong>Anchor.</strong> One named person, one dated event, one object you could hold.
+   "In 1896 Armand Peugeot paid a lawyer to perform the procedures."</li>
+<li><strong>Name the mechanism.</strong> Give it a label. "Lawyers call this a legal fiction."</li>
+<li><strong>Jump to n=all.</strong> Straight to the species or the century. No "and other
+   firms did likewise." The jump is binary.</li>
+</ol>
+<p><strong>Banned: the middle distance.</strong> "Several other merchants in the region also
+adopted the practice" is the sentence that kills the effect. It is the register
+of a textbook, and the textbook is what our reader bounced off.</p>
+<p><strong>The label is the landing.</strong> You land a zoom-out by <em>naming the pattern</em>, not
+by piling on more cases. "The luxury trap." "The imagined order." Coin one term
+per book, define it the moment you coin it, then reuse it unchanged so it
+becomes the reader's vocabulary. One coinage per book. Two is clutter.</p>
+<p><strong>Zooming out removes people. So zoom back in fast.</strong> From altitude, individual
+humans are invisible. A reader with nobody to stand next to stops reading. Rule
+of thumb: no more than two paragraphs at species scale before a body appears.</p>
+<h2>2. The reframe</h2>
+<p><strong>One per chapter. Eight per book. Each is a reversal, not a fact.</strong></p>
+<p>Take a belief so ordinary the reader never noticed it was a claim, and turn its
+load-bearing word around.</p>
+<ul>
+<li>we domesticated wheat → it domesticated us</li>
+<li>science accumulates facts → science began by admitting ignorance</li>
+<li>history bends toward justice → there is no justice in history</li>
+</ul>
+<p>A topic is reframe-able only if all three hold:</p>
+<ol>
+<li>The assumption is stated as self-evident, never argued for.</li>
+<li>There is a plausible reversed direction the reader has never been offered.</li>
+<li>Once said, it feels obvious in hindsight.</li>
+</ol>
+<p>Emotional weight is required. Progress, fairness, safety, human specialness.
+Reversing a piece of trivia gets you nothing — the "oh no" is the product.</p>
+<p>State the flip in a short, flat, near-aphoristic sentence. Then illustrate.</p>
+<p><strong>The honesty clause is mandatory.</strong> A reframe is a <em>lens</em>, not a finding. Say
+so, once, plainly, in the chapter: "this is one way to read it, and here is who
+disagrees." One clause. It costs nothing and it is the difference between a good
+book and a viral thread about our errors. See §5.</p>
+<h2>3. Chapter shape</h2>
+<p><strong>Thesis first. It is an essay, never a mystery.</strong></p>
+<pre><code>TITLE        a conclusion, not a topic
+OPENING      the claim restated at maximum scale, or a direct
+             instruction to the reader
+BODY         3-5 sections under hook subheads; concrete zoom-in
+             evidence that cashes out the title
+CLOSE        re-abstract, higher and darker than the opening;
+             leave it open
+</code></pre>
+<ul>
+<li><strong>Titles are verdicts.</strong> "History's Biggest Fraud," not "The Agricultural
+  Revolution." If the title could head a Wikipedia section, rewrite it.</li>
+<li><strong>Openings are not scenes.</strong> Do not write "It was a cold morning in Genoa."
+  Open with a flat claim at scale, or tell the reader what they are about to
+  do: "To understand X we have to get inside the head of Y." The named human
+  arrives one or two paragraphs later, as the payoff.</li>
+<li><strong>Closes do not recap.</strong> End on a generalisation, unsettling, unresolved.
+  The next chapter's first line answers it. Recap paragraphs are a textbook tic
+  and they tell the reader the chapter is over before it is.</li>
+<li><strong>Subheads are hooks, never labels.</strong> "The Luxury Trap," "Signed, Kushim."
+  Never "Economic Consequences." Count tracks breadth, not length: 3 for one
+  sustained argument, up to 6 if the chapter is really several linked essays.</li>
+<li><strong>Front-load the book's ending on page one.</strong> State where this is all going in
+  the introduction, then land on it in the last line. The reader should feel the
+  book close a loop.</li>
+</ul>
+<h2>4. Sentences</h2>
+<p><strong>Rhythm.</strong> Two to four medium declaratives (15–25 words) do the reasoning.
+Then one short sentence, under eight words, delivers the verdict. The short one
+carries <strong>no new information</strong> — it restates the long one in plainer words.
+"We did not domesticate wheat. It domesticated us."</p>
+<p><strong>Dates and numbers.</strong>
+- Round and flat. "Seventy thousand years ago." Never "circa," never "c. 68,000
+  BCE," never a decimal point. Roundness reads as confidence.
+- Anchor relatively wherever you can: "three centuries before Columbus sailed."
+  The reader should never have to hold an absolute year.
+- <strong>The no-memorising rule, hard version:</strong> if a year, name or place is not doing
+  argumentative work in the sentence it sits in, cut it. Ask of every proper
+  noun: would the paragraph survive without it? Then it goes.
+- Never make scale felt with more digits. Make it felt with a body doing a
+  physical thing.</p>
+<p><strong>Metaphor is physical and domestic.</strong> Plants, animals, weather, metal, money in
+a pocket, paperwork. Never abstract mapped onto abstract. If the reader's hands
+have not touched it, find another one.</p>
+<p><strong>Questions cluster and open paragraphs.</strong> Never close on one. Either a question
+with a fragment answer, or three questions narrowing the space before the real
+answer arrives. "Who was responsible? Neither kings, nor priests, nor merchants."</p>
+<p><strong>"We" about twice as often as "you."</strong> "We" implicates the reader in something
+done long before they were born, and that is the whole emotional engine. Save
+"you" for the moments the reader should check the claim against their own life.</p>
+<p><strong>Humour is deadpan, in the same flat voice.</strong> No exclamation marks. No visible
+wink. The target is always the gap between what people think they are doing and
+how arbitrary it is. Gold: "a metal that could not be eaten, drunk or woven."
+The joke is one word.</p>
+<p><strong>Jargon is defused in the sentence that introduces it.</strong> Never let a term sit
+undefined for a paragraph. Best move: introduce it and immediately undercut it.</p>
+<p><strong>Plain words.</strong> Short, Anglo-Saxon, concrete. If an abstract noun is unavoidable,
+put a concrete verb or object in the same sentence with it.</p>
+<h2>5. Evidence discipline — the rules Harari breaks</h2>
+<p>Our reader bounced off history and feels ignorant. The one thing that would
+destroy us with them is being caught saying something false: it confirms their
+fear that they cannot trust their own understanding. Harari survives his critics
+because he has a global platform. We would not survive one viral thread. <strong>Our
+hedging has to be better than his.</strong></p>
+<p>None of this costs us the style. Every technique above is rhetorical structure.
+The sins below are all evidence handling. <strong>Take the method, leave the sin.</strong></p>
+<p>Non-negotiable:</p>
+<ul>
+<li><strong>Never state a contested theory as settled.</strong> Where historians actively
+  disagree, say so and name the fight in one sentence. A live argument is more
+  interesting than a closed one — this usually improves the page.</li>
+<li><strong>Match the hedge to the size of the claim.</strong> A species-level, ten-thousand-year
+  claim needs real support or it gets demoted to "one plausible reading."</li>
+<li><strong>No confident citation-free sweep.</strong> Tone is not evidence. This is the single
+  most repeated charge against Sapiens.</li>
+<li><strong>No false binaries.</strong> Happy foragers versus miserable farmers. If the record
+  has three live positions, do not spine a chapter on two.</li>
+<li><strong>Name your sources in the prose.</strong> "The historian X argues" costs four words
+  and buys enormous trust. Never reuse another writer's framework or coinage
+  without naming them.</li>
+<li><strong>Pick a moral lane.</strong> Do not debunk something as invented and then draw
+  outrage from it being real two chapters later.</li>
+<li><strong>The title may promise energy. It may not promise certainty</strong> the chapter does
+  not deliver.</li>
+</ul>
+<p>Every book ships with a short "where I might be wrong" note and a real reading
+list. That is not an apology. It is the trust device, and it is also the thing no
+competitor bothers with.</p>
+<hr />
+<h2>Chapter checklist</h2>
+<p>Before a chapter is done:</p>
+<ul>
+<li>[ ] The title is a verdict, not a topic.</li>
+<li>[ ] One reframe, clearly placed, with its honesty clause.</li>
+<li>[ ] At least three pendulum swings — named human to species and back.</li>
+<li>[ ] No paragraph sits in the middle distance.</li>
+<li>[ ] Never more than two paragraphs at species scale without a body.</li>
+<li>[ ] Every proper noun and year is doing work. The rest are cut.</li>
+<li>[ ] Scale is carried by an analogy a reader could touch, not by digits.</li>
+<li>[ ] The close is a re-abstraction, higher and open. It does not recap.</li>
+<li>[ ] Every contested claim is flagged as contested, in one clause.</li>
+<li>[ ] Read aloud: the long/short rhythm is audible, and the verdict sentences land.</li>
+</ul>
+<footer>Draft — built by the agent, judged by Matt</footer>
+</div></body></html>

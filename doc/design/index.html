@@ -1,0 +1,160 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Design system — Engine Room Press — Engine Room Press</title><meta name="description" content="The Engine Room Press design system — tokens, rules and per-surface templates. Every page and every Instagram card is built from this file.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"><style>
+:root{--paper:#F7F6F1;--white:#fff;--ink:#14171A;--signal:#C1440E;--blue:#173B4E;
+--rule:#C7C4B8;--faint:#E4E2D8}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);
+font:400 18px/1.62 Newsreader,Georgia,serif;-webkit-text-size-adjust:100%}
+.wrap{max-width:660px;margin:0 auto;padding:32px 20px 96px}
+a{color:var(--ink)}
+.mast{border-bottom:1px solid var(--ink);padding-bottom:10px;margin-bottom:28px;
+display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.mono,.tag,.mast,.kicker,.crumb,th{font-family:"IBM Plex Mono",ui-monospace,monospace;
+font-weight:500;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.mast a{text-decoration:none}
+h1{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:700;
+font-size:clamp(30px,8vw,44px);line-height:1.06;letter-spacing:-.02em;margin:0 0 14px}
+.lede{font-size:19px;color:#3a3f44;margin-bottom:14px}
+h2{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:23px;
+line-height:1.2;margin:38px 0 12px}
+h3{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:19px;margin:26px 0 8px}
+p,li{margin-bottom:12px}
+ul,ol{padding-left:22px}
+strong{font-weight:600}
+code{font-family:"IBM Plex Mono",monospace;font-size:.85em;background:#ECEAE0;padding:1px 4px}
+pre{background:var(--ink);color:#F7F6F1;padding:16px;overflow-x:auto;margin:16px 0;font-size:13px}
+pre code{background:none;color:inherit;padding:0}
+blockquote{border-left:2px solid var(--signal);padding-left:14px;color:#3a3f44;margin:16px 0}
+hr{border:0;border-top:1px solid var(--rule);margin:32px 0}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:16px 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--rule);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:#ECEAE0;font-size:11px}
+img{max-width:100%;height:auto;display:block}
+/* section head with figure number */
+.fig{display:flex;align-items:baseline;gap:12px;margin:44px 0 4px;
+border-top:1px solid var(--ink);padding-top:10px}
+.fig .n{color:var(--signal)}
+.fig h2{margin:0;font-size:21px}
+.note{color:#3a3f44;font-size:16px;margin:4px 0 14px}
+/* rows */
+a.row{display:block;text-decoration:none;color:inherit;border:1px solid var(--rule);
+border-top:0;background:var(--white);padding:15px 16px}
+a.row:first-of-type{border-top:1px solid var(--rule)}
+a.row:hover{border-color:var(--signal)}
+a.row .t{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:17px}
+a.row .t .arw{color:var(--signal)}
+a.row .s{display:block;color:#3a3f44;font-size:15px;line-height:1.45;margin-top:4px}
+a.row .d{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+color:#6b6f73;text-transform:uppercase;margin-top:6px;display:block}
+.crumb{display:inline-block;margin-bottom:22px;text-decoration:none;color:var(--signal)}
+footer{margin-top:56px;border-top:1px solid var(--rule);padding-top:14px;
+font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+text-transform:uppercase;color:#6b6f73}
+.badge{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;
+padding:2px 6px;border:1px solid var(--rule);text-transform:uppercase}
+.badge.active{border-color:var(--signal);color:var(--signal)}
+.badge.done{color:#6b6f73}
+</style></head><body><div class="wrap">
+<div class="mast"><a href="../">Engine Room Press</a><span>Working preview</span></div>
+<a class="crumb" href="../">&larr; All of it</a><p class="lede">The Engine Room Press design system — tokens, rules and per-surface templates. Every page and every Instagram card is built from this file.</p><h1>Design system — Engine Room Press</h1>
+<p><strong>The system is "Technical Drawing": the page is an engineering cutaway of an idea.</strong>
+Thin measured rules, a faint grid, and numbered callouts that label real parts of the
+argument. It comes straight from the name and the promise — hidden machinery, shown.</p>
+<p>Three surfaces, one system, different volume:
+<strong>app//reading = quiet · landing = spoken · Instagram card = shouted.</strong>
+Same tokens throughout. Loudness is carried by scale and flat colour fields, never by
+new fonts or new colours.</p>
+<h2>Tokens</h2>
+<pre><code class="language-yaml">color:
+  paper:        &quot;#F7F6F1&quot;   # default canvas. Near-white, cool. NOT parchment.
+  paper_white:  &quot;#FFFFFF&quot;   # component fields, form inputs
+  ink:          &quot;#14171A&quot;   # all body and display text; also a flat field on cards
+  signal:       &quot;#C1440E&quot;   # oxide red. Callout tags, one word of emphasis, buttons.
+  field_blue:   &quot;#173B4E&quot;   # second flat field, cards only — stops a 10-card grid
+                            # reading as one block. Never used as text colour on paper.
+  rule:         &quot;#C7C4B8&quot;   # hairlines, borders
+  rule_faint:   &quot;#E4E2D8&quot;   # the 40px measured grid
+
+type:
+  display:  { family: &quot;Space Grotesk&quot;,  weight: 700, use: &quot;hero, card headline&quot; }
+  headline: { family: &quot;Space Grotesk&quot;,  weight: 500, use: &quot;section headings&quot; }
+  body:     { family: &quot;Newsreader&quot;,     weight: 400, use: &quot;everything a reader reads&quot; }
+  label:    { family: &quot;IBM Plex Mono&quot;,  weight: 500, use: &quot;callouts, figure numbers,
+                                                captions, buttons; UPPERCASE, 0.12em&quot; }
+
+grid:     { unit: 40, rule_weight: 1 }
+radius:   0            # nothing is rounded. Ever.
+spacing:  [8, 16, 24, 32, 48, 64, 96]
+</code></pre>
+<p><strong>Why these fonts.</strong> Space Grotesk is mechanical and modern without going cold-SaaS.
+Newsreader does the actual reading and keeps the thing a <em>book</em>, not an app. Plex Mono
+is the annotation voice — it is what makes a number read as measured rather than
+decorative. No Inter, no Helvetica, no Playfair, no decorative serif capitals.</p>
+<h2>Rules</h2>
+<ol>
+<li><strong>The signature device is the numbered callout.</strong> <code>01 ──────── One idea per book.</code>
+   A tag in signal red, a leader line, a label. It must always point at something real —
+   a promise, a chapter, a part of the argument. The moment it points at nothing it is
+   ornament and it is wrong.</li>
+<li><strong>Everything is numbered.</strong> Sections are <code>FIG. 01</code>, cards are <code>NO. 04</code>, books are
+   <code>01</code>. The numbering is a real system, not a look.</li>
+<li><strong>Signal red is rationed.</strong> Callout tags, one button, at most one emphasised word per
+   surface. Never a background on paper. Never two red things competing.</li>
+<li><strong>Nothing is rounded and nothing floats.</strong> No border-radius, no drop shadows, no
+   cards with soft edges. Structure is hairlines and flat fields.</li>
+<li><strong>Body copy is always the serif.</strong> If a paragraph is set in the grotesk, it is wrong.</li>
+<li><strong>No gradient, no emoji, no icon triples, no stock photography, no faces.</strong></li>
+<li><strong>The banned register</strong>, restated because it is the whole point: parchment, sepia,
+   gold, marble, engraved maps, dark academia. The reader bounced off that at school.</li>
+</ol>
+<h2>Surface: landing page (spoken)</h2>
+<p>Paper canvas with the faint 40px grid visible. Hero headline in display grotesk, three
+to four lines, left-aligned, ranged left on the grid. Subline in serif. The three
+promises are a <strong>parts list</strong> — numbered callouts on dashed leader lines. One email
+capture: a bordered white field block, mono label above, ink button with mono uppercase
+text. No navigation, no footer menu, no linktree, one action on the page.</p>
+<h2>Surface: Instagram card (shouted) — 1080 × 1350</h2>
+<p>The tie-break surface: Instagram is our only channel, so the card must win at 25% size
+in a scrolling feed.</p>
+<ul>
+<li><strong>Flat field, not paper.</strong> Full-bleed <code>ink</code> or <code>field_blue</code>. Alternate between them
+  across a set so the grid has rhythm.</li>
+<li><strong>Headline: display grotesk, 76–96px, max 14 words, filling the upper two-thirds.</strong>
+  If it needs more than 14 words it is not a card, it is a caption.</li>
+<li>One word may take <code>signal</code> red. One only.</li>
+<li>Top rail: <code>ENGINE ROOM PRESS</code> left, <code>NO. 04</code> right, mono 24px, letterspaced.</li>
+<li>Bottom rail: hairline, then the wordmark. Nothing else.</li>
+<li><strong>The legibility floor:</strong> shrink the card to 270px wide. If the headline is not
+  readable, the type is too small. Redo it, do not ship it.</li>
+</ul>
+<h2>Logo</h2>
+<p>The wordmark is <code>ENGINE ROOM PRESS</code> in IBM Plex Mono, uppercase, 0.16em tracking, ink
+on paper or paper on a flat field. No mark, no icon, no monogram. It comes last on
+purpose and it stays plain.</p>
+<h2>How this was chosen</h2>
+<p>Three directions were built with identical copy and judged on both surfaces at once
+(<code>data/design/direction-{a,b,c}.html</code>, screenshots alongside).</p>
+<ul>
+<li><strong>B, "The Ledger"</strong> — the best-looking landing page of the three, a genuinely handsome
+  editorial serif. <strong>Rejected on the card.</strong> Its ruled-row language goes quiet exactly
+  where we need volume, and it reads as a finance newsletter. Instagram is our only
+  channel; a weak card is disqualifying no matter how good the page is.</li>
+<li><strong>C, "The Plate"</strong> — the loudest card and the best stopping power, but the giant
+  numeral sat on top of the headline and ate it, and the device is decoration unless it
+  points at a real number. <strong>Not rejected — absorbed.</strong> C is what taught us the card
+  must be a flat colour field with type set far bigger than feels comfortable.</li>
+<li><strong>A, "Technical Drawing"</strong> — wins. Its device is the only one of the three that comes
+  from the business's own story rather than from a genre, and it works at both volumes.</li>
+</ul>
+<p><strong>So the system is A's construction, run at C's volume on the card, with C's blue kept
+as a second field colour.</strong> A hybrid assembled from validated pieces, which is a proper
+end state and not a compromise.</p>
+<h2>The risk we are carrying</h2>
+<p>The technical register can read cold. Newsreader in the body and real generosity with
+white space are the counterweight. If a reader ever calls the page "clinical", the fix
+is more serif and more air — not a warmer colour, and never a slide back towards
+parchment.</p>
+<footer>Draft — built by the agent, judged by Matt</footer>
+</div></body></html>

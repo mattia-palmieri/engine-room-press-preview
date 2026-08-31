@@ -1,0 +1,109 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>House style, without the book — Engine Room Press</title><meta name="description" content="Harari's method reconstructed from open sources without a copy of Sapiens; docs/house-style.md written as canonical and the sapiens-analysis item closed at v1.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"><style>
+:root{--paper:#F7F6F1;--white:#fff;--ink:#14171A;--signal:#C1440E;--blue:#173B4E;
+--rule:#C7C4B8;--faint:#E4E2D8}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);
+font:400 18px/1.62 Newsreader,Georgia,serif;-webkit-text-size-adjust:100%}
+.wrap{max-width:660px;margin:0 auto;padding:32px 20px 96px}
+a{color:var(--ink)}
+.mast{border-bottom:1px solid var(--ink);padding-bottom:10px;margin-bottom:28px;
+display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.mono,.tag,.mast,.kicker,.crumb,th{font-family:"IBM Plex Mono",ui-monospace,monospace;
+font-weight:500;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.mast a{text-decoration:none}
+h1{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:700;
+font-size:clamp(30px,8vw,44px);line-height:1.06;letter-spacing:-.02em;margin:0 0 14px}
+.lede{font-size:19px;color:#3a3f44;margin-bottom:14px}
+h2{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:23px;
+line-height:1.2;margin:38px 0 12px}
+h3{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:19px;margin:26px 0 8px}
+p,li{margin-bottom:12px}
+ul,ol{padding-left:22px}
+strong{font-weight:600}
+code{font-family:"IBM Plex Mono",monospace;font-size:.85em;background:#ECEAE0;padding:1px 4px}
+pre{background:var(--ink);color:#F7F6F1;padding:16px;overflow-x:auto;margin:16px 0;font-size:13px}
+pre code{background:none;color:inherit;padding:0}
+blockquote{border-left:2px solid var(--signal);padding-left:14px;color:#3a3f44;margin:16px 0}
+hr{border:0;border-top:1px solid var(--rule);margin:32px 0}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:16px 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--rule);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:#ECEAE0;font-size:11px}
+img{max-width:100%;height:auto;display:block}
+/* section head with figure number */
+.fig{display:flex;align-items:baseline;gap:12px;margin:44px 0 4px;
+border-top:1px solid var(--ink);padding-top:10px}
+.fig .n{color:var(--signal)}
+.fig h2{margin:0;font-size:21px}
+.note{color:#3a3f44;font-size:16px;margin:4px 0 14px}
+/* rows */
+a.row{display:block;text-decoration:none;color:inherit;border:1px solid var(--rule);
+border-top:0;background:var(--white);padding:15px 16px}
+a.row:first-of-type{border-top:1px solid var(--rule)}
+a.row:hover{border-color:var(--signal)}
+a.row .t{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:17px}
+a.row .t .arw{color:var(--signal)}
+a.row .s{display:block;color:#3a3f44;font-size:15px;line-height:1.45;margin-top:4px}
+a.row .d{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+color:#6b6f73;text-transform:uppercase;margin-top:6px;display:block}
+.crumb{display:inline-block;margin-bottom:22px;text-decoration:none;color:var(--signal)}
+footer{margin-top:56px;border-top:1px solid var(--rule);padding-top:14px;
+font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+text-transform:uppercase;color:#6b6f73}
+.badge{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;
+padding:2px 6px;border:1px solid var(--rule);text-transform:uppercase}
+.badge.active{border-color:var(--signal);color:var(--signal)}
+.badge.done{color:#6b6f73}
+</style></head><body><div class="wrap">
+<div class="mast"><a href="../">Engine Room Press</a><span>Working preview</span></div>
+<a class="crumb" href="../">&larr; All of it</a><p class="lede">Harari's method reconstructed from open sources without a copy of Sapiens; docs/house-style.md written as canonical and the sapiens-analysis item closed at v1.</p><h1>House style, without the book</h1>
+<h2>What we decided</h2>
+<p><strong>Stop waiting for the Sapiens file.</strong> It is not on this Mac and may never arrive.
+The task was blocking the writing, and CLAUDE.md says never block. Three parallel
+Sonnet researchers rebuilt the method from Goodreads verbatim quote banks, an
+erenow.org full-text mirror, LitCharts guides, the NPR excerpt and the critical
+literature. Raw output in <code>data/harari-structure.md</code>, <code>data/harari-sentences.md</code>,
+<code>data/harari-reframes.md</code>. That is enough to write a usable style guide.</p>
+<p><strong>"Zooming out" is four teachable techniques, not a temperament.</strong> This was the
+real answer to Matt's question. The pendulum (n=1 straight to n=all, never the
+middle distance); the reframe (reverse the load-bearing word of an unexamined
+belief); thesis-first chapter shape (title is a verdict, not a topic); and
+sentence compression (long reasoning, short verdict). The key mechanical insight:
+Harari lands a zoom-out by <strong>naming the pattern</strong>, not by adding cases. That is
+also exactly why critics call him a just-so storyteller — the power and the danger
+are the same move.</p>
+<p><strong>We hedge harder than he does.</strong> Eight specific charges against Sapiens are all
+evidence handling; none touch the rhetorical technique. So the style guide takes
+the method and bans the sin. The commercial argument, not just the ethical one: our
+reader already fears they cannot trust their own grasp of history. One caught error
+confirms that fear. Harari survives Hallpike on platform size. We would not.</p>
+<p><strong>35,000 words, 8 chapters of ~4,000.</strong> Sapiens is ~6,000 a chapter over 20, and
+"too dense, no chance to absorb" is the reader complaint in our own demand research.</p>
+<h2>What we abandoned</h2>
+<ul>
+<li>Waiting for the file. Indefinite block on the only active item.</li>
+<li>A generic "popular history writing" guide. It would have been platitudes, and
+  Matt asked what zooming out actually <em>means</em>.</li>
+<li>Buying or downloading a copy. We buy nothing.</li>
+</ul>
+<h2>Open questions</h2>
+<ul>
+<li>Two gaps at the end of <code>docs/notes/harari-method.md</code>, to close only if the file
+  arrives: a verbatim species→single-body passage, and per-chapter word counts.</li>
+<li>The style guide is untested. It is proven or broken by the first chapter written
+  against it, not by review. The <code>dollar-empire-outline</code> item is the next test and
+  is still <code>todo</code> — Matt has not asked for it.</li>
+<li><strong>Captions for the 10 Instagram cards are still not written and not queued.</strong>
+  Matt was told and has not answered. Nothing can be posted without them.</li>
+</ul>
+<h2>Pointers</h2>
+<ul>
+<li><code>docs/house-style.md</code> — canonical, in the index.</li>
+<li><code>docs/notes/harari-method.md</code> — the reasoning and the research trail.</li>
+<li><code>DECISIONS.md</code> — entry "House style derived without a copy of Sapiens".</li>
+<li>Queue: <code>sapiens-analysis</code> now <code>done</code>. Nothing is active.</li>
+</ul>
+<footer>Draft — built by the agent, judged by Matt</footer>
+</div></body></html>

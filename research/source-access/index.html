@@ -1,0 +1,181 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Source access smoke test (2026-08-27) — Engine Room Press</title><meta name="description" content="Smoke test of which research data sources are reachable, and by which method.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"><style>
+:root{--paper:#F7F6F1;--white:#fff;--ink:#14171A;--signal:#C1440E;--blue:#173B4E;
+--rule:#C7C4B8;--faint:#E4E2D8}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);
+font:400 18px/1.62 Newsreader,Georgia,serif;-webkit-text-size-adjust:100%}
+.wrap{max-width:660px;margin:0 auto;padding:32px 20px 96px}
+a{color:var(--ink)}
+.mast{border-bottom:1px solid var(--ink);padding-bottom:10px;margin-bottom:28px;
+display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.mono,.tag,.mast,.kicker,.crumb,th{font-family:"IBM Plex Mono",ui-monospace,monospace;
+font-weight:500;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.mast a{text-decoration:none}
+h1{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:700;
+font-size:clamp(30px,8vw,44px);line-height:1.06;letter-spacing:-.02em;margin:0 0 14px}
+.lede{font-size:19px;color:#3a3f44;margin-bottom:14px}
+h2{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:23px;
+line-height:1.2;margin:38px 0 12px}
+h3{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:19px;margin:26px 0 8px}
+p,li{margin-bottom:12px}
+ul,ol{padding-left:22px}
+strong{font-weight:600}
+code{font-family:"IBM Plex Mono",monospace;font-size:.85em;background:#ECEAE0;padding:1px 4px}
+pre{background:var(--ink);color:#F7F6F1;padding:16px;overflow-x:auto;margin:16px 0;font-size:13px}
+pre code{background:none;color:inherit;padding:0}
+blockquote{border-left:2px solid var(--signal);padding-left:14px;color:#3a3f44;margin:16px 0}
+hr{border:0;border-top:1px solid var(--rule);margin:32px 0}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:16px 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--rule);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:#ECEAE0;font-size:11px}
+img{max-width:100%;height:auto;display:block}
+/* section head with figure number */
+.fig{display:flex;align-items:baseline;gap:12px;margin:44px 0 4px;
+border-top:1px solid var(--ink);padding-top:10px}
+.fig .n{color:var(--signal)}
+.fig h2{margin:0;font-size:21px}
+.note{color:#3a3f44;font-size:16px;margin:4px 0 14px}
+/* rows */
+a.row{display:block;text-decoration:none;color:inherit;border:1px solid var(--rule);
+border-top:0;background:var(--white);padding:15px 16px}
+a.row:first-of-type{border-top:1px solid var(--rule)}
+a.row:hover{border-color:var(--signal)}
+a.row .t{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:17px}
+a.row .t .arw{color:var(--signal)}
+a.row .s{display:block;color:#3a3f44;font-size:15px;line-height:1.45;margin-top:4px}
+a.row .d{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+color:#6b6f73;text-transform:uppercase;margin-top:6px;display:block}
+.crumb{display:inline-block;margin-bottom:22px;text-decoration:none;color:var(--signal)}
+footer{margin-top:56px;border-top:1px solid var(--rule);padding-top:14px;
+font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+text-transform:uppercase;color:#6b6f73}
+.badge{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;
+padding:2px 6px;border:1px solid var(--rule);text-transform:uppercase}
+.badge.active{border-color:var(--signal);color:var(--signal)}
+.badge.done{color:#6b6f73}
+</style></head><body><div class="wrap">
+<div class="mast"><a href="../">Engine Room Press</a><span>Working preview</span></div>
+<a class="crumb" href="../">&larr; All of it</a><p class="lede">Smoke test of which research data sources are reachable, and by which method.</p><h1>Source access smoke test (2026-08-27)</h1>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Result</th>
+<th>Method</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Amazon product page (Sapiens)</td>
+<td><strong>Worked</strong></td>
+<td>rb, after warming the session (see recipe)</td>
+<td>Audible edition: Best Sellers Rank #515 in Audible Books &amp; Originals, #1 in Evolution (Books), #1 in General Anthropology; 4.6 stars; 133,537 global ratings.</td>
+</tr>
+<tr>
+<td>Amazon Best Sellers – Books/History</td>
+<td><strong>Worked</strong></td>
+<td>rb, after warming</td>
+<td>Ranked list read cleanly: #1 The Wager (David Grann), #2 Night (Elie Wiesel), #3 Man's Search for Meaning, #4 1929 (Sorkin), #6 A People's History of the United States. Node 9 = History.</td>
+</tr>
+<tr>
+<td>Substack Leaderboard – History</td>
+<td>Worked</td>
+<td>rb</td>
+<td>Pulled ranked list of 15 publications: #1 Darryl Cooper (The Martyr Made Substack), #2 Adam Tooze (Chartbook), #3 The Culturist, ... #10 Lucy Worsley (My Life in the Past). No subscriber counts visible on this view.</td>
+</tr>
+<tr>
+<td>Goodreads (book page, rating count)</td>
+<td>Worked</td>
+<td>WebFetch</td>
+<td>Sapiens: 1,323,771 ratings, 64,498 written reviews, 4.32 average.</td>
+</tr>
+<tr>
+<td>Google Trends (2-term comparison)</td>
+<td>Partial / JS-flaky</td>
+<td>rb</td>
+<td>UI and filters load, subregion breakdown table rendered (e.g. #1 District of Columbia, #2 New York for "history book"), but the main comparison time-series chart threw "Oops! Something went wrong. Please try again in a bit." repeatedly.</td>
+</tr>
+<tr>
+<td>Kickstarter (history book search)</td>
+<td>Worked (limited data)</td>
+<td>rb</td>
+<td>Search for "history book" in Publishing category returned 2 live/upcoming projects (e.g. "The Mycellium Forest," "Jacques Renauld and the Hearthspring"). Pledge/backer counts are not shown on the list view — would need to open each project page.</td>
+</tr>
+<tr>
+<td>Reddit (r/history, r/books)</td>
+<td>Worked</td>
+<td>reddit-read skill (<code>reddit.js</code>)</td>
+<td>r/history search for "Sapiens Harari" returned 0 results (query too narrow); r/books top-month search for "history book recommendations" returned real posts with scores, e.g. "Ai avoidance is making me read older books" — Score 2067, Comments 471.</td>
+</tr>
+<tr>
+<td>archive.org Wayback Machine</td>
+<td>Worked</td>
+<td>rb (WebFetch blocked entirely)</td>
+<td>WebFetch failed outright ("unable to fetch from web.archive.org"). rb loaded the calendar view and showed real snapshot data: "Saved 10 times between July 30, 2025 and February 3, 2026."</td>
+</tr>
+<tr>
+<td>Domain availability (instantdomainsearch.com)</td>
+<td>Worked</td>
+<td>rb</td>
+<td>Typed "harariwrites" into the live search box; got a real results list: harariwrites.com, .net, .org, .ai, .io, .xyz, .app, etc., each with a "Continue" (registration) action, confirming live availability data.</td>
+</tr>
+</tbody>
+</table>
+<h2>Access recipes, and what is still blocked</h2>
+<h3>Amazon — WORKS, no warm-up needed (re-verified 2026-08-27)</h3>
+<p><strong>Cold deep links work.</strong> Seven product/bestseller pages opened back to back
+with no homepage visit first, no bot wall, no captcha, no rate limit. The
+earlier "warm the session first" recipe is a fallback, not a requirement.</p>
+<p>What actually matters is <strong>cookie freshness on disk</strong>, not per-session warm-up.
+The profile at <code>~/.agent-browser/profiles/real-browser</code> already holds valid
+Amazon cookies, and they survive <code>rb close</code>, reopen and reboot.</p>
+<pre><code>rb open "https://www.amazon.com/dp/&lt;ASIN&gt;"
+rb wait --load networkidle
+rb get text body | grep -iE "best sellers rank|global ratings|out of 5 stars|\$[0-9]+\.[0-9]{2}"
+rb key End        # only if BSR is missing — it is lazy-loaded, position varies
+</code></pre>
+<p><strong>A wrong ASIN returns a real "Page Not Found" page — that is not a block.</strong>
+Do not read it as a bot wall and fall back to guessing. Retry with the right ASIN.</p>
+<p>If you ever do hit a genuine wall (cookies wiped or expired), re-seed: open
+<code>https://www.amazon.com</code>, do one real click (search a title, click the result),
+then deep links work again.</p>
+<p>Gotchas, all verified the hard way:
+- <strong>The URL slug is cosmetic; only the node id is real.</strong>
+  <code>/Best-Sellers-Books-World-History/zgbs/books/4999/</code> returns <em>Iran History</em>.
+  Confirm against the page title, never the slug. Known: <code>books/9</code> = History.
+- <strong>Rank is per edition, and the spread is enormous.</strong> Sapiens paperback was
+  #62,645 in Books while the Audible edition was #515 in Audible. Never compare
+  a BSR across formats, and always record which edition a rank came from.
+- <strong>BSR is a poor cross-title metric even within one shelf</strong> — Salt #873 vs
+  Crashed #430,728. Goodreads rating counts are the steadier scale signal.
+- The bestsellers department sidebar is lazy-loaded — scroll and re-snapshot.
+- <code>rb find role link click --name "Books"</code> failed where <code>rb click @eNNN</code> from a
+  fresh snapshot worked. On Amazon, prefer snapshot-then-click-by-ref.</p>
+<h3>The shared browser is a single resource — parallel subagents collide</h3>
+<p><strong>Verified 2026-08-27, the hard way.</strong> <code>rb</code> is one shared Chrome daemon. When two
+research subagents run at once, they hijack each other's navigation — one agent
+was caught mid-task loading a page a <em>different</em> agent had requested.</p>
+<p>Rules for any fan-out that touches the browser:
+- <strong>Always confirm the URL that actually loaded before trusting scraped text.</strong>
+  Silent hijack looks exactly like real data.
+- If contention appears, clone the profile into an isolated session, work there,
+  and delete the clone when finished. This is proven to work.
+- Prefer serialising browser work, or give only one subagent per round the browser.</p>
+<h3>Substack — paid tier prices are NOT publicly visible</h3>
+<p>Checked across 11 history publications on 2026-08-27. Every <code>/subscribe</code> page
+shows only a free email capture. The price picker appears only after entering an
+email and entering checkout, which we do not do. <strong>Any newsletter price norm
+(e.g. "$5/mo or $50/yr") is unevidenced — do not state one.</strong>
+Subscriber counts, however, ARE often displayed (15,000-203,000 observed) and
+make a better scale signal than price.</p>
+<ul>
+<li><strong>Google Trends comparison chart</strong> is JS-flaky (loads the shell, chart data call fails intermittently) — retry with a longer wait after page load, or query one term at a time instead of a comparison.</li>
+</ul>
+<h2>What's solid for tomorrow</h2>
+<p>Goodreads, Substack Leaderboard, Reddit (via reddit-read skill), archive.org/Wayback (via rb only, WebFetch fully blocked), Kickstarter, and domain-availability checks are all reachable now with no extra setup.</p>
+<footer>Draft — built by the agent, judged by Matt</footer>
+</div></body></html>

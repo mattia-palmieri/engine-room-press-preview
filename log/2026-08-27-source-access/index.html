@@ -1,0 +1,109 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Source access — 2026-08-27 — Engine Room Press</title><meta name="description" content="Proved which research sources are reachable; solved Amazon (profile cookies, not a live session) and corrected a wrong claim about keeping the browser open.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"><style>
+:root{--paper:#F7F6F1;--white:#fff;--ink:#14171A;--signal:#C1440E;--blue:#173B4E;
+--rule:#C7C4B8;--faint:#E4E2D8}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);
+font:400 18px/1.62 Newsreader,Georgia,serif;-webkit-text-size-adjust:100%}
+.wrap{max-width:660px;margin:0 auto;padding:32px 20px 96px}
+a{color:var(--ink)}
+.mast{border-bottom:1px solid var(--ink);padding-bottom:10px;margin-bottom:28px;
+display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.mono,.tag,.mast,.kicker,.crumb,th{font-family:"IBM Plex Mono",ui-monospace,monospace;
+font-weight:500;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.mast a{text-decoration:none}
+h1{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:700;
+font-size:clamp(30px,8vw,44px);line-height:1.06;letter-spacing:-.02em;margin:0 0 14px}
+.lede{font-size:19px;color:#3a3f44;margin-bottom:14px}
+h2{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:23px;
+line-height:1.2;margin:38px 0 12px}
+h3{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:19px;margin:26px 0 8px}
+p,li{margin-bottom:12px}
+ul,ol{padding-left:22px}
+strong{font-weight:600}
+code{font-family:"IBM Plex Mono",monospace;font-size:.85em;background:#ECEAE0;padding:1px 4px}
+pre{background:var(--ink);color:#F7F6F1;padding:16px;overflow-x:auto;margin:16px 0;font-size:13px}
+pre code{background:none;color:inherit;padding:0}
+blockquote{border-left:2px solid var(--signal);padding-left:14px;color:#3a3f44;margin:16px 0}
+hr{border:0;border-top:1px solid var(--rule);margin:32px 0}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:16px 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--rule);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:#ECEAE0;font-size:11px}
+img{max-width:100%;height:auto;display:block}
+/* section head with figure number */
+.fig{display:flex;align-items:baseline;gap:12px;margin:44px 0 4px;
+border-top:1px solid var(--ink);padding-top:10px}
+.fig .n{color:var(--signal)}
+.fig h2{margin:0;font-size:21px}
+.note{color:#3a3f44;font-size:16px;margin:4px 0 14px}
+/* rows */
+a.row{display:block;text-decoration:none;color:inherit;border:1px solid var(--rule);
+border-top:0;background:var(--white);padding:15px 16px}
+a.row:first-of-type{border-top:1px solid var(--rule)}
+a.row:hover{border-color:var(--signal)}
+a.row .t{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:17px}
+a.row .t .arw{color:var(--signal)}
+a.row .s{display:block;color:#3a3f44;font-size:15px;line-height:1.45;margin-top:4px}
+a.row .d{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+color:#6b6f73;text-transform:uppercase;margin-top:6px;display:block}
+.crumb{display:inline-block;margin-bottom:22px;text-decoration:none;color:var(--signal)}
+footer{margin-top:56px;border-top:1px solid var(--rule);padding-top:14px;
+font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+text-transform:uppercase;color:#6b6f73}
+.badge{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;
+padding:2px 6px;border:1px solid var(--rule);text-transform:uppercase}
+.badge.active{border-color:var(--signal);color:var(--signal)}
+.badge.done{color:#6b6f73}
+</style></head><body><div class="wrap">
+<div class="mast"><a href="../">Engine Room Press</a><span>Working preview</span></div>
+<a class="crumb" href="../">&larr; All of it</a><p class="lede">Proved which research sources are reachable; solved Amazon (profile cookies, not a live session) and corrected a wrong claim about keeping the browser open.</p><h1>Source access — 2026-08-27</h1>
+<p>Before three days of unattended research, we checked what the agent can actually
+read. Better to find a blocked source with Matt at the desk than mid-run.</p>
+<h2>What we decided</h2>
+<ul>
+<li><strong>Test sources before trusting a research plan.</strong> Nine sources smoke-tested.
+  Full results and the read commands live in <code>docs/notes/source-access.md</code>.</li>
+<li><strong>Amazon is solved and needs no ritual.</strong> The bot wall is triggered by a browser
+  profile with <strong>no Amazon cookies</strong>, not by deep links or a cold daemon. The
+  profile at <code>~/.agent-browser/profiles/real-browser</code> now holds those cookies and
+  they persist across <code>rb close</code> and reboot. Deep links work.</li>
+<li><strong>BSR is per edition.</strong> Sapiens paperback was #62,645 in Books; the Audible
+  edition #515 in Audible. Same book, two orders of magnitude. Never compare rank
+  across formats — this would have produced badly wrong demand conclusions.</li>
+<li><strong>The Amazon URL slug is cosmetic.</strong> Only the node id is real:
+  <code>/Best-Sellers-Books-World-History/zgbs/books/4999/</code> returns <em>Iran History</em>.
+  Confirm against the page title. <code>books/9</code> = History.</li>
+<li><strong>Git initialised.</strong> Three days of unattended doc-rewriting with no undo was a
+  real risk. <code>chat.jsonl</code> is gitignored — the harness owns it, it is a transcript.</li>
+</ul>
+<h2>What we tried and abandoned</h2>
+<ul>
+<li><strong>"Keep the Chrome session alive."</strong> Written into the docs as fact after a single
+  success, then challenged by Matt and <strong>disproved by test</strong> — closing is safe.
+  This was speculation stated as certainty. The correction is in <code>DECISIONS.md</code> as
+  an explicit correction, so the stale claim cannot be read and believed.</li>
+<li><strong>Delegating the Amazon test to a subagent.</strong> Matt could not see the browser
+  moving and wanted it driven directly. For anything Matt is watching live, or any
+  short interactive browser debug, drive it yourself — delegation hides the work.</li>
+<li><strong>Signing into Amazon in the agent profile.</strong> Prepared as the fallback, never
+  needed. No login is required.</li>
+<li><strong>WebFetch for archive.org.</strong> Fully blocked; <code>rb</code> works.</li>
+</ul>
+<h2>Open questions</h2>
+<ul>
+<li>Google Trends comparison charts are JS-flaky — the shell loads, the data call
+  fails intermittently. Retry with a longer wait, or query one term at a time.</li>
+<li>Amazon cookies may expire eventually. If a bot wall ever reappears, the re-seed
+  recipe is in <code>docs/notes/source-access.md</code>.</li>
+</ul>
+<h2>Pointers</h2>
+<ul>
+<li><code>docs/notes/source-access.md</code> — the source table, the read commands, the gotchas.</li>
+<li><code>~/.claude/skills/browser/SKILL.md</code> — the <code>rb</code> shim.</li>
+<li><code>docs/sessions/2026-08-27-weekend-plan.md</code> — the goal and the 13-task queue.</li>
+<li><code>docs/sessions/2026-08-27-nightshift-live.md</code> — chat.jsonl and the empty-queue trap.</li>
+</ul>
+<footer>Draft — built by the agent, judged by Matt</footer>
+</div></body></html>

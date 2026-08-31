@@ -1,0 +1,630 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Channel deep dive — Instagram, TikTok, YouTube Shorts — Engine Room Press</title><meta name="description" content="Combined Instagram/TikTok/YouTube Shorts deep dive — winning accounts with numbers, verbatim hooks, failure cases, and one weekly operating pattern for day one. Merged from data/deepdive-instagram.md and data/deepdive-tiktok-shorts.md, both read 2026-08-28.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"><style>
+:root{--paper:#F7F6F1;--white:#fff;--ink:#14171A;--signal:#C1440E;--blue:#173B4E;
+--rule:#C7C4B8;--faint:#E4E2D8}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);
+font:400 18px/1.62 Newsreader,Georgia,serif;-webkit-text-size-adjust:100%}
+.wrap{max-width:660px;margin:0 auto;padding:32px 20px 96px}
+a{color:var(--ink)}
+.mast{border-bottom:1px solid var(--ink);padding-bottom:10px;margin-bottom:28px;
+display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.mono,.tag,.mast,.kicker,.crumb,th{font-family:"IBM Plex Mono",ui-monospace,monospace;
+font-weight:500;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.mast a{text-decoration:none}
+h1{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:700;
+font-size:clamp(30px,8vw,44px);line-height:1.06;letter-spacing:-.02em;margin:0 0 14px}
+.lede{font-size:19px;color:#3a3f44;margin-bottom:14px}
+h2{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:23px;
+line-height:1.2;margin:38px 0 12px}
+h3{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:19px;margin:26px 0 8px}
+p,li{margin-bottom:12px}
+ul,ol{padding-left:22px}
+strong{font-weight:600}
+code{font-family:"IBM Plex Mono",monospace;font-size:.85em;background:#ECEAE0;padding:1px 4px}
+pre{background:var(--ink);color:#F7F6F1;padding:16px;overflow-x:auto;margin:16px 0;font-size:13px}
+pre code{background:none;color:inherit;padding:0}
+blockquote{border-left:2px solid var(--signal);padding-left:14px;color:#3a3f44;margin:16px 0}
+hr{border:0;border-top:1px solid var(--rule);margin:32px 0}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:16px 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--rule);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:#ECEAE0;font-size:11px}
+img{max-width:100%;height:auto;display:block}
+/* section head with figure number */
+.fig{display:flex;align-items:baseline;gap:12px;margin:44px 0 4px;
+border-top:1px solid var(--ink);padding-top:10px}
+.fig .n{color:var(--signal)}
+.fig h2{margin:0;font-size:21px}
+.note{color:#3a3f44;font-size:16px;margin:4px 0 14px}
+/* rows */
+a.row{display:block;text-decoration:none;color:inherit;border:1px solid var(--rule);
+border-top:0;background:var(--white);padding:15px 16px}
+a.row:first-of-type{border-top:1px solid var(--rule)}
+a.row:hover{border-color:var(--signal)}
+a.row .t{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:17px}
+a.row .t .arw{color:var(--signal)}
+a.row .s{display:block;color:#3a3f44;font-size:15px;line-height:1.45;margin-top:4px}
+a.row .d{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+color:#6b6f73;text-transform:uppercase;margin-top:6px;display:block}
+.crumb{display:inline-block;margin-bottom:22px;text-decoration:none;color:var(--signal)}
+footer{margin-top:56px;border-top:1px solid var(--rule);padding-top:14px;
+font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+text-transform:uppercase;color:#6b6f73}
+.badge{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;
+padding:2px 6px;border:1px solid var(--rule);text-transform:uppercase}
+.badge.active{border-color:var(--signal);color:var(--signal)}
+.badge.done{color:#6b6f73}
+</style></head><body><div class="wrap">
+<div class="mast"><a href="../">Engine Room Press</a><span>Working preview</span></div>
+<a class="crumb" href="../">&larr; All of it</a><p class="lede">Combined Instagram/TikTok/YouTube Shorts deep dive — winning accounts with numbers, verbatim hooks, failure cases, and one weekly operating pattern for day one. Merged from data/deepdive-instagram.md and data/deepdive-tiktok-shorts.md, both read 2026-08-28.</p><h1>Channel deep dive — Instagram, TikTok, YouTube Shorts</h1>
+<p>Source method notes (kept for traceability): Instagram data is live-fetched via
+headed browser directly against instagram.com, logged out, 2026-08-28 — every
+number is either a live follower counter or a literal post-grid timestamp, and
+gaps say <code>not found</code>. TikTok and YouTube Shorts data comes from WebSearch/
+WebFetch only (browser skill was unavailable that round) — most figures are
+<strong>search-snippet only</strong> (Google's indexed text/cache, not an independently
+confirmed live fetch), labeled inline every time; a few are confirmed by direct
+WebFetch and are marked as such. Nothing in this document was invented; every
+gap says <code>not found</code>. Raw TikTok/Shorts research dumps:
+<code>data/deepdive-tiktok-raw.md</code>, <code>data/deepdive-shorts-raw.md</code>.</p>
+<h2>The day-one operating pattern</h2>
+<p>Matt holds every account (Instagram, TikTok, YouTube) and posts/uploads
+everything himself — the agent has no account access, by standing constraint.
+The agent's job is to hand Matt a ready-to-post batch each week with as little
+QC friction as possible.</p>
+<p><strong>Weekly output, all three platforms:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Cadence</th>
+<th>Format</th>
+<th>Agent produces</th>
+<th>Matt does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Instagram</td>
+<td>5 posts/week (~1/weekday)</td>
+<td>Single-image "text-card" carousels/photos, not Reels, to start</td>
+<td>5 draft image-card posts (fact/quote/story text + sourced or generated visual, one consistent template/font/color system), 2-3 alternate hook lines per post, 1 caption per post, a running swipe file of new hooks spotted from winning accounts</td>
+<td>Final look-check, posts each of the 5 himself, replies to comments/DMs, watches bio-link click-through weekly</td>
+</tr>
+<tr>
+<td>TikTok</td>
+<td>5-7 posts/week (daily)</td>
+<td>Single POV/fact hook, 15-30s ("POV: you wake up as [X] in [year] during [event]," or one startling fact tied to the book's topic)</td>
+<td>Hook/script (one line), shot list or AI-image prompts, caption + hashtags, 5-7 ready-to-post video files (AI voiceover or on-screen text, generated visuals or licensed stock/maps)</td>
+<td>Uploads and publishes, replies to comments, spot-checks each batch for historical accuracy and tone before it goes out</td>
+</tr>
+<tr>
+<td>YouTube Shorts</td>
+<td>2-4 Shorts/week (slower than TikTok, on purpose)</td>
+<td>Slightly more narrative per Short than TikTok — "Weird History Facts," one-eccentric-figure mini-series, or a compressed book-argument fragment — still opens on a hook line, 30-60s</td>
+<td>Script + hook line, animation/illustration prompts or direction, <strong>one consistent narrator voice reused across every video</strong> (a brand asset, not a per-video AI voice swap)</td>
+<td>Uploads, writes titles/thumbnails (YouTube rewards curation more than TikTok does), replies, same accuracy QC pass, and owns setting up any Patreon/description CTA once eligible</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Shared pipeline, split execution:</strong> the research script (topic → key facts →
+candidate hooks) and core visual assets (illustrations, maps, AI images, a
+book-topic style guide) are built once and reused across all three platforms —
+real production leverage. But the finished units must not be identical files
+reposted three ways:</p>
+<ol>
+<li><strong>Length/density differs</strong> — Instagram's text-card is static and
+   self-contained; TikTok is a single-fact/single-scene 15-30s hook; YouTube
+   Shorts carries slightly more narrative at 30-60s.</li>
+<li><strong>Voice risk is platform-specific</strong> — TikTok's winning accounts openly use
+   AI POV narration and thrive on it; YouTube is actively removing templated
+   AI content at scale (see below), so its Shorts should use one deliberate,
+   consistent narrator voice, not a disposable same-day reuse of the TikTok
+   audio track.</li>
+<li><strong>Cadence differs</strong> — TikTok rewards near-daily posting; the surviving
+   YouTube Shorts channels are older, slower-cadence, identity-first channels.
+   Cross-posting TikTok's daily hook straight to Shorts would push YouTube
+   toward the templated-volume pattern that got purged in January 2026.</li>
+</ol>
+<p><strong>CTA / off-platform routing, day one:</strong> copy Instagram's cleanest funnel —
+one direct link in bio to an email-capture page (Substack/landing page
+pattern, see @geopolitical.guy below), no linktree layer at first. TikTok has
+no confirmed off-platform route among any winner researched — treat it as
+top-of-funnel awareness only, not a direct-to-email channel, until evidence
+says otherwise. YouTube's confirmed monetization routes are ad revenue (YPP,
+presumed, not directly confirmed for any single account) and Patreon
+(confirmed for Fascinating Horror) — add these only once a channel is
+eligible, not week one.</p>
+<p><strong>Not in week one (any platform):</strong> Instagram Reels/voiceover, a linktree with
+multiple destinations, a Premium/paid tier, DM-keyword automation, YouTube
+Patreon/description CTA setup. None of the failed/weak-funnel accounts below
+suffered from lacking these on day one — add them once the base cadence is
+proven to convert.</p>
+<h2>What cuts against our plan</h2>
+<p><strong>(a) Winning TikTok accounts run short POV/fact hooks, not long-arc explainer
+narrative — and our positioning is long-arc explainer.</strong> Every winning TikTok
+account found in this niche runs a short, single-fact or single-scene POV hook
+("POV: you wake up in [year] during [event]") — not a sweeping "how this
+shaped the world" argument. <strong>Honest reconciliation:</strong> on TikTok, the content
+unit has to be a fact/hook, not a condensed book chapter. The book's actual
+argument gets built up across many small hooks over time, not delivered whole
+in one video. This is a deliberate downgrade from the book's real argument, in
+service of the format that demonstrably works on this specific platform — it
+does not mean the positioning is wrong, it means TikTok is not the platform
+where the full argument gets made.</p>
+<p><strong>(b) YouTube purged mass-produced, templated "AI slop" channels in January
+2026, and the survivors look hand-made.</strong> Verified via direct WebFetch
+(https://mediacopilot.ai/youtube-purging-ai-slop-channels-creators-ai-tools/,
+read 2026-08-28): at least 16 channels, tens of millions of subscribers
+combined, terminated or stripped of monetization for mass-produced/templated,
+near-identical uploads with "no human creative input." This is <strong>not</strong> a
+blanket ban on AI or faceless content — AI-labelled videos with real creative
+input keep monetization and recommendation eligibility. Every YouTube Shorts
+winner profiled below has either a distinctive, consistent human/human-sounding
+narrator tied to the brand, or a long operating history predating the 2025-26
+AI-content boom, or both. <strong>What this means for an agent-run operation:</strong> use
+one consistent synthetic narrator voice, treated as a real brand asset, across
+every YouTube Short — never a same-day, per-video AI-voice swap or a
+disposable "generate 50 near-identical videos" pipeline. That pattern is a real
+bans/demonetization risk on YouTube specifically, even though the equivalent
+approach is currently thriving on TikTok.</p>
+<h2>Instagram</h2>
+<p>All read 2026-08-28, live-fetched via headed browser, logged out. Instagram
+blocks scroll-based loading for logged-out visitors after ~12 posts, so exact
+30-day post counts are usually blocked (<code>not found</code>) even where an observed
+rate is not.</p>
+<h3>@howhistorylooks — "History Facts &amp; Stories"</h3>
+<ul>
+<li>https://www.instagram.com/howhistorylooks/</li>
+<li>Followers: <strong>6.3M</strong> (live counter)</li>
+<li>Posting frequency: 12 posts observed Aug 25-27, 2026 (3 days) = <strong>~4
+  posts/day</strong>. Full 30-day total <code>not found</code> (grid cap).</li>
+<li>Format: mix of single-image "text-card" posts (bold white sans caps on a
+  photo) and vertical video ("Clip"/Reel) — roughly half and half in the
+  visible sample. Hook text is baked into the image as an oversized bold
+  white headline, not spoken; no consistent voiceover.</li>
+<li>CTA/funnel: bio is "The home of history 🎩 📧 contact@howhistorylooks.com" —
+  <strong>no link in bio at all</strong>. At this scale the monetization signal is
+  brand-deal inbound, not a funnel.</li>
+<li>Timeline to scale: <code>not found</code>.</li>
+</ul>
+<h3>@historydefined — "All Things History" (see also Failure cases)</h3>
+<ul>
+<li>https://www.instagram.com/historydefined/</li>
+<li>Followers: <strong>313K</strong> (live counter)</li>
+<li>Posting frequency: main grid's most recent visible posts are dated
+  <strong>February 23-25, 2026</strong> — roughly six months stale as of this read. Reels
+  tab login-walled, could not check independently.</li>
+<li>Format (last active period): single-image posts, black text banner across
+  top ~15% of a historical photo, one paragraph of story text — a "photo +
+  caption card," not a bold headline.</li>
+<li>CTA/funnel: bio has <code>linktr.ee/historydefined</code> plus a YouTube highlight — a
+  real cross-platform funnel, apparently not being fed fresh IG content
+  recently.</li>
+<li>Timeline: per historydefined.net's own About page (search snippet, not
+  independently verified), began as an Instagram account October 2021, "over
+  100,000 followers across its many channels" by mid-2022 — roughly <strong>9
+  months to 100K</strong>. Grew to 313K by 2026 but the main grid appears stalled.</li>
+</ul>
+<h3>@ancient_origins — "Ancient Origins"</h3>
+<ul>
+<li>https://www.instagram.com/ancient_origins/</li>
+<li>Followers: <strong>172K</strong> (live counter)</li>
+<li>Posting frequency: 12 posts observed, 6 on Aug 28 and 6 on Aug 27, 2026 =
+  <strong>~6 posts/day</strong> in the 2-day window. Full 30-day total <code>not found</code>.</li>
+<li>Format: photo-led single images (archaeological photos, artifacts, quote
+  graphics) with a small text overlay or pull-quote — lighter text treatment
+  than howhistorylooks. No "Clip" tags in the visible sample — leans
+  photo/carousel, not video.</li>
+<li>CTA/funnel: the most built-out funnel found. Bio: "Discover ancient life." +
+  "📩 Latest articles &amp; newsletters:" + <code>linktr.ee/ancient.origins</code>, plus
+  highlight icons for Website, Premium, Store, Facebook, Twitter, YouTube,
+  Tumblr — free IG content → newsletter signup → paid "Premium" tier → merch
+  store.</li>
+<li>Timeline: <code>not found</code>.</li>
+</ul>
+<h3>@whencyclopedia — "World History Encyclopedia"</h3>
+<ul>
+<li>https://www.instagram.com/whencyclopedia/</li>
+<li>Followers: <strong>153K</strong> (live counter)</li>
+<li>Posting frequency: 12 posts observed Aug 24-27, 2026 (4 days) = <strong>~3/day</strong>.
+  30-day total <code>not found</code>.</li>
+<li>Format: mostly carousels (portrait paintings, maps, artifact photos with
+  text overlay), a few "Clip" reels. <strong>Caveat</strong>: at least one visible post is
+  a plain selfie-style photo of a real staff member — this is a
+  nonprofit-backed account (~17 years old per an in-grid post) and is only
+  mostly faceless, not strictly so. Included for the funnel richness, flagged
+  as a partial comp.</li>
+<li>CTA/funnel: bio: "World History Encyclopedia (WHE) is a nonprofit company
+  that publishes high-quality world history resources..." + <code>link.whe.to/
+  ig-donate and 2 more</code>, highlight row for Volunteer, WHE Books, Book
+  Reviews, Podcast, Store, YouTube, Education — donation- and
+  cross-platform-content-led, not a single lead magnet.</li>
+<li>Timeline: <code>not found</code> for the IG account specifically (org itself ~17
+  years old per its own post).</li>
+</ul>
+<h3>@geopolitical.guy — "Geopolitical Guy"</h3>
+<ul>
+<li>https://www.instagram.com/geopolitical.guy/</li>
+<li>Followers: <strong>377K</strong> (live counter)</li>
+<li>Posting frequency: 11 posts observed Aug 24-28, 2026 (5 days) = <strong>~2.2/day</strong>.
+  30-day total <code>not found</code>.</li>
+<li>Format: data-visualization carousels — bar charts, choropleth maps,
+  "problem → solution" flag-icon meme grids. Not history in the narrow sense
+  but squarely the "big idea/explainer" niche, and proves the data-carousel
+  format at scale.</li>
+<li>CTA/funnel: bio links straight to <code>open.substack.com/pub/geopoliticalguy</code> —
+  a <strong>direct one-click Instagram → Substack newsletter funnel</strong>, no linktree
+  step. The cleanest, most directly copyable funnel of the set.</li>
+<li>Timeline: <code>not found</code>.</li>
+</ul>
+<h3>@byzantine_history — bonus, weakest funnel</h3>
+<ul>
+<li>https://www.instagram.com/byzantine_history/</li>
+<li>Followers: <strong>74.8K</strong> (live counter)</li>
+<li>Posting frequency: 12 posts span July 31-Aug 27, 2026 (28 days, inside the
+  30-day window) = <strong>12 posts/30 days, ~0.4/day</strong> — slowest cadence of the
+  set, and the only account where a full 30-day count was actually verifiable
+  end-to-end.</li>
+<li>Format: carousels of AI-generated/illustrated Byzantine imagery, credited
+  to multiple named posters in captions — reads as multi-contributor or
+  reposted-content rather than one single system.</li>
+<li>CTA/funnel: <strong>bio is hashtags only</strong>, no link, no email, no store. Included
+  as proof that volume and reach can exist with zero conversion mechanism —
+  a pattern to avoid, not copy.</li>
+</ul>
+<p><strong>Funnel comparison across all 6 Instagram accounts:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Account</th>
+<th>Mechanism</th>
+<th>Verbatim</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ancient_origins</td>
+<td>Linktree → newsletter + paid "Premium" tier + store</td>
+<td><code>linktr.ee/ancient.origins</code>, bio: "📩 Latest articles &amp; newsletters:"</td>
+</tr>
+<tr>
+<td>geopolitical.guy</td>
+<td>Direct one-click Substack link, no linktree</td>
+<td><code>open.substack.com/pub/geopoliticalguy</code></td>
+</tr>
+<tr>
+<td>whencyclopedia</td>
+<td>Donation + multi-platform highlight row</td>
+<td><code>link.whe.to/ig-donate and 2 more</code></td>
+</tr>
+<tr>
+<td>historydefined</td>
+<td>Linktree + YouTube highlight (funnel intact, feed stalled)</td>
+<td><code>linktr.ee/historydefined</code></td>
+</tr>
+<tr>
+<td>howhistorylooks</td>
+<td>Contact email only, no funnel — brand-deal play at 6M scale</td>
+<td>"📧 contact@howhistorylooks.com"</td>
+</tr>
+<tr>
+<td>byzantine_history</td>
+<td>Nothing — hashtags only</td>
+<td>(no link)</td>
+</tr>
+</tbody>
+</table>
+<p>Takeaway: a direct newsletter link in the bio (geopolitical.guy's pattern) is
+the simplest, most copyable version of "Instagram → email." Linktree adds a
+step but lets one account carry a store/podcast/multiple links. Reach alone
+with no link still happens but produces no measurable path to a sale.</p>
+<h2>TikTok</h2>
+<p>Every account below is <strong>search-snippet only</strong> unless marked as a confirmed
+live fetch — direct WebFetch of tiktok.com profile pages returns an empty app
+shell.</p>
+<h3>@timetravellerpov ("Time Traveller POV")</h3>
+<p>https://www.tiktok.com/@timetravellerpov
+- Followers: conflicting snippets — 581.7K in one, "329,000 with 5.7M likes"
+  in another, "over 500,000 by mid-Feb 2025" in a third (live-fetched, The
+  Post Athens, read 2026-08-28). Could not reconcile — current count <code>not
+  found</code>.
+- Format: AI-generated video, first-person POV — camera as the viewer's own
+  eyes "waking up" as a historical figure/citizen. AI-generated narration
+  (confirmed via live fetch, Yahoo Lifestyle, read 2026-08-28). Known visual
+  defect noted by press: AI artifacts ("extra fingers or distorted faces").
+- Monetization/off-platform: <code>not found</code>.
+- Time to scale: unresolved — one source implies ~500K by mid-Feb 2025
+  (started late Jan 2025, a 2-3 week spike); another snippet suggests slower
+  growth over 2025. Flagged unreconciled.</p>
+<h3>@the_pov_lab ("POV Lab")</h3>
+<p>https://www.tiktok.com/@the_pov_lab
+- Followers: <code>not found</code> current. A March 2025 snippet (live-fetched, The
+  Post Athens) put a cohort including this account at "100,000-800,000
+  followers" gained in a 30-day window during the 2025 trend peak — 18 months
+  old, not current.
+- Best data point in the whole research pass: an arXiv paper analyzing this
+  exact TikTok "history POV" trend (https://arxiv.org/html/2606.23300,
+  live-fetched, read 2026-08-28) names @the_pov_lab directly and reports one
+  Black Death video, posted 2025-12-02, reached <strong>4.4 million likes and
+  ~21,000 comments</strong>. Same paper: dataset of 5,565 videos from 2,023 creators
+  in this niche across 92 countries (US 28.4%, UK 27%, Germany 13.3%),
+  collected Jan-Sept 2025 via TikTok's Research API; creators typically spend
+  <strong>4-8 hours per video</strong> (research via ChatGPT, then AI image
+  generation/animation).
+- Monetization / posting frequency / time to scale: all <code>not found</code>.</p>
+<h3>@histairy_films</h3>
+<p>https://www.tiktok.com/@histairy_films
+- Followers: <code>not found</code>. Grouped in the same "100,000-800,000 in 30 days"
+  copycat cohort as @the_pov_lab.
+- Format: AI-generated POV/cinematic history videos.
+- Engagement: one unconfirmed snippet says videos "have received over
+  100,000 likes."
+- Monetization / posting frequency / time to scale: all <code>not found</code>.</p>
+<h3>@entartika</h3>
+<p>https://www.tiktok.com/@entartika — third-party trackers (noxinfluencer,
+infohats, urlebird) all returned HTTP 403 or zeroed-out data, unusable.
+- Followers/likes: "45.4M likes and 1M followers" per a WebSearch summary of
+  the account's own profile page — not independently confirmed.
+- Engagement (separate unconfirmed tracking-tool snippet): "average
+  engagement rate of 2.24%, ~82,454 plays per video, ~11,957 average likes."
+- Format: WW1/WW2 military history — animated maps/plane diagrams, visually
+  distinct from the AI-photoreal POV winners (vector/diagram animation).
+  Voiceover style: <code>not found</code>.
+- Monetization / posting frequency / time to scale: all <code>not found</code>.</p>
+<h3>Also surfaced, not fully profiled (time-boxed out)</h3>
+<p>@knowledgia.official (TikTok arm of the Knowledgia YouTube channel, see
+below), @dailyhistorysociety, @historyinmemes12, and @europeanhistory (~5.3K
+followers but a striking 17.1% engagement rate, per Heepsy's "Top History
+TikTok influencers, United States, June 2026" list, live-fetched:
+https://www.heepsy.com/top-tiktok/history/united-states, read 2026-08-28) —
+worth a follow-up look as a "small but efficient" account.</p>
+<h2>YouTube Shorts</h2>
+<h3>Fascinating Horror</h3>
+<p>youtube.com/@FascinatingHorror
+- Subscribers: "over one million" — search-snippet summary of a Wikitubia
+  page, read 2026-08-28. Exact current figure <code>not found</code> (vidiq stats page
+  returned HTTP 429 on WebFetch).
+- Created: 2019-01-17 (search-snippet, same Wikitubia source).
+- Posting frequency, last 30 days (Shorts): <code>not found</code>.
+- Format: documentary-style, human male narrator with a distinctive UK
+  (Scottish) voice — NOT AI voice, a signature human voiceover that is
+  arguably part of the brand despite no face on camera. Archival-style
+  illustration/reenactment imagery, text overlays.
+- Monetization: <strong>Patreon confirmed by direct URL</strong>,
+  https://www.patreon.com/fascinatinghorror, read 2026-08-28. YouTube
+  Partner Program ad revenue presumed for a channel this size, not directly
+  confirmed. No book or merch link found.
+- Time to scale: created 2019-01-17 to "over one million" now — roughly 7
+  years; growth curve/shape <code>not found</code>.</p>
+<h3>Simple History</h3>
+<p>youtube.com/@Simplehistory
+- Creator: Daniel Turner, B.A. (Hons) History, UCL (search-snippet, source
+  aggregation unclear).
+- Founded: September 2013, launched alongside its first book, "Simple
+  History: WWI" — book and channel launched together (search-snippet only).
+- Subscribers: 5.08 million, total views 1.64 billion, "as of January 2,
+  2026" — vidiq stats page, read via search snippet (direct fetch returned
+  HTTP 429, not independently confirmed live).
+- Video count: "1.27K videos" (whole channel, not Shorts-specific).
+- Format: consistent flat/vector animation, no host on camera, "clear
+  narration, clean visuals, one core point per segment" (search-snippet
+  paraphrase).
+- Shorts presence confirmed to exist: youtube.com/@Simplehistory/shorts and a
+  dedicated "Simple History #Shorts" playlist are both real, indexed URLs
+  (read 2026-08-28) — could not open either (JS wall), so no Shorts-specific
+  titles or view counts.
+- Monetization: book series (confirmed by the 2013 co-launch). YPP ad
+  revenue presumed, not confirmed. Patreon/merch: <code>not found</code>.
+- Time to scale: founded Sept 2013 → 5.08M subs by Jan 2026 snapshot —
+  roughly 12+ years. Earlier milestones (e.g. 1M date) <code>not found</code>.</p>
+<h3>Weird History</h3>
+<p>youtube.com/@WeirdHistory
+- Narrator, confirmed not the on-camera host: Tom Blank (IMDb, narrator for
+  the Weird History TV series, read 2026-08-28) and Michael Swaim, who
+  stated on X: "In case you're unaware, I'm a narrator for the Weird History
+  channel now!" (first-party creator statement, read as a search snippet
+  2026-08-28).
+- Visual style: illustrated/animated figures to accompany narration,
+  thumbnails use "recognizable faces or events along with yellow text"
+  (search-snippet paraphrase).
+- Subscribers / view counts / posting frequency: all <code>not found</code>.
+- Note: the channel runs two sub-formats — straight "Weird History Facts"
+  list hooks, and a "Weird Dudes in History" one-eccentric-figure
+  mini-series.
+- Monetization: <code>not found</code>. Time to scale: <code>not found</code>.</p>
+<h3>Knowledgia</h3>
+<p>youtube.com/@Knowledgia
+- Creator: described as Romanian (search-snippet, aggregated source).
+- Created: 2017-05-09 (search-snippet).
+- Subscribers: 2,175,913 — search-snippet, near-live figure from a stats
+  aggregator, no single as-of date attached.
+- Total views: "more than 415 million" (search-snippet).
+- Growth data point: "+480,000 subscribers from April 16, 2024 to January 8,
+  2026" (search-snippet) — ~21 months.
+- Library: "over 400 videos, 175 published in the last two years"
+  (search-snippet, whole-channel not Shorts-specific).
+- Format: illustrated/motion-graphic animation (not live footage), on
+  historic and political topics.
+- Shorts presence: confirmed the channel is community-recognized for Shorts
+  specifically via a third-party reaction video title, "The BEST YouTube
+  Shorts History Videos... (Knowledgia...)" — could not open it for detail.
+- Narrator (human vs AI): <code>not found</code> / inconclusive.
+- Posting frequency, last 30 days / monetization: all <code>not found</code>.
+- Time to scale: created 2017-05-09, "nearing 1 million" by Feb 2022 (~4.75
+  years), then ~1M → ~2.18M over roughly another 4 years — consistent with
+  the 480K/21-months growth data point, i.e. steady rather than accelerating
+  growth.</p>
+<h2>Hooks that work</h2>
+<p>Verbatim, every one, from both source files.</p>
+<p><strong>Instagram:</strong>
+1. "THE MULTIPLAYER MW4 BETA JUST DROPPED AND THIS IS HOW IT LOOKS" — @howhistorylooks
+2. "THIS IS WHAT HAPPENS WHEN YOU MESS WITH GENGHIS KHAN" — @howhistorylooks
+3. "CRAZY FACTS ABOUT [TOPIC] WILL BLOW YOUR MIND" (topic cut off by grid crop) — @howhistorylooks
+4. "THE STRANGEST THINGS ALBERT EINSTEIN ACTUALLY DID" — @howhistorylooks
+5. "MAMDANI NOW HAS 36% CHANCE TO WIN TIME'S PERSON OF THE YEAR" (current-events drift, not purely historical) — @howhistorylooks
+6. "British actually sent a spy named Ja[mes]... to Warsaw, Poland, in 1964..." — @historydefined
+7. "...Bell Labs built a large space antenna. [T]esting, two of their scientists encountered [an] interference which could not be isolated..." — @historydefined
+8. "Hiroshima Peace Flame has been burning continuously since it was lit in 1964..." — @historydefined
+9. "...a White civil right activist named W[illiam] Moore protested segregation by walking... miles, alone, from Tennessee to Mississi[ppi]..." — @historydefined
+10. "...tina Tereshkova became the first wom[a]n... on 16 June 1963..." — @historydefined
+11. "...the assassination of John F. Kenned[y]... Martin Luther King Jr. said to his wi[fe]: 'This is what is going to happen to me also... this is a sick society.'" — @historydefined
+12. "I shall sing a sweeter song tomorrow." (quote card, attributed Theophrastus) — @ancient_origins
+13. "THE U.S. AS THE TOP CRUDE OIL PRODUCER" — @geopolitical.guy
+14. "THE AI COLD WAR: THE GLOBAL SCRAMBLE FOR ALLIES, MINERALS AND THE FUTURE OF AI IS TAKING SHAPE" — @geopolitical.guy
+15. "German Parliament composition from 1871 to 2026" (chart-as-hook, no headline copy — the chart title is the hook) — @geopolitical.guy</p>
+<p><strong>TikTok:</strong>
+16. "POV: You Wake Up in 1351 During the Black Plague" (reported 19M+ views) — @timetravellerpov
+17. "POV: You're a Chernobyl worker in 1986" — @timetravellerpov
+18. "POV: You Wake Up in The Prehistoric Era" — @timetravellerpov
+19. "POV: you wake up as a kid in the stone age 3000 years before christ! #ai #pov #history #fyp #foryoupage" — @the_pov_lab
+20. "POV: you wake up as a pyramid builder in 1550 BCE #egypt #Film #cinematic #history #Ai" — @histairy_films
+21. "POV: You Die And Go To Heaven #cinematic #Film #Ai" — @histairy_films</p>
+<p><strong>YouTube Shorts:</strong>
+22. "The Most Important Snail in History | Fascinating Horror Shorts" (confirmed by direct WebFetch of the page <code>&lt;title&gt;</code> tag) — Fascinating Horror
+23. "COMPILATION: Fascinating Horror Shorts 31 - 60" / "01 - 30" (search-snippet only; evidences at least 60 individual Shorts exist) — Fascinating Horror
+24. "Weird and Bizarre History Facts #shorts #history" — Weird History
+25. "Weird and Bizarre Facts about Historical Figures #shorts #history" — Weird History
+26. "Fairy King Goodwin Wharton | Weird Dudes in History #shorts" — Weird History
+27. "WEIRD History Facts You Wouldn't Believe Are Real #history" — Weird History
+28. "Hollow Earth... HOW? | Weird Dudes in History #shorts" — Weird History</p>
+<h2>Failure cases</h2>
+<h3>@sicilyancienthistory / @sicilysancienthistory — deleted (Instagram)</h3>
+<p>Both <code>https://www.instagram.com/sicilyancienthistory/</code> and
+<code>https://www.instagram.com/sicilysancienthistory/</code> return Instagram's
+"Profile isn't available" error page (checked live, 2026-08-28). Background
+(vendor case-study blog, not independently verifiable now the account is
+gone): OSSA.AI's own write-up claims the account used AI-generated video to
+grow "0 to nearly 33,100 followers in 6 weeks," one video hitting 1.5M views
+(https://blog.ossa.ai/sicilyancienthistory-makes-instagram-history-with-ossa-ai/,
+read 2026-08-28, treat as a vendor's self-reported claim, not verified). What
+looks different: a rapid AI-content spike followed by total removal is
+consistent with abandonment, an undisclosed policy ban, or a handle change —
+Instagram's error page doesn't say which. Lesson: fast AI-driven growth with
+no real funnel/brand behind it is fragile — followers and views but no email
+list, product, or platform diversification to survive the account itself
+disappearing.</p>
+<h3>@historydefined — main feed stalled despite 313K followers and a real funnel (Instagram)</h3>
+<p>See full entry above. The more useful failure case for us specifically: it
+has everything the brief says matters — a linktr.ee funnel, a YouTube
+presence, 313K followers, five years of runway — and the classic post grid
+still went quiet, last active post dated February 2026, six months before
+this read. What looks different from the winners: no evidence of a
+repeatable weekly production system independent of a person's continued
+attention. Scale and a funnel are not enough on their own if posting cadence
+collapses; the winners (howhistorylooks, ancient_origins, geopolitical.guy)
+are all still posting multiple times a day as of this week.</p>
+<h3>@historyhighway (also seen as @historyhighway_) — TikTok</h3>
+<ul>
+<li>Followers: 348K — Heepsy ranking, live-fetched, read 2026-08-28.</li>
+<li>Engagement rate: 0.8% — same source, live-fetched — the lowest of any
+  account in Heepsy's faceless-history cluster; ~3x below @entartika's 2.24%
+  and ~20x below @europeanhistory's 17.1%. A 348K-follower account with
+  sub-1% engagement is a textbook plateau: a large legacy audience current
+  content is not reaching.</li>
+<li>What's different from the winners: (1) no distinctive, repeatable hook
+  format of its own — the winners all lean on one template ("POV: You Wake
+  Up in [year] During [event]"); (2) evidence it reuses other creators'
+  trending audio rather than original narration (its D-Day video used a
+  sound originally credited to @entartika, "The faces of D-Day," per a
+  search snippet, read 2026-08-28); (3) no distinct voice/style, riding
+  others' trends instead of the "immersive AI voiceover" or "cinematic POV"
+  hook that made the winners spread. Whether the account has literally
+  stopped posting: <code>not found</code> (no grid access) — the stall evidence here is
+  engagement-based, not activity-based.</li>
+</ul>
+<h3>YouTube Shorts — no single named small channel found; a verified platform-level pattern instead</h3>
+<p>No individually-named small faceless history-Shorts channel with a documented
+plateau/last-post-date was found despite trying — flagged honestly as a gap.</p>
+<p><strong>What was found and verified (the January 2026 purge)</strong>, via direct WebFetch
+of https://mediacopilot.ai/youtube-purging-ai-slop-channels-creators-ai-tools/,
+read 2026-08-28:
+- CuentosFacianantes — 5.9M subscribers, 1.2B views, purged/emptied for
+  "low-quality Dragon Ball content" (mass-produced/templated).
+- Imperio de Jesus — 5.8M subscribers, purged for "AI-generated religious
+  quizzes."
+- Bandar Apna Dost — 2B views, ~$4.25M estimated annual earnings,
+  purged/flagged content described as "a realistic monkey in hilarious
+  human-style situations."
+- The article: "at least 16 other channels ... have since been deleted or
+  emptied of content," purges occurring "in January 2026, following YouTube
+  CEO Neal Mohan's announcement to reduce low-quality AI content spread."
+- Corroborating search snippets (unconfirmed by second live fetch): "16
+  channels with a combined 4.7 billion views and 35 million subscribers have
+  been permanently terminated" after "a July 2025 policy update redefined
+  'repetitious content' as 'inauthentic content.'" Explicitly not a blanket
+  ban on AI or faceless content — targets mass-produced, templated,
+  near-identical uploads with "no human creative input"; AI-labelled videos
+  with real creative input keep monetization and recommendation eligibility.
+- None of these purged examples are history-niche; presented as a verified
+  general platform-risk finding, not a history-specific failure case.</p>
+<p><strong>Directional-only signal (not evidence)</strong>: one anonymous BlackHatWorld forum
+post (search-snippet, not independently opened) claims the exact same Short
+with an AI voice got "almost no views" on YouTube but "normal reach" with
+music instead of AI voice, while the AI-voice version "performs great on
+TikTok and Facebook" — suggesting YouTube's Shorts algorithm may specifically
+suppress detectable AI narration more than TikTok's does. Flagged as a signal
+to watch, not a fact.</p>
+<p>What's different about the YouTube survivors: all four Shorts winners have
+(a) a distinctive, consistent human or human-sounding narrator tied to the
+brand, or (b) a long operating history predating the 2025-26 AI-content boom
+(Simple History since 2013, Knowledgia since 2017, Fascinating Horror since
+2019), or both. The purged channels were templated/mass-produced with "no
+human creative input" and near-identical uploads.</p>
+<h2>What we could not verify</h2>
+<p>Every <code>not found</code> and every figure that is search-snippet only rather than
+live-fetched, gathered here so nothing gets silently promoted to a fact.</p>
+<p><strong>Instagram</strong> (all live-fetched, so gaps here are grid/login-wall limits, not
+snippet-reliability issues):
+- Exact 30-day post totals for @howhistorylooks, @ancient_origins,
+  @whencyclopedia, @geopolitical.guy — Instagram's logged-out grid caps at
+  ~12 posts; only observed-window rates are exact.
+- Timeline to scale for @howhistorylooks, @ancient_origins, @whencyclopedia
+  (IG account specifically), @geopolitical.guy — all <code>not found</code>.
+- @historydefined's Reels tab activity since February 2026 — login-walled,
+  could not check whether Reels continued after the main grid went quiet.</p>
+<p><strong>TikTok</strong> (search-snippet only unless noted "live-fetched" or "confirmed"):
+- @timetravellerpov current follower count — three conflicting snippets
+  (581.7K / 329K+5.7M likes / "over 500K by mid-Feb 2025"), unreconciled.
+- @timetravellerpov, @the_pov_lab, @histairy_films, @entartika: posting
+  frequency (last 30 days), monetization/off-platform routing, exact time to
+  scale — all <code>not found</code> for every account.
+- @the_pov_lab, @histairy_films current follower counts — <code>not found</code>,
+  only grouped in an 18-month-old "100,000-800,000 in 30 days" cohort
+  estimate.
+- @entartika's "45.4M likes and 1M followers" and "2.24% engagement / ~82,454
+  plays / ~11,957 avg likes" — both unconfirmed, one a WebSearch summary of
+  the profile page, the other a third-party tracking-tool snippet; third-party
+  trackers (noxinfluencer, infohats, urlebird) returned HTTP 403 or
+  zeroed-out data and were unusable.
+- @histairy_films "over 100,000 likes" — one unconfirmed snippet.
+- @entartika verbatim hooks — not found; only a fragment ("Brave men") and an
+  original-sound track title surfaced via a different creator reusing the
+  audio, not a clean quote.
+- Whether @historyhighway has literally stopped posting — <code>not found</code> (no
+  grid access); the stall finding is engagement-based only.</p>
+<p><strong>YouTube Shorts</strong> (search-snippet only unless noted "confirmed" or
+"live-fetched"):
+- Fascinating Horror: exact current subscriber figure (vidiq returned HTTP
+  429), Shorts posting frequency, growth curve shape, YPP ad revenue
+  (presumed, not confirmed).
+- Simple History: exact subscriber/view figures are from a vidiq snippet (direct
+  fetch HTTP 429, not independently confirmed live), creator bio sourcing
+  unclear, Shorts-specific titles/view counts (JS wall blocked the Shorts tab
+  and playlist), posting frequency, YPP ad revenue and Patreon/merch — all
+  <code>not found</code> or snippet-only.
+- Weird History: subscriber count, view counts, posting frequency,
+  monetization, time to scale — all <code>not found</code>.
+- Knowledgia: subscriber count and total views are snippet-only with no
+  as-of date attached; verbatim Shorts hooks <code>not found</code> (search results
+  polluted by unrelated channels using similar hashtags); narrator human-vs-AI
+  status inconclusive; posting frequency and monetization <code>not found</code>.
+- No individually-named small/failed YouTube Shorts history channel was
+  found, despite trying — a genuine research gap, not a claim that none
+  exist.
+- The BlackHatWorld forum claim about AI-voice suppression on YouTube vs
+  TikTok — single anonymous, unopened source, directional only.</p>
+<footer>Draft — built by the agent, judged by Matt</footer>
+</div></body></html>
