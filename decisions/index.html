@@ -417,5 +417,23 @@ keeps the comments from becoming a fight we have no author persona to fight.</p>
 <p><strong>Cost of being wrong:</strong> low, and measurable in four weeks. The ratio is one number.
 If the news carousels out-reach the evergreen ones by a wide margin we move to 3/2 or
 4/1; if they underperform we drop to one a week. The evergreen set stays either way.</p>
+<h2>2026-08-31 — The grid anchors to the text, and paper surfaces lose the horizontal lines</h2>
+<p><strong>Decision.</strong> On paper surfaces (landing page, cover shelf) the measured grid is
+vertical lines only, drawn inside the text column's content box so the column edge
+is always a grid line at any screen width. On flat-field surfaces (Instagram card,
+book cover) the full grid stays and the padding becomes a whole number of modules:
+card 80/80/70 at 40px, cover 100/100/110 at 50px.</p>
+<p><strong>Why.</strong> Matt: the look is right but text over the background feels messy. Cause
+was mechanical — every surface drew the grid from its own edge while content sat at
+72px / 108px / 24px, none of them multiples of the module, and the landing column
+is centred so the offset moved with the browser width. Nothing ever aligned.</p>
+<p><strong>Rejected.</strong>
+- <em>A true baseline grid.</em> 19px serif at 1.6 leading is ~30px, fits neither a 20 nor
+  a 40 rhythm; forcing it makes the body copy cramped or airy and still breaks when
+  a heading rewraps.
+- <em>Hand-snapping each hairline.</em> A rule deep in the page inherits the cumulative
+  height of everything above it — one edited sentence breaks it.
+- <em>Keeping the viewport-anchored grid with nicer padding numbers.</em> Impossible for a
+  centred column: the offset changes with every viewport width.</p>
 <footer>Draft — built by the agent, judged by Matt</footer>
 </div></body></html>

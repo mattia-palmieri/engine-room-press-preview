@@ -1,0 +1,183 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Design alignment — the grid fix — Engine Room Press</title><meta name="description" content="Fixed the messy text-over-grid look — the grid now anchors to the text, not the viewport, and is vertical-lines-only on paper surfaces; every card, cover and page padding is a whole number of modules.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"><style>
+:root{--paper:#F7F6F1;--white:#fff;--ink:#14171A;--signal:#C1440E;--blue:#173B4E;
+--rule:#C7C4B8;--faint:#E4E2D8}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);
+font:400 18px/1.62 Newsreader,Georgia,serif;-webkit-text-size-adjust:100%}
+.wrap{max-width:660px;margin:0 auto;padding:32px 20px 96px}
+a{color:var(--ink)}
+.mast{border-bottom:1px solid var(--ink);padding-bottom:10px;margin-bottom:28px;
+display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.mono,.tag,.mast,.kicker,.crumb,th{font-family:"IBM Plex Mono",ui-monospace,monospace;
+font-weight:500;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.mast a{text-decoration:none}
+h1{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:700;
+font-size:clamp(30px,8vw,44px);line-height:1.06;letter-spacing:-.02em;margin:0 0 14px}
+.lede{font-size:19px;color:#3a3f44;margin-bottom:14px}
+h2{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:23px;
+line-height:1.2;margin:38px 0 12px}
+h3{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:19px;margin:26px 0 8px}
+p,li{margin-bottom:12px}
+ul,ol{padding-left:22px}
+strong{font-weight:600}
+code{font-family:"IBM Plex Mono",monospace;font-size:.85em;background:#ECEAE0;padding:1px 4px}
+pre{background:var(--ink);color:#F7F6F1;padding:16px;overflow-x:auto;margin:16px 0;font-size:13px}
+pre code{background:none;color:inherit;padding:0}
+blockquote{border-left:2px solid var(--signal);padding-left:14px;color:#3a3f44;margin:16px 0}
+hr{border:0;border-top:1px solid var(--rule);margin:32px 0}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:16px 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--rule);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:#ECEAE0;font-size:11px}
+img{max-width:100%;height:auto;display:block}
+/* section head with figure number */
+.fig{display:flex;align-items:baseline;gap:12px;margin:44px 0 4px;
+border-top:1px solid var(--ink);padding-top:10px}
+.fig .n{color:var(--signal)}
+.fig h2{margin:0;font-size:21px}
+.note{color:#3a3f44;font-size:16px;margin:4px 0 14px}
+/* rows */
+a.row{display:block;text-decoration:none;color:inherit;border:1px solid var(--rule);
+border-top:0;background:var(--white);padding:15px 16px}
+a.row:first-of-type{border-top:1px solid var(--rule)}
+a.row:hover{border-color:var(--signal)}
+a.row .t{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:17px}
+a.row .t .arw{color:var(--signal)}
+a.row .s{display:block;color:#3a3f44;font-size:15px;line-height:1.45;margin-top:4px}
+a.row .d{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+color:#6b6f73;text-transform:uppercase;margin-top:6px;display:block}
+.crumb{display:inline-block;margin-bottom:22px;text-decoration:none;color:var(--signal)}
+footer{margin-top:56px;border-top:1px solid var(--rule);padding-top:14px;
+font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+text-transform:uppercase;color:#6b6f73}
+.badge{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;
+padding:2px 6px;border:1px solid var(--rule);text-transform:uppercase}
+.badge.active{border-color:var(--signal);color:var(--signal)}
+.badge.done{color:#6b6f73}
+</style></head><body><div class="wrap">
+<div class="mast"><a href="../">Engine Room Press</a><span>Working preview</span></div>
+<a class="crumb" href="../">&larr; All of it</a><p class="lede">Fixed the messy text-over-grid look — the grid now anchors to the text, not the viewport, and is vertical-lines-only on paper surfaces; every card, cover and page padding is a whole number of modules.</p><h1>Design alignment — the grid fix</h1>
+<h2>The diagnosis</h2>
+<p>Matt said the look was right but "text over background feels messy". It was not
+the type and it was not the spacing. Every surface drew its 40px grid from the
+element's own edge (0,0), while every content edge sat at a number that is not a
+multiple of the module:</p>
+<table>
+<thead>
+<tr>
+<th>surface</th>
+<th>grid module</th>
+<th>old content padding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Instagram card</td>
+<td>40px</td>
+<td>72px</td>
+</tr>
+<tr>
+<td>news card</td>
+<td>40px</td>
+<td>72px</td>
+</tr>
+<tr>
+<td>book cover</td>
+<td>50px</td>
+<td>108px</td>
+</tr>
+<tr>
+<td>landing page</td>
+<td>40px</td>
+<td>24px, plus a <em>centred</em> column, so the offset changed with every screen width</td>
+</tr>
+<tr>
+<td>cover shelf / ballot</td>
+<td>40px</td>
+<td>24px</td>
+</tr>
+</tbody>
+</table>
+<p>So no text edge ever landed on a line, on any surface, at any size. The grid read
+as noise behind the type instead of the structure under it.</p>
+<h2>What we changed</h2>
+<p><strong>Two rules, now written into <code>design.md</code> as rule 7.</strong></p>
+<ol>
+<li><strong>Paper surfaces get vertical lines only.</strong> Horizontal lines cross every line
+   of type at a random height — that is the single biggest source of the mess, and
+   no baseline grid fixes it without freezing all the leading. Removing them was
+   cheaper and looks better. Vertical column lines behind left-ranged text read as
+   drawing paper.</li>
+<li><strong>The grid is anchored to the text column, never the viewport.</strong> On the landing
+   page and the ballot the lines are drawn inside the content box of a fixed,
+   centred layer of the same width and padding as the text column
+   (<code>background-origin/clip: content-box</code>). The column's left edge is therefore a
+   grid line at <em>every</em> screen width, with no media-query arithmetic.</li>
+<li><strong>Flat-field surfaces keep the full grid, and the padding moved onto it.</strong>
+   Card 80/80/70 on a 40px module (1350 − 80 − 70 = 1200 = 30 modules).
+   Cover 100/100/110 on a 50px module (2560 − 100 − 110 = 2350 = 47 modules).
+   The odd bottom value is deliberate: the canvas heights are not multiples of the
+   module, so the bottom padding absorbs the remainder and both content edges land
+   on a line.</li>
+</ol>
+<p>Also on the module now: landing <code>--pad</code> 20/40, column 760/880, section padding
+40/80, h1 margin 40/60; card callout 120/40; cover callout and title 50.
+Cover text column is now 1400px, so <code>size_for()</code> divides by 1400.</p>
+<h2>What we tried and rejected</h2>
+<ul>
+<li><strong>A true baseline grid</strong> (every line of type on a 20px or 40px rhythm). Rejected:
+  19px Newsreader at a comfortable 1.6 leading is ~30px, which fits neither 20 nor
+  40. Forcing it means either cramped or airy body copy, and <em>still</em> fails the
+  moment a heading wraps to a different number of lines.</li>
+<li><strong>Snapping every hairline to a grid line by hand.</strong> Rejected as fragile: a rule
+  deep in the page inherits the cumulative height of every text block above it, so
+  one edited sentence breaks it. Removing the horizontal lines removes the problem
+  instead of policing it.</li>
+<li><strong>Keeping the viewport-anchored grid and just choosing nicer paddings.</strong> Cannot
+  work: the column is centred, so the offset between grid and text changes with
+  every browser width.</li>
+</ul>
+<h2>Pointers</h2>
+<ul>
+<li><code>docs/design.md</code> rule 7 is the canonical statement. Read it before building any
+  surface.</li>
+<li>Regenerate art with <code>python3 data/{cards,news,covers}/build.py</code>, then screenshot
+  with headless Chrome and <code>--virtual-time-budget=6000</code> (fonts load over the
+  network; without the wait the type silently falls back).</li>
+<li>Phone checks still go through <code>rb set viewport 390 844</code>. Headless Chrome cannot
+  render below ~500 CSS px on this Mac.</li>
+<li>Audit of the result: <code>data/audits/grid-alignment-2026-08-31.md</code>.</li>
+</ul>
+<h2>Open</h2>
+<ul>
+<li>Nothing left active in the queue after this. <code>todo</code> holds: the Dollar Empire
+  outline, 10 captions, and the copy rollout (surfaces still lead on "no dates to
+  memorise", which positioning-v2 replaced with mechanism).</li>
+<li>Still waiting on Matt: the Brevo form URL, or the ballot stores nothing.</li>
+</ul>
+<h2>Second pass — what the audit caught</h2>
+<p>The first pass fixed only the padding box. A pixel audit
+(<code>data/audits/grid-alignment-2026-08-31.md</code>) found the left edges clean everywhere
+and <strong>four systemic vertical defects</strong>, all from elements placed by line-height or
+flex rather than by a module:</p>
+<ol>
+<li><strong>Card and news-card callout tag</strong> floated at y=234–281 instead of 240–280.</li>
+<li><strong>Cover callout tag</strong> floated, and <em>moved between covers</em> — it was positioned by
+   flex leftover space, so a title with a leading "THE" pushed it somewhere else.</li>
+<li><strong>Footer hairline</strong> floated on all seven card and cover files.</li>
+<li><strong>Landing page on the phone</strong>: the first grid line was not drawn at the text
+   column's edge. Cause was <code>background-clip:content-box</code> swallowing the line at
+   the exact content edge; replaced with <code>background-position-x:var(--pad)</code>.</li>
+</ol>
+<p>Fixes: an explicit <code>line-height</code> of exactly one module on every rail, tag and
+footer; a fixed 750px spacer pinning the cover callout to y=900 on all sixteen;
+footer <code>padding-top</code> 39px/49px so the <strong>1px border itself</strong> lands on 1200/2350 —
+40 and 50 were one pixel out, which is the kind of thing only a pixel scan finds.</p>
+<p>Re-verified by pixel scan on all 29 rendered files: card tags 240–280, cover tags
+900–950, footer rules 1200 and 2350. <strong>Zero defects.</strong></p>
+<p>A side benefit worth keeping: pinning the cover callout means all sixteen covers
+now break at the same height, which makes the shelf read as one series.</p>
+<footer>Draft — built by the agent, judged by Matt</footer>
+</div></body></html>

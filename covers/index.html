@@ -10,11 +10,15 @@
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--paper);color:var(--ink);
- background-image:linear-gradient(var(--faint) 1px,transparent 1px),
-   linear-gradient(90deg,var(--faint) 1px,transparent 1px);
- background-size:var(--u) var(--u);
- padding:var(--u) 24px calc(var(--u)*5)}
-.w{max-width:1080px;margin:0 auto}
+ padding:var(--u) 20px calc(var(--u)*5)}
+/* the measured grid: vertical lines only, drawn inside the content column so
+   every text edge lands on a line at any width. See design.md rule 8. */
+body::before{content:"";position:fixed;top:0;bottom:0;left:50%;
+ transform:translateX(-50%);width:100%;max-width:calc(1080px + 40px);
+ padding:0 20px;pointer-events:none;z-index:0;
+ background-image:repeating-linear-gradient(to right,var(--faint) 0 1px,transparent 1px var(--u));
+ background-origin:content-box;background-clip:content-box}
+.w{max-width:1080px;margin:0 auto;position:relative;z-index:1}
 header{border-bottom:1px solid var(--rule);padding-bottom:24px;margin-bottom:var(--u)}
 h1{font:700 clamp(30px,6vw,52px)/1.08 "Space Grotesk",system-ui,sans-serif;
  margin:0 0 24px;letter-spacing:-.02em;max-width:16ch}
