@@ -145,6 +145,12 @@ Opus only for real reasoning. Have subagents write to a file, not report prose.<
   browser open.</li>
 <li><strong>Amazon sales rank is per edition.</strong> The same book can be #515 in one format
   and #62,645 in another. Never compare rank across formats.</li>
+<li><strong>Headless Chrome cannot render narrower than ~500 CSS px on this Mac.</strong>
+  <code>--window-size=390,...</code> is silently ignored for layout; <code>innerWidth</code> is 500 in both
+  <code>--headless</code> and <code>--headless=new</code>. A 390px screenshot is a <em>crop of a 500px layout</em>
+  and reads exactly like a horizontal-overflow bug. <strong>Every phone-width check goes
+  through <code>rb</code>:</strong> <code>rb set viewport 390 844</code> → <code>rb open file://...</code> → <code>rb screenshot</code>.
+  Headless Chrome is still correct for the wide surfaces (cards, covers).</li>
 <li><strong>Headless Chrome card renders need <code>--virtual-time-budget=6000</code>.</strong> Google
   Fonts load over the network; without the wait, type silently falls back to
   system sans and the render looks fine but is wrong.</li>

@@ -75,7 +75,7 @@ padding:2px 6px;border:1px solid var(--rule);text-transform:uppercase}
 <tbody>
 <tr>
 <td><strong>Matt</strong></td>
-<td>Buy the domain (name from <code>docs/notes/brand-shortlist.md</code>). Create the Instagram account on the imprint name. Create the email list — free tier only, no monthly bill.</td>
+<td>Buy the domain (name from <code>docs/notes/brand-shortlist.md</code>). Create the Instagram account on the imprint name. Create the <strong>Brevo</strong> account (free plan) and paste back the form URL — see <em>The shelf is the ballot</em> below.</td>
 </tr>
 <tr>
 <td><strong>Agent</strong></td>
@@ -177,11 +177,34 @@ padding:2px 6px;border:1px solid var(--rule);text-transform:uppercase}
 <ol>
 <li>Buy the domain.</li>
 <li>Create the Instagram account.</li>
-<li>Create the email list account.</li>
+<li>Create the Brevo account and send back the form action URL (10 minutes, steps below).</li>
 <li>Create the KDP account.</li>
 <li><strong>Post one card every weekday, and reply to comments.</strong> ~15 minutes a day. This is the one that decides whether any of it works.</li>
 <li>Read book one and say if it bored him.</li>
 </ol>
+<h2>The shelf is the ballot — how we learn what to write first</h2>
+<p>We have sixteen titles and no data behind their order. The shelf at <code>/covers/</code> fixes
+that. Every cover is a checkbox: a reader taps the books they want, leaves one email,
+and the picks are stored with the address. Free, no payment, nothing to cancel — a
+waitlist, not a presale (<code>DECISIONS.md</code>).</p>
+<p><strong>What it buys us.</strong> Two numbers we cannot get any other way: which force people
+actually want explained, and how many books an interested person wants — one, or the
+shelf. The second number is what tells us whether the $69 bundle is real.</p>
+<p><strong>The rule for reading it.</strong> Ignore the counts until 50 people have voted. Under that,
+one Instagram post decides the winner. At 50, if the top title is not the current book
+one, we change the order and log it.</p>
+<p><strong>The one thing Matt must do — about 10 minutes:</strong></p>
+<ol>
+<li>Sign up at brevo.com, free plan. No card.</li>
+<li>Contacts → create a list called <code>Waitlist</code>.</li>
+<li>Contacts → Settings → Contact attributes → add a <strong>text</strong> attribute named <code>WANTS</code>.</li>
+<li>Forms → create a form → choose the <strong>Simple HTML</strong> (no-JavaScript) embed.
+   Add the <code>WANTS</code> field to it. Point it at the <code>Waitlist</code> list.</li>
+<li>Copy the <code>action="https://sibforms.com/serve/..."</code> URL out of the code it gives you
+   and send it to the agent on Telegram.</li>
+</ol>
+<p>Until that URL exists the shelf runs in demo mode: it validates the email, shows the
+reader a real confirmation, and stores nothing. Everything else on the page is finished.</p>
 <h2>What we do if it is not working</h2>
 <ul>
 <li><strong>Nobody follows</strong> → the format or the topic is wrong on Instagram. Switch to the parked TikTok channel, on POV/fact hooks, which is what the research says wins there.</li>

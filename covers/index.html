@@ -1,25 +1,257 @@
 <!doctype html><html lang=en><head><meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<title>Engine Room Press &mdash; the shelf, sixteen covers</title>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Newsreader&display=swap" rel=stylesheet>
+<title>Engine Room Press &mdash; the shelf. Which one do you want first?</title>
+<meta name=description content="Sixteen short histories, one force each. None written yet. Pick the ones you want and we write those first.">
+<link rel=preconnect href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Newsreader:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel=stylesheet>
 <style>
-:root{--paper:#F7F6F1;--ink:#14171A;--rule:#C7C4B8;--signal:#C1440E}
-*{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);padding:40px 24px 96px}
-header{max-width:1080px;margin:0 auto 48px;border-bottom:1px solid var(--rule);padding-bottom:24px}
-h1{font:500 26px/1.3 "IBM Plex Mono",monospace;letter-spacing:.16em;text-transform:uppercase;margin:0 0 16px}
-p{font:400 19px/1.6 Newsreader,Georgia,serif;max-width:62ch;margin:0 0 14px}
-.n{color:var(--signal)}
-.g{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-@media(max-width:700px){.g{grid-template-columns:repeat(2,1fr)}}
-figure{margin:0} img{width:100%;display:block;border:1px solid var(--rule)}
-figcaption{font:500 11px/1.4 "IBM Plex Mono",monospace;letter-spacing:.10em;text-transform:uppercase;padding-top:8px;color:#5c5f63}
-</style></head><body><div style="font:500 11px/1 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;background:#14171A;padding:11px 16px;text-align:center"><a href="../" style="color:#F7F6F1;text-decoration:none">&larr; Back to everything</a></div>
-<header><h1>The shelf <span class=n>&mdash; sixteen covers</span></h1>
-<p>Every book in the catalogue has a cover. Nothing is written yet, so every one says
-<strong>coming soon</strong> &mdash; that is the point: the shelf is what we sell before a
-single book exists.</p>
-<p>Four rows, four parts. <strong>The field colour tells you the part</strong>: Tools and
-Stories on ink, Communication and Power on blue. Squint at this page on your phone &mdash;
-at thumbnail size you should still read the title and see one imprint, not sixteen books.</p></header>
-<div class=g><figure><a href="cover-01.png"><img src="cover-01.png" alt="The Surplus"></a><figcaption>01 &middot; The Surplus</figcaption></figure><figure><a href="cover-02.png"><img src="cover-02.png" alt="The Engine"></a><figcaption>02 &middot; The Engine</figcaption></figure><figure><a href="cover-03.png"><img src="cover-03.png" alt="The Barrel"></a><figcaption>03 &middot; The Barrel</figcaption></figure><figure><a href="cover-04.png"><img src="cover-04.png" alt="The Machine"></a><figcaption>04 &middot; The Machine</figcaption></figure><figure><a href="cover-05.png"><img src="cover-05.png" alt=" Writing"></a><figcaption>05 &middot; Writing</figcaption></figure><figure><a href="cover-06.png"><img src="cover-06.png" alt=" Print"></a><figcaption>06 &middot; Print</figcaption></figure><figure><a href="cover-07.png"><img src="cover-07.png" alt="The Wire"></a><figcaption>07 &middot; The Wire</figcaption></figure><figure><a href="cover-08.png"><img src="cover-08.png" alt="The Feed"></a><figcaption>08 &middot; The Feed</figcaption></figure><figure><a href="cover-09.png"><img src="cover-09.png" alt=" Money"></a><figcaption>09 &middot; Money</figcaption></figure><figure><a href="cover-10.png"><img src="cover-10.png" alt=" Gods"></a><figcaption>10 &middot; Gods</figcaption></figure><figure><a href="cover-11.png"><img src="cover-11.png" alt="The Nation"></a><figcaption>11 &middot; The Nation</figcaption></figure><figure><a href="cover-12.png"><img src="cover-12.png" alt="The Company"></a><figcaption>12 &middot; The Company</figcaption></figure><figure><a href="cover-13.png"><img src="cover-13.png" alt="The Map"></a><figcaption>13 &middot; The Map</figcaption></figure><figure><a href="cover-14.png"><img src="cover-14.png" alt="The Chokepoint"></a><figcaption>14 &middot; The Chokepoint</figcaption></figure><figure><a href="cover-15.png"><img src="cover-15.png" alt="The Dollar"></a><figcaption>15 &middot; The Dollar</figcaption></figure><figure><a href="cover-16.png"><img src="cover-16.png" alt="The Bomb"></a><figcaption>16 &middot; The Bomb</figcaption></figure></div>
+:root{--paper:#F7F6F1;--white:#fff;--ink:#14171A;--signal:#C1440E;
+--rule:#C7C4B8;--faint:#E4E2D8;--u:40px}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);
+ background-image:linear-gradient(var(--faint) 1px,transparent 1px),
+   linear-gradient(90deg,var(--faint) 1px,transparent 1px);
+ background-size:var(--u) var(--u);
+ padding:var(--u) 24px calc(var(--u)*5)}
+.w{max-width:1080px;margin:0 auto}
+header{border-bottom:1px solid var(--rule);padding-bottom:24px;margin-bottom:var(--u)}
+h1{font:700 clamp(30px,6vw,52px)/1.08 "Space Grotesk",system-ui,sans-serif;
+ margin:0 0 24px;letter-spacing:-.02em;max-width:16ch}
+h1 em{font-style:normal;color:var(--signal)}
+p{font:400 18px/1.6 Newsreader,Georgia,serif;max-width:60ch;margin:0 0 16px}
+.lede{font-size:20px}
+/* numbered callout — the signature device */
+.callout{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;margin:24px 0 8px;
+ font:500 12px/1.4 "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase}
+.callout .tag{color:var(--signal)}
+.callout .lead{flex:1;border-top:1px dashed var(--rule);transform:translateY(-4px)}
+/* the ballot */
+ul.g{list-style:none;margin:0;padding:0;display:grid;
+ grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+@media(max-width:760px){ul.g{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}}
+.cb{position:absolute;opacity:0;width:1px;height:1px}
+li.it{min-width:0;position:relative}
+label{display:block;cursor:pointer}
+.frame{display:block;position:relative;border:1px solid var(--rule);
+ background:var(--white)}
+.frame img{width:100%;display:block}
+.frame::after{content:"";position:absolute;inset:0;border:3px solid transparent}
+.cb:checked + label .frame::after{border-color:var(--signal)}
+.cb:focus-visible + label .frame{outline:2px solid var(--ink);outline-offset:3px}
+.cap{display:block;padding-top:8px;
+ font:500 11px/1.4 "IBM Plex Mono",monospace;letter-spacing:.10em;
+ text-transform:uppercase;color:#5c5f63}
+.cap .num{color:var(--rule)}
+.state::after{content:" \2014 tap to pick"}
+.cb:checked + label .cap{color:var(--signal)}
+.cb:checked + label .state::after{content:" \2014 picked"}
+@media(hover:none){.state::after{content:""}.cb:checked + label .state::after{content:" \2014 picked"}}
+/* the bar */
+.bar{position:fixed;left:0;bottom:0;width:100%;max-width:100vw;background:var(--ink);color:var(--paper);
+ border-top:1px solid var(--ink);transform:translateY(110%);
+ transition:transform .18s ease-out;z-index:9}
+.bar.on{transform:none}
+@media(prefers-reduced-motion:reduce){.bar{transition:none}}
+.bar .w{max-width:min(1080px,100%);display:flex;flex-wrap:wrap;align-items:center;gap:16px;padding:20px 24px}
+.count{font:500 12px/1.4 "IBM Plex Mono",monospace;letter-spacing:.12em;
+ text-transform:uppercase;white-space:nowrap}
+.count b{color:var(--signal);font-weight:500}
+form{display:flex;flex-wrap:wrap;gap:0;flex:1 1 300px;min-width:0}
+input[type=email]{flex:1 1 0;min-width:0;height:52px;padding:0 16px;border:0;
+ background:var(--white);color:var(--ink);border-radius:0;
+ font:400 17px/1 Newsreader,Georgia,serif}
+input[type=email]::placeholder{color:#6B6F73;opacity:1}
+input[type=email][aria-invalid=true]{box-shadow:inset 0 0 0 2px var(--signal)}
+button{height:52px;padding:0 20px;flex:0 0 auto;border:0;border-radius:0;cursor:pointer;
+ background:var(--signal);color:var(--paper);
+ font:500 12px/1 "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase}
+button:focus-visible,input:focus-visible{outline:2px solid var(--paper);outline-offset:-4px}
+.fine{font:400 14px/1.5 Newsreader,Georgia,serif;color:#9a9c9e;margin:0;flex-basis:100%}
+.fine.err{color:#ff9c7a}
+.done{font:400 17px/1.5 Newsreader,Georgia,serif;margin:0;padding:20px 0}
+.done b{color:var(--paper);font-weight:600}
+@media(max-width:520px){.bar .w{padding:16px}form{flex-basis:100%}}
+</style></head>
+<body><div style="font:500 11px/1 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;background:#14171A;padding:11px 16px;text-align:center"><a href="../" style="color:#F7F6F1;text-decoration:none">&larr; Back to everything</a></div>
+
+<header class=w>
+<h1>Sixteen books. <em>None of them written.</em> Which do you want first?</h1>
+<p class=lede>Every book here explains one force that built the modern world &mdash;
+the surplus, the engine, the wire, the chokepoint. One force per book, about two
+hours to read.</p>
+<p>We write in the order you choose. <strong>Pick the ones you actually want</strong>,
+leave one email, and you get each of them the day it ships. No payment, no account,
+nothing to cancel.</p>
+</header>
+
+<div class=w>
+<div class=callout><span class=tag>01</span><span class=lead></span><span>The shelf &mdash; tap any cover to pick it</span></div>
+<ul class=g>
+<li class=it>
+<input type=checkbox id=b01 class=cb value="The Surplus">
+<label for=b01>
+  <span class=frame><img src="cover-01.png" alt="The Surplus" loading=lazy></span>
+  <span class=cap><span class=num>01</span> The Surplus<span class=state></span></span>
+</label></li>
+<li class=it>
+<input type=checkbox id=b02 class=cb value="The Engine">
+<label for=b02>
+  <span class=frame><img src="cover-02.png" alt="The Engine" loading=lazy></span>
+  <span class=cap><span class=num>02</span> The Engine<span class=state></span></span>
+</label></li>
+<li class=it>
+<input type=checkbox id=b03 class=cb value="The Barrel">
+<label for=b03>
+  <span class=frame><img src="cover-03.png" alt="The Barrel" loading=lazy></span>
+  <span class=cap><span class=num>03</span> The Barrel<span class=state></span></span>
+</label></li>
+<li class=it>
+<input type=checkbox id=b04 class=cb value="The Machine">
+<label for=b04>
+  <span class=frame><img src="cover-04.png" alt="The Machine" loading=lazy></span>
+  <span class=cap><span class=num>04</span> The Machine<span class=state></span></span>
+</label></li>
+<li class=it>
+<input type=checkbox id=b05 class=cb value="Writing">
+<label for=b05>
+  <span class=frame><img src="cover-05.png" alt="Writing" loading=lazy></span>
+  <span class=cap><span class=num>05</span> Writing<span class=state></span></span>
+</label></li>
+<li class=it>
+<input type=checkbox id=b06 class=cb value="Print">
+<label for=b06>
+  <span class=frame><img src="cover-06.png" alt="Print" loading=lazy></span>
+  <span class=cap><span class=num>06</span> Print<span class=state></span></span>
+</label></li>
+<li class=it>
+<input type=checkbox id=b07 class=cb value="The Wire">
+<label for=b07>
+  <span class=frame><img src="cover-07.png" alt="The Wire" loading=lazy></span>
+  <span class=cap><span class=num>07</span> The Wire<span class=state></span></span>
+</label></li>
+<li class=it>
+<input type=checkbox id=b08 class=cb value="The Feed">
+<label for=b08>
+  <span class=frame><img src="cover-08.png" alt="The Feed" loading=lazy></span>
+  <span class=cap><span class=num>08</span> The Feed<span class=state></span></span>
+</label></li>
+<li class=it>
+<input type=checkbox id=b09 class=cb value="Money">
+<label for=b09>
+  <span class=frame><img src="cover-09.png" alt="Money" loading=lazy></span>
+  <span class=cap><span class=num>09</span> Money<span class=state></span></span>
+</label></li>
+<li class=it>
+<input type=checkbox id=b10 class=cb value="Gods">
+<label for=b10>
+  <span class=frame><img src="cover-10.png" alt="Gods" loading=lazy></span>
+  <span class=cap><span class=num>10</span> Gods<span class=state></span></span>
+</label></li>
+<li class=it>
+<input type=checkbox id=b11 class=cb value="The Nation">
+<label for=b11>
+  <span class=frame><img src="cover-11.png" alt="The Nation" loading=lazy></span>
+  <span class=cap><span class=num>11</span> The Nation<span class=state></span></span>
+</label></li>
+<li class=it>
+<input type=checkbox id=b12 class=cb value="The Company">
+<label for=b12>
+  <span class=frame><img src="cover-12.png" alt="The Company" loading=lazy></span>
+  <span class=cap><span class=num>12</span> The Company<span class=state></span></span>
+</label></li>
+<li class=it>
+<input type=checkbox id=b13 class=cb value="The Map">
+<label for=b13>
+  <span class=frame><img src="cover-13.png" alt="The Map" loading=lazy></span>
+  <span class=cap><span class=num>13</span> The Map<span class=state></span></span>
+</label></li>
+<li class=it>
+<input type=checkbox id=b14 class=cb value="The Chokepoint">
+<label for=b14>
+  <span class=frame><img src="cover-14.png" alt="The Chokepoint" loading=lazy></span>
+  <span class=cap><span class=num>14</span> The Chokepoint<span class=state></span></span>
+</label></li>
+<li class=it>
+<input type=checkbox id=b15 class=cb value="The Dollar">
+<label for=b15>
+  <span class=frame><img src="cover-15.png" alt="The Dollar" loading=lazy></span>
+  <span class=cap><span class=num>15</span> The Dollar<span class=state></span></span>
+</label></li>
+<li class=it>
+<input type=checkbox id=b16 class=cb value="The Bomb">
+<label for=b16>
+  <span class=frame><img src="cover-16.png" alt="The Bomb" loading=lazy></span>
+  <span class=cap><span class=num>16</span> The Bomb<span class=state></span></span>
+</label></li>
+</ul>
+
+<div class=callout><span class=tag>02</span><span class=lead></span><span>Why the covers already exist</span></div>
+<p>Because a shelf of sixteen tells you what this is and one book does not. The field
+colour is the part: <strong>Tools and Stories on ink, Communication and Power on
+blue</strong>. Squint and you see four groups before you read a word.</p>
+</div>
+
+<div class=bar id=bar>
+ <div class=w id=barin>
+  <p class=count id=count><b>0</b> picked</p>
+  <form id=f novalidate>
+   <input type=hidden name=wants id=wants>
+   <input type=email id=email name=email placeholder="you@example.com"
+     autocomplete=email required aria-label="Your email address"
+     aria-describedby="err">
+   <button type=submit>Send me these</button>
+  </form>
+  <p class=fine id=err role=alert hidden>Enter a real email address, like you@example.com.</p>
+  <p class=fine>One email per book, on the day it ships. Unsubscribe in one click.</p>
+ </div>
+</div>
+
+<script>
+var ACTION = "";
+var boxes = [].slice.call(document.querySelectorAll('.cb'));
+var bar = document.getElementById('bar'),
+    barin = document.getElementById('barin'),
+    count = document.getElementById('count'),
+    wants = document.getElementById('wants'),
+    email = document.getElementById('email'),
+    err = document.getElementById('err');
+
+function picked(){ return boxes.filter(function(b){return b.checked}).map(function(b){return b.value}); }
+function sync(){
+  var p = picked();
+  wants.value = p.join(', ');
+  count.innerHTML = '<b>' + p.length + '</b> picked';
+  bar.classList.toggle('on', p.length > 0);
+  try{ localStorage.setItem('erp.picks', wants.value); }catch(e){}
+}
+boxes.forEach(function(b){ b.addEventListener('change', sync); });
+
+try{
+  var saved = (localStorage.getItem('erp.picks')||'').split(', ').filter(Boolean);
+  boxes.forEach(function(b){ if(saved.indexOf(b.value)>-1) b.checked = true; });
+}catch(e){}
+sync();
+
+email.addEventListener('input', function(){
+  if(email.checkValidity()){ email.setAttribute('aria-invalid','false'); err.hidden = true; }
+});
+
+document.getElementById('f').addEventListener('submit', function(e){
+  if(!email.value || !email.checkValidity()){
+    e.preventDefault();
+    email.setAttribute('aria-invalid','true');
+    err.hidden = false; email.focus();
+    return;
+  }
+  sync();
+  if(!ACTION){
+    e.preventDefault();
+    console.log('WAITLIST', {email: email.value, wants: wants.value});
+    barin.innerHTML = '<p class=done>Got it. <b>' + picked().length +
+      '</b> book' + (picked().length===1?'':'s') +
+      ' on your list. You get each one the day it ships.</p>';
+  }
+});
+</script>
 </body></html>

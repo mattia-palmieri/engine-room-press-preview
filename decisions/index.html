@@ -346,5 +346,46 @@ exist.</p>
 <p><strong>Rejected — hiding covers until a book is written.</strong> Matt's point stands: a shop with no
 covers looks broken. Every cover carries <code>COMING SOON</code> in the bottom-right state field,
 so it shows the shelf without claiming a book exists.</p>
+<h2>The shelf is a ballot: a free waitlist per title, not a presale</h2>
+<p><strong>Date:</strong> 2026-08-31 · <strong>Item:</strong> <code>presale</code></p>
+<p>The sixteen-cover shelf at <code>/covers/</code> is now the interest capture. Every cover is a
+checkbox. The reader taps the books they want, leaves one email once, and the picks
+travel with the address. We publish in the order the clicks tell us to, instead of the
+order we guessed.</p>
+<p><strong>Rejected — a real presale, money for an unwritten book.</strong> Two hard blocks, both
+already logged in <code>offer.md</code>: EU distance-selling law gives a 14-day refund right that
+an undelivered book cannot survive cleanly, and Amazon bans an account from preorders
+for a year if it misses a preorder date. A presale also measures the wrong thing at the
+wrong time — it asks for $9 from a stranger who has read nothing of ours.</p>
+<p><strong>Rejected — sixteen separate "notify me" forms, one per cover.</strong> Sixteen forms is
+sixteen decisions and sixteen chances to leave. One ballot plus one email box is one
+decision. It also lets a reader vote for three books, which is the reading we actually
+want: not "who wants The Chokepoint" but "what does a person who likes us want next".</p>
+<p><strong>Rejected — putting the ballot on the landing page.</strong> The landing page has one action
+and keeps it. The shelf is a second surface with a second job, and it is the page where
+sixteen covers already justify themselves.</p>
+<p><strong>Rejected — a public vote counter on the page.</strong> Honest, and a trap: an early leader
+snowballs, and a low number tells every visitor that nobody is here. We read the counts
+privately.</p>
+<h2>The email list is Brevo, on the free plan</h2>
+<p><strong>Date:</strong> 2026-08-31 · <strong>Item:</strong> <code>presale</code></p>
+<p>Scanned six providers against their own pricing and docs pages
+(<code>data/email-provider-scan.md</code>). We need three things at once: $0/month, a plain
+<code>&lt;form action&gt;</code> we can post from our own hand-written HTML with no vendor JavaScript,
+and a custom field to hold the list of titles a subscriber voted for. Brevo is the only
+one that has all three — 100,000 contacts and 300 sends a day on Free, custom contact
+attributes on Free, and a documented "simple HTML" embed that needs no JavaScript.</p>
+<p><strong>Rejected — Buttondown.</strong> The cleanest no-JS form of the six, and the writers' choice,
+but the free plan stops at 100 subscribers and subscriber metadata is a paid add-on.
+Metadata is the whole point of the ballot, so free Buttondown cannot do this job.</p>
+<p><strong>Rejected — Kit (ConvertKit).</strong> 10,000 free subscribers and tagging included, so it is
+the fallback if Brevo's form builder turns out to be painful. Not first, because Kit
+treats the raw-HTML embed as an edge case for sites without JavaScript and steers
+everyone to its script tag — a path we would be fighting.</p>
+<p><strong>Rejected — MailerLite</strong> (250 subscribers, embedded forms read as paid-only),
+<strong>beehiiv</strong> (script tag is the only documented embed) and <strong>EmailOctopus</strong> (no plain
+form action found in its own docs).</p>
+<p><strong>Cost of being wrong:</strong> low. The page holds the provider URL in one constant in
+<code>data/covers/shelf.py</code>. Swapping providers is one line and a field name.</p>
 <footer>Draft — built by the agent, judged by Matt</footer>
 </div></body></html>
