@@ -1,0 +1,106 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The news-led format — Engine Room Press</title><meta name="description" content="News-led carousels decided as 2 of 5 weekly Instagram posts (not all 5), the "Why this is happening" three-beat format specced in distribution.md, and three Hormuz cards built and published at /news/.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"><style>
+:root{--paper:#F7F6F1;--white:#fff;--ink:#14171A;--signal:#C1440E;--blue:#173B4E;
+--rule:#C7C4B8;--faint:#E4E2D8}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);
+font:400 18px/1.62 Newsreader,Georgia,serif;-webkit-text-size-adjust:100%}
+.wrap{max-width:660px;margin:0 auto;padding:32px 20px 96px}
+a{color:var(--ink)}
+.mast{border-bottom:1px solid var(--ink);padding-bottom:10px;margin-bottom:28px;
+display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.mono,.tag,.mast,.kicker,.crumb,th{font-family:"IBM Plex Mono",ui-monospace,monospace;
+font-weight:500;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.mast a{text-decoration:none}
+h1{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:700;
+font-size:clamp(30px,8vw,44px);line-height:1.06;letter-spacing:-.02em;margin:0 0 14px}
+.lede{font-size:19px;color:#3a3f44;margin-bottom:14px}
+h2{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:23px;
+line-height:1.2;margin:38px 0 12px}
+h3{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:19px;margin:26px 0 8px}
+p,li{margin-bottom:12px}
+ul,ol{padding-left:22px}
+strong{font-weight:600}
+code{font-family:"IBM Plex Mono",monospace;font-size:.85em;background:#ECEAE0;padding:1px 4px}
+pre{background:var(--ink);color:#F7F6F1;padding:16px;overflow-x:auto;margin:16px 0;font-size:13px}
+pre code{background:none;color:inherit;padding:0}
+blockquote{border-left:2px solid var(--signal);padding-left:14px;color:#3a3f44;margin:16px 0}
+hr{border:0;border-top:1px solid var(--rule);margin:32px 0}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:16px 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--rule);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:#ECEAE0;font-size:11px}
+img{max-width:100%;height:auto;display:block}
+/* section head with figure number */
+.fig{display:flex;align-items:baseline;gap:12px;margin:44px 0 4px;
+border-top:1px solid var(--ink);padding-top:10px}
+.fig .n{color:var(--signal)}
+.fig h2{margin:0;font-size:21px}
+.note{color:#3a3f44;font-size:16px;margin:4px 0 14px}
+/* rows */
+a.row{display:block;text-decoration:none;color:inherit;border:1px solid var(--rule);
+border-top:0;background:var(--white);padding:15px 16px}
+a.row:first-of-type{border-top:1px solid var(--rule)}
+a.row:hover{border-color:var(--signal)}
+a.row .t{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:17px}
+a.row .t .arw{color:var(--signal)}
+a.row .s{display:block;color:#3a3f44;font-size:15px;line-height:1.45;margin-top:4px}
+a.row .d{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+color:#6b6f73;text-transform:uppercase;margin-top:6px;display:block}
+.crumb{display:inline-block;margin-bottom:22px;text-decoration:none;color:var(--signal)}
+footer{margin-top:56px;border-top:1px solid var(--rule);padding-top:14px;
+font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+text-transform:uppercase;color:#6b6f73}
+.badge{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;
+padding:2px 6px;border:1px solid var(--rule);text-transform:uppercase}
+.badge.active{border-color:var(--signal);color:var(--signal)}
+.badge.done{color:#6b6f73}
+</style></head><body><div class="wrap">
+<div class="mast"><a href="../">Engine Room Press</a><span>Working preview</span></div>
+<a class="crumb" href="../">&larr; All of it</a><p class="lede">News-led carousels decided as 2 of 5 weekly Instagram posts (not all 5), the "Why this is happening" three-beat format specced in distribution.md, and three Hormuz cards built and published at /news/.</p><h1>The news-led format</h1>
+<h2>What we decided</h2>
+<p><strong>A ratio, not a switch: 2 news-led carousels a week, 3 evergreen.</strong> Full reasoning in
+<code>DECISIONS.md</code>. News is the door, the essentials are the house.</p>
+<p><strong>The format is three beats, always in this order:</strong> the news (one hard sourced fact
+from this week) → how we got here (one decision, decades back, named and dated) → the
+force (name it, name the book). Card 3's bottom rail carries the title and catalogue
+number.</p>
+<p><strong>One design difference from an evergreen card:</strong> the top rail carries the <strong>date in
+signal red</strong> instead of <code>NO. 04</code>. These posts are perishable; the card should say so.
+Everything else is the standard 1080×1350 template.</p>
+<p><strong>Three rules that keep us out of the commentary business</strong> (now in <code>distribution.md</code>):
+never say what should happen; every fact sourced before it is set, with the research
+file kept next to the cards; and only run the format when the news maps cleanly to one
+of the sixteen forces.</p>
+<h2>What we tried and abandoned</h2>
+<ul>
+<li><strong>All-news.</strong> Perishable, drags toward opinion, and most news does not map to a
+  catalogue force. Forcing the mapping makes cards that sell nothing.</li>
+<li><strong>Putting the book in card 3's kicker.</strong> The callout tag already reads <code>03</code> and
+  "THE BARREL · BOOK 03" beside it read as a duplicate number. Moved the book to the
+  bottom rail, which is where the CTA belongs anyway. <code>build.py</code> now takes an optional
+  <code>foot</code> per card.</li>
+</ul>
+<h2>Open questions</h2>
+<ul>
+<li><strong>The ratio is a guess.</strong> Four weeks of posting replaces it. If news carousels
+  out-reach evergreen by a wide margin, go 3/2 or 4/1.</li>
+<li><strong>Who watches the news?</strong> Right now a subagent researches on demand. At two
+  carousels a week that becomes a standing job — probably a weekly research round that
+  produces a shortlist of stories already mapped to catalogue forces.</li>
+<li><strong>Captions.</strong> <code>captions</code> is still <code>todo</code> and now needs a news-carousel variant too.</li>
+</ul>
+<h2>Pointers</h2>
+<ul>
+<li><code>data/news/</code> — <code>build.py</code>, <code>news.json</code>, 3 HTML, 3 PNG, <code>index.html</code>. Edit the JSON
+  and re-run; never hand-edit the HTML.</li>
+<li><code>data/news-hormuz.md</code> — the sourced research brief. Read its "Not verified" section
+  before reusing any number from it.</li>
+<li>Live at <code>/news/</code>, linked from the site hub.</li>
+<li><code>docs/distribution.md</code> rewritten: new "The two formats, and the ratio" section, new
+  summary line. Also fixed a stale $4.99 KDP price in the funnel table — it is $9 sold
+  direct now, per <code>offer.md</code>.</li>
+</ul>
+<footer>Draft — built by the agent, judged by Matt</footer>
+</div></body></html>

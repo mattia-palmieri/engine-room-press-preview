@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Distribution — Engine Room Press</title><meta name="description" content="Instagram image-card carousels are the one channel we run first, feeding a one-click bio link to an email capture page; the funnel needs ~450 profile visits a week to produce one paying stranger, and the kill tripwire is 200 followers by day 60.">
+<title>Distribution — Engine Room Press</title><meta name="description" content="Instagram image-card carousels are the one channel, five a week — two news-led "Why this is happening" carousels that start from today's news and land on a catalogue book, three evergreen — feeding one bio link to the ballot page; the kill tripwire is 200 followers by day 60.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"><style>
 :root{--paper:#F7F6F1;--white:#fff;--ink:#14171A;--signal:#C1440E;--blue:#173B4E;
 --rule:#C7C4B8;--faint:#E4E2D8}
@@ -58,7 +58,7 @@ padding:2px 6px;border:1px solid var(--rule);text-transform:uppercase}
 .badge.done{color:#6b6f73}
 </style></head><body><div class="wrap">
 <div class="mast"><a href="../">Engine Room Press</a><span>Working preview</span></div>
-<a class="crumb" href="../">&larr; All of it</a><p class="lede">Instagram image-card carousels are the one channel we run first, feeding a one-click bio link to an email capture page; the funnel needs ~450 profile visits a week to produce one paying stranger, and the kill tripwire is 200 followers by day 60.</p><h1>Distribution</h1>
+<a class="crumb" href="../">&larr; All of it</a><p class="lede">Instagram image-card carousels are the one channel, five a week — two news-led "Why this is happening" carousels that start from today's news and land on a catalogue book, three evergreen — feeding one bio link to the ballot page; the kill tripwire is 200 followers by day 60.</p><h1>Distribution</h1>
 <h2>The decision</h2>
 <p><strong>One channel: Instagram. Image-card carousels, five a week, one direct bio link to an email capture page.</strong></p>
 <p>TikTok and YouTube Shorts are parked until Instagram works. Not rejected — parked. A one-person-plus-agent operation running three platforms on day one runs none of them well, and the graveyard is full of solo operators who stopped quietly from burnout.</p>
@@ -73,11 +73,50 @@ padding:2px 6px;border:1px solid var(--rule);text-transform:uppercase}
 <p>Five image-card posts a week, one per weekday. Not Reels. Static cards with a consistent template — one font system, one colour system, one look — because the surviving faceless winners look hand-made, not templated-at-volume. The agent drafts five posts with two or three alternate hook lines each; Matt look-checks and posts.</p>
 <p>The content unit is <strong>one idea from the book's argument, told whole.</strong> Not trivia, not "10 facts." Every card should leave the reader understanding something they did not understand before, and should be recognisably from the same mind as the last one.</p>
 <p>Full operating detail, hooks, and comps: <code>docs/notes/channel-deepdive.md</code>.</p>
+<h2>The two formats, and the ratio</h2>
+<p><strong>Five posts a week: two news-led, three evergreen.</strong> News-led is the door.
+Evergreen is the house.</p>
+<h3>Format A — "Why this is happening" (news-led, 2 a week)</h3>
+<p>A three-card carousel. Always the same three beats, in this order:</p>
+<ol>
+<li><strong>THE NEWS.</strong> One hard, checkable fact from a story the reader already saw
+   this week. A number if we have one. No opinion, no prediction.</li>
+<li><strong>HOW WE GOT HERE.</strong> One decision, decades back, that built the situation.
+   Not a summary of the history — <em>one</em> decision, named and dated.</li>
+<li><strong>THE FORCE.</strong> Name the force underneath, and name the book. The bottom rail
+   of card 3 carries the title and its catalogue number.</li>
+</ol>
+<p><strong>Design difference from an evergreen card:</strong> the top rail carries the <strong>date in
+signal red</strong> where an evergreen card carries <code>NO. 04</code>. These posts are
+perishable and the card should admit it. Everything else is the standard
+1080×1350 card in <code>docs/design.md</code>.</p>
+<p><strong>Three hard rules, and they are what keep us out of the commentary business:</strong></p>
+<ul>
+<li><strong>We never say what should happen.</strong> No sides, no prediction, no blame. We
+  explain how the machine was built. Every geopolitics account on Instagram
+  takes a position; not taking one is our whole difference, and it is also what
+  stops the comments becoming a war we have no persona to fight.</li>
+<li><strong>Every fact on a card is sourced before it is set.</strong> A news card is a factual
+  claim with our name on it, published fast. The research file goes in <code>data/</code>
+  next to the cards, and anything the researcher flagged as unverified does not
+  go on a card. See <code>data/news-hormuz.md</code> for the shape.</li>
+<li><strong>We only run it when the news maps cleanly to one of the sixteen.</strong> If today's
+  story does not land on a catalogue force, we do not post a news carousel.
+  Forcing the mapping produces a card that sells nothing.</li>
+</ul>
+<p>Proof set, built 2026-08-31 on the Strait of Hormuz → <em>The Barrel</em> (Book 03):
+<code>data/news/</code>, live at <code>/news/</code>. Generator is <code>data/news/build.py</code> + <code>news.json</code>,
+same pattern as the evergreen cards — edit the JSON, re-run, never hand-edit the
+HTML.</p>
+<h3>Format B — the essentials (evergreen, 3 a week)</h3>
+<p>The existing set: one idea from a book's argument, told whole. <code>data/cards/</code>.
+These do not expire, they can be reposted, and they are what a new follower
+scrolls back through. The news carousels are what brought them there.</p>
 <h2>The funnel arithmetic</h2>
 <p>The chain from stranger to first euro:</p>
 <pre><code>Instagram reach → profile visit → bio-link click → email signup → book sale
 </code></pre>
-<p>The product at the end is a $4.99 KDP ebook, netting about $3.44 after Amazon's 70% royalty and delivery fee. First euro = first sale.</p>
+<p>The product at the end is a $9 ebook sold direct (<code>offer.md</code>), netting about $8.40 after payment fees. First euro = first sale.</p>
 <p><strong>Assumptions, with their sources and honesty ratings:</strong></p>
 <table>
 <thead>
@@ -102,7 +141,7 @@ padding:2px 6px;border:1px solid var(--rule);text-transform:uppercase}
 <td>LOW-MEDIUM</td>
 </tr>
 <tr>
-<td>Email subscriber → buyer of a $4.99 book</td>
+<td>Email subscriber → buyer of a $9 book</td>
 <td>5%</td>
 <td>Below the ~3-10% band typical for a warm list buying a low-priced first product. Chosen at the low end on purpose.</td>
 <td>LOW</td>
