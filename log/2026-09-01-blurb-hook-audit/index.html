@@ -1,0 +1,112 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Blurbs did not sell — the hook audit — Engine Room Press</title><meta name="description" content="Matt read a blurb cold and said he would not read the book. Diagnosed the failure, wrote docs/hooks.md (a six-question cold-reader audit), and rewrote all sixteen blurbs through a writer/cold-reader loop until 14/16 passed clean.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"><style>
+:root{--paper:#F7F6F1;--white:#fff;--ink:#14171A;--signal:#C1440E;--blue:#173B4E;
+--rule:#C7C4B8;--faint:#E4E2D8}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);
+font:400 18px/1.62 Newsreader,Georgia,serif;-webkit-text-size-adjust:100%}
+.wrap{max-width:660px;margin:0 auto;padding:32px 20px 96px}
+a{color:var(--ink)}
+.mast{border-bottom:1px solid var(--ink);padding-bottom:10px;margin-bottom:28px;
+display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.mono,.tag,.mast,.kicker,.crumb,th{font-family:"IBM Plex Mono",ui-monospace,monospace;
+font-weight:500;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.mast a{text-decoration:none}
+h1{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:700;
+font-size:clamp(30px,8vw,44px);line-height:1.06;letter-spacing:-.02em;margin:0 0 14px}
+.lede{font-size:19px;color:#3a3f44;margin-bottom:14px}
+h2{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:23px;
+line-height:1.2;margin:38px 0 12px}
+h3{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:19px;margin:26px 0 8px}
+p,li{margin-bottom:12px}
+ul,ol{padding-left:22px}
+strong{font-weight:600}
+code{font-family:"IBM Plex Mono",monospace;font-size:.85em;background:#ECEAE0;padding:1px 4px}
+pre{background:var(--ink);color:#F7F6F1;padding:16px;overflow-x:auto;margin:16px 0;font-size:13px}
+pre code{background:none;color:inherit;padding:0}
+blockquote{border-left:2px solid var(--signal);padding-left:14px;color:#3a3f44;margin:16px 0}
+hr{border:0;border-top:1px solid var(--rule);margin:32px 0}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:16px 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--rule);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:#ECEAE0;font-size:11px}
+img{max-width:100%;height:auto;display:block}
+/* section head with figure number */
+.fig{display:flex;align-items:baseline;gap:12px;margin:44px 0 4px;
+border-top:1px solid var(--ink);padding-top:10px}
+.fig .n{color:var(--signal)}
+.fig h2{margin:0;font-size:21px}
+.note{color:#3a3f44;font-size:16px;margin:4px 0 14px}
+/* rows */
+a.row{display:block;text-decoration:none;color:inherit;border:1px solid var(--rule);
+border-top:0;background:var(--white);padding:15px 16px}
+a.row:first-of-type{border-top:1px solid var(--rule)}
+a.row:hover{border-color:var(--signal)}
+a.row .t{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:17px}
+a.row .t .arw{color:var(--signal)}
+a.row .s{display:block;color:#3a3f44;font-size:15px;line-height:1.45;margin-top:4px}
+a.row .d{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+color:#6b6f73;text-transform:uppercase;margin-top:6px;display:block}
+.crumb{display:inline-block;margin-bottom:22px;text-decoration:none;color:var(--signal)}
+footer{margin-top:56px;border-top:1px solid var(--rule);padding-top:14px;
+font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+text-transform:uppercase;color:#6b6f73}
+.badge{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;
+padding:2px 6px;border:1px solid var(--rule);text-transform:uppercase}
+.badge.active{border-color:var(--signal);color:var(--signal)}
+.badge.done{color:#6b6f73}
+</style></head><body><div class="wrap">
+<div class="mast"><a href="../">Engine Room Press</a><span>Working preview</span></div>
+<a class="crumb" href="../">&larr; All of it</a><p class="lede">Matt read a blurb cold and said he would not read the book. Diagnosed the failure, wrote docs/hooks.md (a six-question cold-reader audit), and rewrote all sixteen blurbs through a writer/cold-reader loop until 14/16 passed clean.</p><h1>Blurbs did not sell — the hook audit</h1>
+<h2>What happened</h2>
+<p>Matt quoted the Surplus deck and blurb back and said: <em>"I wouldn't read this
+book. I don't understand what it's about. I don't understand why it's of
+interest to me."</em> Plus the root cause, in his words: <strong>the writer has all the
+context and forgets the reader has none.</strong> That message arrived at 17:53 and the
+next agent reply was about carousels — it went unanswered for a round. Check the
+tail for <em>content</em>, not just for whether an agent line comes after Matt's.</p>
+<h2>What we decided</h2>
+<p><strong><code>docs/hooks.md</code> is new and canonical</strong> — one law for blurbs, deck lines and
+carousel slide 1. A six-question cold-reader test (subject, whole sentence,
+today, picture, stakes, advance) plus a seventh that only appears in bulk.</p>
+<p>The five failures in the Surplus blurb, all diagnosable:
+subject never named in plain words ("farming" appeared nowhere); riddle opening
+("Grain keeps. That is the whole problem."); nothing from the reader's own week;
+a thesis where a picture belongs; and the blurb restating the deck.</p>
+<h2>What worked — the method, and reuse it</h2>
+<p>A <strong>writer agent and a cold-reader agent, separate contexts.</strong> The cold reader
+is told to read <em>only</em> the blurb JSON — no style guide, no positioning, no
+author intent. Its blindness is the whole value. Three rounds:
+10/16 → (fixes) → 14/16 clean.</p>
+<p>The finding neither the writer nor I could have made alone: <strong>every one of the
+sixteen closed with "This book is/follows/explains…"</strong>, and Money/Dollar and
+Wire/Feed opened on the same image. Each blurb passed on its own; the page
+failed. Now capped at five of sixteen. That rule is in hooks.md.</p>
+<h2>What we abandoned</h2>
+<ul>
+<li>My own hand-patches of Dollar and Bomb — a live subagent was still editing the
+  same file and overwrote them, and its versions were better. <strong>Do not edit a
+  file a subagent still holds.</strong> Wait for the task notification, or snapshot.</li>
+<li>The second cold read (<code>coldread-v3.md</code>) is worthless — it ran against a
+  mid-flight file. Ignore it; <code>coldread-final.md</code> is the real one.</li>
+</ul>
+<h2>Open questions</h2>
+<ul>
+<li>Two known soft spots, left in on purpose rather than over-polished: Money's
+  closer is the weakest of the sixteen, and Barrel/Chokepoint still sit close
+  together as subjects.</li>
+<li>The decks were only lightly touched. If Matt is still cold on a book, the deck
+  is the next thing to attack, not the blurb.</li>
+<li>The same audit has not yet been run on the carousel slide-1 hooks or the
+  landing page. <code>news-hook-fix</code> is still active and hooks.md now governs it.</li>
+</ul>
+<h2>Pointers</h2>
+<ul>
+<li><code>docs/hooks.md</code> — the law.</li>
+<li><code>data/covers/blurbs-final.json</code> — the source text; <code>merge_v2.py</code> pushes it into
+  <code>covers.json</code> and <code>catalogue.md</code>. Never hand-edit those two.</li>
+<li><code>data/covers/coldread-final.md</code> — the audit that passed 14/16.</li>
+</ul>
+<footer>Draft — built by the agent, judged by Matt</footer>
+</div></body></html>
