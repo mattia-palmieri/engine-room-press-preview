@@ -33,20 +33,27 @@ p{font:400 18px/1.6 Newsreader,Georgia,serif;max-width:60ch;margin:0 0 16px}
 ul.g{list-style:none;margin:0;padding:0;display:grid;
  grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--u)}
 @media(max-width:900px){ul.g{grid-template-columns:minmax(0,1fr)}}
-li.it{min-width:0;display:flex;gap:24px;align-items:flex-start}
-.frame{display:block;position:relative;flex:0 0 120px;width:120px;
+li.it{min-width:0;display:grid;grid-template-columns:120px minmax(0,1fr);
+ column-gap:24px;row-gap:0;align-items:start}
+.frame{display:block;position:relative;grid-column:1;grid-row:1;width:120px;
  border:1px solid var(--rule);background:var(--white)}
+.txt{grid-column:2;grid-row:1}
 .frame img{width:100%;display:block}
-.txt{min-width:0}
 .cap{display:block;
  font:500 11px/1.4 "IBM Plex Mono",monospace;letter-spacing:.10em;
  text-transform:uppercase;color:#5c5f63}
 .cap .num{color:var(--rule)}
 .deck{display:block;padding-top:6px;
  font:500 17px/1.35 Newsreader,Georgia,serif;color:var(--ink)}
-.blurb{font:400 16px/1.55 Newsreader,Georgia,serif;color:#3d4145;
+.blurb{grid-column:2;grid-row:2;min-width:0;
+ font:400 16px/1.55 Newsreader,Georgia,serif;color:#3d4145;
  margin:12px 0 0;max-width:46ch}
-@media(max-width:400px){li.it{gap:16px}.frame{flex-basis:96px;width:96px}}
+/* Under 560px a 120px cover leaves ~26 characters a line, which is unreadable.
+   So the blurb drops below the cover and takes the full width. */
+@media(max-width:560px){
+ li.it{grid-template-columns:96px minmax(0,1fr);column-gap:16px}
+ .frame{width:96px}
+ .blurb{grid-column:1 / -1;grid-row:2;margin-top:16px;max-width:none}}
 /* the sign-up block */
 .signup{background:var(--ink);color:var(--paper);margin-top:calc(var(--u)*2);
  padding:var(--u) 24px;position:relative;z-index:1}
@@ -91,32 +98,32 @@ each one ships.</p>
   <div class=txt>
     <span class=cap><span class=num>01</span> The Surplus</span>
     <span class=deck>How food you don&rsquo;t eat today invented kings, taxes and cities.</span>
-    <p class=blurb>Grain keeps. That is the whole problem. A hunter who kills more than he can eat has a mess. A farmer who grows more than he can eat has a store, and a store needs a wall, a guard, a count, and someone whose job is the counting. Every hierarchy on earth grows out of a full barn. This is the book about the first machine humans built without noticing: food you do not eat today, turned into somebody else&rsquo;s power over you tomorrow.</p>
   </div>
+  <p class=blurb>Grain keeps. That is the whole problem. A hunter who kills more than he can eat has a mess. A farmer who grows more than he can eat has a store, and a store needs a wall, a guard, a count, and someone whose job is the counting. Every hierarchy on earth grows out of a full barn. This is the book about the first machine humans built without noticing: food you do not eat today, turned into somebody else&rsquo;s power over you tomorrow.</p>
 </li>
 <li class=it>
   <span class=frame><img src="cover-02.png" alt="The Engine" loading=lazy></span>
   <div class=txt>
     <span class=cap><span class=num>02</span> The Engine</span>
     <span class=deck>How burning coal broke the ceiling on what muscles could lift.</span>
-    <p class=blurb>For almost all of history nothing moved faster than a horse and nothing lifted more than a lot of men. Then we found a way to burn a rock and get work out of it, and the ceiling came off. Every promise you have ever heard about growth, wages, holidays and the next generation doing better sits on that one trick. It is about two hundred years old. This book is what it made possible, what it costs, and why &ldquo;more every year&rdquo; was never a law of nature.</p>
   </div>
+  <p class=blurb>For almost all of history nothing moved faster than a horse and nothing lifted more than a lot of men. Then we found a way to burn a rock and get work out of it, and the ceiling came off. Every promise you have ever heard about growth, wages, holidays and the next generation doing better sits on that one trick. It is about two hundred years old. This book is what it made possible, what it costs, and why &ldquo;more every year&rdquo; was never a law of nature.</p>
 </li>
 <li class=it>
   <span class=frame><img src="cover-03.png" alt="The Barrel" loading=lazy></span>
   <div class=txt>
     <span class=cap><span class=num>03</span> The Barrel</span>
     <span class=deck>How oil turned energy into something you must ship, and therefore guard.</span>
-    <p class=blurb>Coal is heavy and stays roughly where you found it. Oil flows, which means it can be pumped, piped, shipped and taken. The moment the world ran on a liquid, energy became something that travels, and anything that travels can be stopped. That is why a strait you could not point to on a map sets the price of your food. This book follows the barrel from the ground to the tanker to your bill, and shows how energy quietly turned into geography.</p>
   </div>
+  <p class=blurb>Coal is heavy and stays roughly where you found it. Oil flows, which means it can be pumped, piped, shipped and taken. The moment the world ran on a liquid, energy became something that travels, and anything that travels can be stopped. That is why a strait you could not point to on a map sets the price of your food. This book follows the barrel from the ground to the tanker to your bill, and shows how energy quietly turned into geography.</p>
 </li>
 <li class=it>
   <span class=frame><img src="cover-04.png" alt="The Machine" loading=lazy></span>
   <div class=txt>
     <span class=cap><span class=num>04</span> The Machine</span>
     <span class=deck>How a device that copies thinking is doing to offices what the engine did to muscles.</span>
-    <p class=blurb>The engine copied muscle, and offices filled up with people paid to do the thinking instead. Now something copies the thinking. The public argument about it is loud and useless: one side says everything changes, the other says nothing does, and neither will tell you what is actually being automated. This book takes the boring route. What a machine like this can and cannot do, what happened the last four times work was mechanised, and what it did to wages, status and the people in the middle.</p>
   </div>
+  <p class=blurb>The engine copied muscle, and offices filled up with people paid to do the thinking instead. Now something copies the thinking. The public argument about it is loud and useless: one side says everything changes, the other says nothing does, and neither will tell you what is actually being automated. This book takes the boring route. What a machine like this can and cannot do, what happened the last four times work was mechanised, and what it did to wages, status and the people in the middle.</p>
 </li>
 </ul>
 
@@ -127,32 +134,32 @@ each one ships.</p>
   <div class=txt>
     <span class=cap><span class=num>05</span> Writing</span>
     <span class=deck>How memory outside a human head made the state possible.</span>
-    <p class=blurb>Writing was not invented to tell stories. The oldest texts anyone can read are receipts. Somebody was counting barley, somebody owed somebody else, and one person&rsquo;s memory was no longer big enough to hold it. Put memory outside a human head and you can run a temple, then a city, then an empire, and you can hold a stranger to a promise he made years ago and has every reason to forget. The killer app of literacy was paperwork. This book is what that unlocked.</p>
   </div>
+  <p class=blurb>Writing was not invented to tell stories. The oldest texts anyone can read are receipts. Somebody was counting barley, somebody owed somebody else, and one person&rsquo;s memory was no longer big enough to hold it. Put memory outside a human head and you can run a temple, then a city, then an empire, and you can hold a stranger to a promise he made years ago and has every reason to forget. The killer app of literacy was paperwork. This book is what that unlocked.</p>
 </li>
 <li class=it>
   <span class=frame><img src="cover-06.png" alt="Print" loading=lazy></span>
   <div class=txt>
     <span class=cap><span class=num>06</span> Print</span>
     <span class=deck>How copies made without permission broke the monopoly on truth.</span>
-    <p class=blurb>Before print, a copy needed permission. Somebody with power decided what was worth months of a scribe&rsquo;s labour, and that decision was the quiet control on what a whole society could think. A machine that copies without asking broke it inside one generation. What came out looked like religion, then like revolution, then like news. This book is about what happens when the cost of a copy collapses, and why the same machine keeps running: every time copying gets cheaper, somebody loses a monopoly on the truth.</p>
   </div>
+  <p class=blurb>Before print, a copy needed permission. Somebody with power decided what was worth months of a scribe&rsquo;s labour, and that decision was the quiet control on what a whole society could think. A machine that copies without asking broke it inside one generation. What came out looked like religion, then like revolution, then like news. This book is about what happens when the cost of a copy collapses, and why the same machine keeps running: every time copying gets cheaper, somebody loses a monopoly on the truth.</p>
 </li>
 <li class=it>
   <span class=frame><img src="cover-07.png" alt="The Wire" loading=lazy></span>
   <div class=txt>
     <span class=cap><span class=num>07</span> The Wire</span>
     <span class=deck>How killing the delay between here and there synchronised markets, armies and empires.</span>
-    <p class=blurb>For every century before this one, news travelled at the speed of a horse or a ship, and everybody built their life around the delay. Prices differed between cities. Armies fought battles after the peace was signed. Then a wire made distance take no time, and the world had to agree on when &ldquo;now&rdquo; was. Clocks, time zones, markets that never close and the expectation that you answer tonight all come from the same place. This book is the invention of real time, and the bill for it.</p>
   </div>
+  <p class=blurb>For every century before this one, news travelled at the speed of a horse or a ship, and everybody built their life around the delay. Prices differed between cities. Armies fought battles after the peace was signed. Then a wire made distance take no time, and the world had to agree on when &ldquo;now&rdquo; was. Clocks, time zones, markets that never close and the expectation that you answer tonight all come from the same place. This book is the invention of real time, and the bill for it.</p>
 </li>
 <li class=it>
   <span class=frame><img src="cover-08.png" alt="The Feed" loading=lazy></span>
   <div class=txt>
     <span class=cap><span class=num>08</span> The Feed</span>
     <span class=deck>How a copy machine that ranks what you see turned attention into the scarce resource.</span>
-    <p class=blurb>There is more to read than anyone can read, so something has to choose. Once a machine does the choosing, the scarce thing is no longer information. It is your attention, and it is for sale. This book is what happens to a society when the thing that ranks what you see is paid by how long you look. Not a scandal, not a panic. The mechanism: how ranking works, what it rewards, and why two people can read the same day&rsquo;s news and end up sharing no facts at all.</p>
   </div>
+  <p class=blurb>There is more to read than anyone can read, so something has to choose. Once a machine does the choosing, the scarce thing is no longer information. It is your attention, and it is for sale. This book is what happens to a society when the thing that ranks what you see is paid by how long you look. Not a scandal, not a panic. The mechanism: how ranking works, what it rewards, and why two people can read the same day&rsquo;s news and end up sharing no facts at all.</p>
 </li>
 </ul>
 
@@ -163,32 +170,32 @@ each one ships.</p>
   <div class=txt>
     <span class=cap><span class=num>09</span> Money</span>
     <span class=deck>How a shared fiction about debt became the thing everyone spends their life chasing.</span>
-    <p class=blurb>Nobody can eat it, drink it or wear it, and everybody spends their life chasing it. Money works because we all act as though it works, which sounds like a con until you notice the con has never once failed for long. This book asks the question school skipped: where does money come from, who is allowed to make it, and what exactly are you holding. Money is a promise. Most of the modern economy is an argument about who gets to make promises, and who has to keep them.</p>
   </div>
+  <p class=blurb>Nobody can eat it, drink it or wear it, and everybody spends their life chasing it. Money works because we all act as though it works, which sounds like a con until you notice the con has never once failed for long. This book asks the question school skipped: where does money come from, who is allowed to make it, and what exactly are you holding. Money is a promise. Most of the modern economy is an argument about who gets to make promises, and who has to keep them.</p>
 </li>
 <li class=it>
   <span class=frame><img src="cover-10.png" alt="Gods" loading=lazy></span>
   <div class=txt>
     <span class=cap><span class=num>10</span> Gods</span>
     <span class=deck>How a story nobody can check moved millions of people the same way.</span>
-    <p class=blurb>A story a million people believe can move them the same way on the same day, with nobody giving an order. No army can do that. This book treats religion as a piece of technology rather than a question of belief: what it let humans do that nothing else could, which was trust a stranger, keep a promise nobody witnessed, and hold a group together past the size where everyone knows everyone. Judged by what it built, not by whether it is true.</p>
   </div>
+  <p class=blurb>A story a million people believe can move them the same way on the same day, with nobody giving an order. No army can do that. This book treats religion as a piece of technology rather than a question of belief: what it let humans do that nothing else could, which was trust a stranger, keep a promise nobody witnessed, and hold a group together past the size where everyone knows everyone. Judged by what it built, not by whether it is true.</p>
 </li>
 <li class=it>
   <span class=frame><img src="cover-11.png" alt="The Nation" loading=lazy></span>
   <div class=txt>
     <span class=cap><span class=num>11</span> The Nation</span>
     <span class=deck>How a very recent invention came to feel eternal.</span>
-    <p class=blurb>Ask somebody what they are and they will name a country, as if it were a fact about their body. The idea is younger than the piano. Somebody had to invent it: that strangers who will never meet share a people, a language worth standardising, a border worth dying at. This book is how that was done, who did it, and what it replaced. When you finish, the most emotional subject in the news is a machine with parts you can name.</p>
   </div>
+  <p class=blurb>Ask somebody what they are and they will name a country, as if it were a fact about their body. The idea is younger than the piano. Somebody had to invent it: that strangers who will never meet share a people, a language worth standardising, a border worth dying at. This book is how that was done, who did it, and what it replaced. When you finish, the most emotional subject in the news is a machine with parts you can name.</p>
 </li>
 <li class=it>
   <span class=frame><img src="cover-12.png" alt="The Company" loading=lazy></span>
   <div class=txt>
     <span class=cap><span class=num>12</span> The Company</span>
     <span class=deck>How we invented a person made of paper that never dies and cannot be jailed.</span>
-    <p class=blurb>We invented a person who is not a person. It can own things, sign things, be sued, live forever, and go bankrupt without a single human losing his house. That last part is the whole invention, and almost nobody can explain it. This book is about limited liability, the most underrated idea in the modern world: what it unlocked, what it lets people walk away from, and why nearly everything large built since has been built by a person made of paper that no court can jail.</p>
   </div>
+  <p class=blurb>We invented a person who is not a person. It can own things, sign things, be sued, live forever, and go bankrupt without a single human losing his house. That last part is the whole invention, and almost nobody can explain it. This book is about limited liability, the most underrated idea in the modern world: what it unlocked, what it lets people walk away from, and why nearly everything large built since has been built by a person made of paper that no court can jail.</p>
 </li>
 </ul>
 
@@ -199,32 +206,32 @@ each one ships.</p>
   <div class=txt>
     <span class=cap><span class=num>13</span> The Map</span>
     <span class=deck>How straight lines drawn by strangers became the borders people now die for.</span>
-    <p class=blurb>Some borders follow a river. Others are straight, and a straight border means somebody drew it in a room far away, quickly, with a pencil and an interest. Those lines are still on the ground and people are still dying at them. This book is about the century in which most of the world&rsquo;s map was drawn by strangers: what they thought they were deciding, what they were actually deciding, and why so much of today&rsquo;s news is an argument with a hundred-year-old pencil.</p>
   </div>
+  <p class=blurb>Some borders follow a river. Others are straight, and a straight border means somebody drew it in a room far away, quickly, with a pencil and an interest. Those lines are still on the ground and people are still dying at them. This book is about the century in which most of the world&rsquo;s map was drawn by strangers: what they thought they were deciding, what they were actually deciding, and why so much of today&rsquo;s news is an argument with a hundred-year-old pencil.</p>
 </li>
 <li class=it>
   <span class=frame><img src="cover-14.png" alt="The Chokepoint" loading=lazy></span>
   <div class=txt>
     <span class=cap><span class=num>14</span> The Chokepoint</span>
     <span class=deck>How a handful of narrow places decide the price of everything.</span>
-    <p class=blurb>Look at a world map and trade looks like open ocean. It is not. Nearly everything you own passed through one of a handful of gaps narrow enough to see across, and each one has a country sitting on it. This book is Hormuz, Suez, Malacca and Panama: why the routes run where they run, what a closure actually does to a price and then to a shelf, and why the strongest countries on earth spend so much money keeping water open.</p>
   </div>
+  <p class=blurb>Look at a world map and trade looks like open ocean. It is not. Nearly everything you own passed through one of a handful of gaps narrow enough to see across, and each one has a country sitting on it. This book is Hormuz, Suez, Malacca and Panama: why the routes run where they run, what a closure actually does to a price and then to a shelf, and why the strongest countries on earth spend so much money keeping water open.</p>
 </li>
 <li class=it>
   <span class=frame><img src="cover-15.png" alt="The Dollar" loading=lazy></span>
   <div class=txt>
     <span class=cap><span class=num>15</span> The Dollar</span>
     <span class=deck>How one country&rsquo;s money became everyone&rsquo;s money, and what that buys it.</span>
-    <p class=blurb>An Indonesian firm buying Brazilian coffee pays in dollars. Neither of them is American and neither finds this strange. This book explains how one country&rsquo;s money became the money everybody else has to hold, what that arrangement buys the country that issues it, and how a currency becomes a switch that can turn another country off. Sanctions, reserves and the phrase &ldquo;exorbitant privilege&rdquo; stop being financial vocabulary and turn into a thing you can watch working.</p>
   </div>
+  <p class=blurb>An Indonesian firm buying Brazilian coffee pays in dollars. Neither of them is American and neither finds this strange. This book explains how one country&rsquo;s money became the money everybody else has to hold, what that arrangement buys the country that issues it, and how a currency becomes a switch that can turn another country off. Sanctions, reserves and the phrase &ldquo;exorbitant privilege&rdquo; stop being financial vocabulary and turn into a thing you can watch working.</p>
 </li>
 <li class=it>
   <span class=frame><img src="cover-16.png" alt="The Bomb" loading=lazy></span>
   <div class=txt>
     <span class=cap><span class=num>16</span> The Bomb</span>
     <span class=deck>How a weapon too big to use rewrote what powerful countries do instead of fighting.</span>
-    <p class=blurb>A weapon too big to use changed what powerful countries do all day. They stopped invading each other and started doing everything else instead: proxies, coups, sanctions, alliances, aid, and very long arguments about missiles in other people&rsquo;s countries. This book is the strangest bargain in history and the shape it gave the last eighty years. Why the big war never came, what got fought in its place, and why the arrangement holds by less than most people assume.</p>
   </div>
+  <p class=blurb>A weapon too big to use changed what powerful countries do all day. They stopped invading each other and started doing everything else instead: proxies, coups, sanctions, alliances, aid, and very long arguments about missiles in other people&rsquo;s countries. This book is the strangest bargain in history and the shape it gave the last eighty years. Why the big war never came, what got fought in its place, and why the arrangement holds by less than most people assume.</p>
 </li>
 </ul>
 </div>

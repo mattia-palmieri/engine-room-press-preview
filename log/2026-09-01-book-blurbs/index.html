@@ -1,0 +1,108 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Book blurbs — the sixteen descriptions — Engine Room Press</title><meta name="description" content="Sixteen real blurbs written and shipped to /covers/ and catalogue.md; shelf relaid out as cover-beside-text; fixed the swapped Part II/III labels.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"><style>
+:root{--paper:#F7F6F1;--white:#fff;--ink:#14171A;--signal:#C1440E;--blue:#173B4E;
+--rule:#C7C4B8;--faint:#E4E2D8}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);
+font:400 18px/1.62 Newsreader,Georgia,serif;-webkit-text-size-adjust:100%}
+.wrap{max-width:660px;margin:0 auto;padding:32px 20px 96px}
+a{color:var(--ink)}
+.mast{border-bottom:1px solid var(--ink);padding-bottom:10px;margin-bottom:28px;
+display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.mono,.tag,.mast,.kicker,.crumb,th{font-family:"IBM Plex Mono",ui-monospace,monospace;
+font-weight:500;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.mast a{text-decoration:none}
+h1{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:700;
+font-size:clamp(30px,8vw,44px);line-height:1.06;letter-spacing:-.02em;margin:0 0 14px}
+.lede{font-size:19px;color:#3a3f44;margin-bottom:14px}
+h2{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:23px;
+line-height:1.2;margin:38px 0 12px}
+h3{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:19px;margin:26px 0 8px}
+p,li{margin-bottom:12px}
+ul,ol{padding-left:22px}
+strong{font-weight:600}
+code{font-family:"IBM Plex Mono",monospace;font-size:.85em;background:#ECEAE0;padding:1px 4px}
+pre{background:var(--ink);color:#F7F6F1;padding:16px;overflow-x:auto;margin:16px 0;font-size:13px}
+pre code{background:none;color:inherit;padding:0}
+blockquote{border-left:2px solid var(--signal);padding-left:14px;color:#3a3f44;margin:16px 0}
+hr{border:0;border-top:1px solid var(--rule);margin:32px 0}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:16px 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--rule);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:#ECEAE0;font-size:11px}
+img{max-width:100%;height:auto;display:block}
+/* section head with figure number */
+.fig{display:flex;align-items:baseline;gap:12px;margin:44px 0 4px;
+border-top:1px solid var(--ink);padding-top:10px}
+.fig .n{color:var(--signal)}
+.fig h2{margin:0;font-size:21px}
+.note{color:#3a3f44;font-size:16px;margin:4px 0 14px}
+/* rows */
+a.row{display:block;text-decoration:none;color:inherit;border:1px solid var(--rule);
+border-top:0;background:var(--white);padding:15px 16px}
+a.row:first-of-type{border-top:1px solid var(--rule)}
+a.row:hover{border-color:var(--signal)}
+a.row .t{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:17px}
+a.row .t .arw{color:var(--signal)}
+a.row .s{display:block;color:#3a3f44;font-size:15px;line-height:1.45;margin-top:4px}
+a.row .d{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+color:#6b6f73;text-transform:uppercase;margin-top:6px;display:block}
+.crumb{display:inline-block;margin-bottom:22px;text-decoration:none;color:var(--signal)}
+footer{margin-top:56px;border-top:1px solid var(--rule);padding-top:14px;
+font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+text-transform:uppercase;color:#6b6f73}
+.badge{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;
+padding:2px 6px;border:1px solid var(--rule);text-transform:uppercase}
+.badge.active{border-color:var(--signal);color:var(--signal)}
+.badge.done{color:#6b6f73}
+</style></head><body><div class="wrap">
+<div class="mast"><a href="../">Engine Room Press</a><span>Working preview</span></div>
+<a class="crumb" href="../">&larr; All of it</a><p class="lede">Sixteen real blurbs written and shipped to /covers/ and catalogue.md; shelf relaid out as cover-beside-text; fixed the swapped Part II/III labels.</p><h1>Book blurbs — the sixteen descriptions</h1>
+<p>Matt's note: "title + one liner is not enough… the small chapter describing the
+book is where we need to be super good." This is that job.</p>
+<h2>What we decided</h2>
+<p><strong>One blurb shape, used sixteen times.</strong> Open on a tension the reader already
+half-feels, name the machinery in plain words, close on what changes in his head.
+60–100 words. No dates, no proper nouns doing no work, no exclamation, no
+"discover" / "journey" / "delve" register. Written against <code>house-style.md</code> §4
+(long-long-short rhythm, physical metaphor, "we" over "you").</p>
+<p><strong>The blurb lives in <code>covers.json</code>, not in the HTML and not only in the doc.</strong>
+<code>covers.json</code> is now the single source for all sixteen books: number, part, part
+name, colour field, title, deck, blurb. <code>shelf.py</code> renders the page from it and
+<code>docs/catalogue.md</code> was regenerated from the same records. One place to edit.</p>
+<p><strong>The shelf layout had to change to carry them.</strong> A 90-word paragraph under a
+4-up thumbnail grid is unreadable. Now every book is a row: 120px cover on the
+left (96px under 400px wide), title + deck + blurb on the right. Two columns on
+desktop, one column under 900px. The four covers of a part still sit adjacent,
+so the series look survives.</p>
+<h2>Bug found and fixed</h2>
+<p><code>/covers/</code> had <strong>Part II labelled Stories and Part III labelled Communication</strong> —
+swapped. Cause: <code>shelf.py</code> kept its own hand-written <code>PARTS</code> list beside the
+<code>partname</code> field already in <code>covers.json</code>, and the two drifted. The page shipped
+wrong for about a day. Fix: <code>PARTS</code> is now derived from <code>covers.json</code>, so a
+second list cannot drift again. Comment left in the file saying why.</p>
+<h2>What we did not do</h2>
+<ul>
+<li><strong>No per-book landing pages.</strong> The blurb is the product page for now. Sixteen
+  routes for sixteen unwritten books is scaffolding for a need that has not
+  arrived.</li>
+<li><strong>No sample chapter or "look inside".</strong> Nothing is written yet, so there is
+  nothing honest to show.</li>
+</ul>
+<h2>Open questions</h2>
+<ul>
+<li>The blurbs are unverified as <em>copy</em>: nobody has read them cold. Matt reading
+  three at random on his phone is the actual test, and it is the <code>done_when</code>.</li>
+<li>Do the blurbs belong on the landing page too? Probably not all sixteen — that
+  is a <code>copy-rollout</code> question, still todo.</li>
+</ul>
+<h2>Pointers</h2>
+<ul>
+<li><code>data/covers/covers.json</code> — the sixteen records, blurbs included. Edit here.</li>
+<li><code>data/covers/shelf.py</code> — renders <code>/covers/</code>. Rerun it, then <code>bin/publish.sh</code>.</li>
+<li><code>docs/catalogue.md</code> — regenerated with the blurbs under each title.</li>
+<li><code>data/audits/covers-blurbs-phone.md</code> — phone-render audit of the new layout.</li>
+</ul>
+<footer>Draft — built by the agent, judged by Matt</footer>
+</div></body></html>
