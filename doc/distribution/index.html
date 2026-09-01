@@ -109,9 +109,37 @@ perishable and the card should admit it. Everything else is the standard
 same pattern as the evergreen cards — edit the JSON, re-run, never hand-edit the
 HTML.</p>
 <h3>Format B — the essentials (evergreen, 3 a week)</h3>
-<p>The existing set: one idea from a book's argument, told whole. <code>data/cards/</code>.
-These do not expire, they can be reposted, and they are what a new follower
-scrolls back through. The news carousels are what brought them there.</p>
+<p><strong>A four-slide carousel, one per book, always the same four beats.</strong> A single card
+can state a thing. It cannot build the feeling we sell, which is <em>I wish somebody
+had explained this to me.</em> That needs a hole, then a fact that falls into it, then
+a name for what you are now looking at.</p>
+<ol>
+<li><strong>THE HOLE.</strong> A belief so ordinary the reader never noticed it was a claim,
+   stated so he can feel the crack in it. It must not resolve on the slide — the
+   only way to close it is to swipe. <em>"Every note in your wallet is a promise.
+   Nobody has to keep it."</em></li>
+<li><strong>THE ANCHOR.</strong> One checkable thing: a named institution, a date, an object.
+   This is the house-style pendulum's anchor, and it is what stops the carousel
+   being an opinion. <em>"The Bank of England put it in writing in 2014: loans create
+   deposits."</em></li>
+<li><strong>THE FORCE.</strong> Name the mechanism in plain words. The reader leaves with a
+   sentence he can repeat at dinner. <em>"Money is not a thing. It is permission to
+   make a promise."</em></li>
+<li><strong>THE BOOK.</strong> What the whole book does, the title in the callout, and the ask
+   in the bottom rail: <code>BOOK 09 · COMING SOON · LINK IN BIO</code>.</li>
+</ol>
+<p><strong>Colour has a job here</strong> — see <code>design.md</code>, the carousel colour rule. Slides 1–3
+carry the book's part colour, the same colour as its cover; slide 4 flips to the
+other field, so the ask announces itself before a word is read.</p>
+<p><strong>Ten carousels are built, one per book</strong>, covering the five in publishing order
+plus five more across all four parts: Money, The Chokepoint, The Nation, The Feed,
+The Dollar, The Company, The Surplus, Writing, The Barrel, Print. At three a week
+that is three weeks of evergreen posting. Source: <code>data/cards/cards.json</code>,
+generator <code>data/cards/build.py</code>, live at <code>/cards/</code>.</p>
+<p><strong>Four brand singles survive as single cards</strong> (the promise, who this is for, how
+we write). They stay single on purpose: a carousel must end by pointing at a book,
+and these point at the imprint. They are ink, always — the house voice has no part
+colour.</p>
 <h2>The funnel arithmetic</h2>
 <p>The chain from stranger to first euro:</p>
 <pre><code>Instagram reach → profile visit → bio-link click → email signup → book sale
