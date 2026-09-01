@@ -90,6 +90,16 @@ second list cannot drift again. Comment left in the file saying why.</p>
 <li><strong>No sample chapter or "look inside".</strong> Nothing is written yet, so there is
   nothing honest to show.</li>
 </ul>
+<h2>The phone fix, made before the audit came back</h2>
+<p>The first layout put the blurb in the right-hand column beside the cover at every
+width. On a 390px phone that column is about 198px wide, roughly 26 characters a
+line — a 90-word paragraph turns into a 35-line ribbon. Caught by arithmetic, not
+by a screenshot. The row is now a CSS grid: under 560px the blurb drops below the
+cover and takes the full width. Cover shrinks to 96px there.</p>
+<p>The phone audit then ran against the fixed page and found <strong>no defects</strong> at a
+verified true 390x844 (96px thumbnail, every row 342px, no horizontal overflow,
+blurb readable) or at 1280x900. Part labels confirmed correct in order, and the
+email form's error and thank-you states both work. <code>data/audits/covers-blurbs-phone.md</code>.</p>
 <h2>Open questions</h2>
 <ul>
 <li>The blurbs are unverified as <em>copy</em>: nobody has read them cold. Matt reading
