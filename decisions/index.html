@@ -462,5 +462,31 @@ in motion. Queued as <code>todo</code> (<code>primary-source-quotes</code>), not
   (single short sentence, attributed, rare) — kept as an option, but it is not a
   format and does not answer Matt's question.</p>
 <p><strong>Cost of being wrong:</strong> low. The primary-source card is one carousel to test.</p>
+<h2>2026-09-01 — The shelf is a coming-soon page, not a ballot</h2>
+<p><strong>Decision.</strong> <code>/covers/</code> drops the checkboxes and the "we write in the order you
+choose" promise. It becomes sixteen covers grouped by part, each with its deck, and
+one email box: <em>want to know when they are ready?</em> Emails go to Matt's inbox through
+FormSubmit.co — no database, no list platform, no account for the agent to create.</p>
+<p><strong>Why.</strong> Matt's call, and it is right. A public vote tells the reader we have no
+editorial plan; an imprint that asks its audience what to publish reads as amateur.
+The publishing order is our job. Matt also said explicitly: do the product, the design
+and the distribution first, and the email machinery later.</p>
+<p><strong>Options rejected.</strong>
+- <em>Keep the ballot, blocked on a Brevo form URL.</em> The design we shipped 2026-08-31.
+  Killed for the reason above, and it had been blocking on Matt for a day.
+- <em>Brevo / Mailchimp / ConvertKit now.</em> Real list platform, real double opt-in. It is
+  the right answer at 100 subscribers and the wrong one at zero — it needs an account,
+  a list, an attribute schema and a form embed before a single stranger has seen the
+  page.
+- <em>Google Form.</em> Free and works, but it is a Google-branded page off-site. The reader
+  leaves our design at the exact moment we ask for trust.
+- <em>localStorage only.</em> Truly zero-dependency, and we can never read a single address.
+- <em>Netlify Forms.</em> Free and elegant, but the site is on GitHub Pages; moving hosts to
+  collect emails is the tail wagging the dog.</p>
+<p><strong>Known cost.</strong> FormSubmit needs one activation click from Matt the first time someone
+submits, and until then submissions vanish. The page never shows the reader a failure —
+it posts and thanks them either way — so the cost is silent lost addresses in the first
+hours, not a broken page. Matt's address is assembled in JS from parts rather than
+sitting in the HTML source, which stops naive scrapers and nothing more.</p>
 <footer>Draft — built by the agent, judged by Matt</footer>
 </div></body></html>
