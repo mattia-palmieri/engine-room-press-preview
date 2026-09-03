@@ -156,8 +156,9 @@ in a scrolling feed.</p>
   <strong>News carousels obey the same rule</strong>, taking the colour of the book they land on:
   Hormuz lands on <em>The Barrel</em> (Part I), so slides 1 and 2 are <code>ink</code> and slide 3, the
   ask, flips to <code>field_blue</code>. Alternating colour slide by slide is banned — it looked
-  like rhythm and meant nothing. <strong>The ten built cards still carry the old two-colour
-  scheme and are wrong</strong> until they are regenerated (<code>cards-recolour</code> in the queue).</li>
+  like rhythm and meant nothing. All forty-four built cards and the three news cards
+  follow this rule; <code>data/cards/build.py</code> derives the field from the book's part, so
+  the card colour and the cover colour cannot drift apart.</li>
 <li><strong>Headline: display grotesk, 76–96px, max 14 words, filling the upper two-thirds.</strong>
   If it needs more than 14 words it is not a card, it is a caption.</li>
 <li>One word may take <code>signal</code> red. One only.</li>
