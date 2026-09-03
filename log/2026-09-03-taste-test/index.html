@@ -1,0 +1,122 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Session — the blind taste test — Engine Room Press</title><meta name="description" content="The ask for one positive blurb example was failing because it asked Matt to remember. Rebuilt it as recognition — a ten-blurb blind taste test at /taste/, three of ours hidden among seven real published ones. Every blurb item is now parked on his answer.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"><style>
+:root{--paper:#F7F6F1;--white:#fff;--ink:#14171A;--signal:#C1440E;--blue:#173B4E;
+--rule:#C7C4B8;--faint:#E4E2D8}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);
+font:400 18px/1.62 Newsreader,Georgia,serif;-webkit-text-size-adjust:100%}
+.wrap{max-width:660px;margin:0 auto;padding:32px 20px 96px}
+a{color:var(--ink)}
+.mast{border-bottom:1px solid var(--ink);padding-bottom:10px;margin-bottom:28px;
+display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.mono,.tag,.mast,.kicker,.crumb,th{font-family:"IBM Plex Mono",ui-monospace,monospace;
+font-weight:500;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.mast a{text-decoration:none}
+h1{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:700;
+font-size:clamp(30px,8vw,44px);line-height:1.06;letter-spacing:-.02em;margin:0 0 14px}
+.lede{font-size:19px;color:#3a3f44;margin-bottom:14px}
+h2{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:23px;
+line-height:1.2;margin:38px 0 12px}
+h3{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:19px;margin:26px 0 8px}
+p,li{margin-bottom:12px}
+ul,ol{padding-left:22px}
+strong{font-weight:600}
+code{font-family:"IBM Plex Mono",monospace;font-size:.85em;background:#ECEAE0;padding:1px 4px}
+pre{background:var(--ink);color:#F7F6F1;padding:16px;overflow-x:auto;margin:16px 0;font-size:13px}
+pre code{background:none;color:inherit;padding:0}
+blockquote{border-left:2px solid var(--signal);padding-left:14px;color:#3a3f44;margin:16px 0}
+hr{border:0;border-top:1px solid var(--rule);margin:32px 0}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:16px 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--rule);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:#ECEAE0;font-size:11px}
+img{max-width:100%;height:auto;display:block}
+/* section head with figure number */
+.fig{display:flex;align-items:baseline;gap:12px;margin:44px 0 4px;
+border-top:1px solid var(--ink);padding-top:10px}
+.fig .n{color:var(--signal)}
+.fig h2{margin:0;font-size:21px}
+.note{color:#3a3f44;font-size:16px;margin:4px 0 14px}
+/* rows */
+a.row{display:block;text-decoration:none;color:inherit;border:1px solid var(--rule);
+border-top:0;background:var(--white);padding:15px 16px}
+a.row:first-of-type{border-top:1px solid var(--rule)}
+a.row:hover{border-color:var(--signal)}
+a.row .t{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:17px}
+a.row .t .arw{color:var(--signal)}
+a.row .s{display:block;color:#3a3f44;font-size:15px;line-height:1.45;margin-top:4px}
+a.row .d{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+color:#6b6f73;text-transform:uppercase;margin-top:6px;display:block}
+.crumb{display:inline-block;margin-bottom:22px;text-decoration:none;color:var(--signal)}
+footer{margin-top:56px;border-top:1px solid var(--rule);padding-top:14px;
+font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+text-transform:uppercase;color:#6b6f73}
+.badge{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;
+padding:2px 6px;border:1px solid var(--rule);text-transform:uppercase}
+.badge.active{border-color:var(--signal);color:var(--signal)}
+.badge.done{color:#6b6f73}
+</style></head><body><div class="wrap">
+<div class="mast"><a href="../">Engine Room Press</a><span>Working preview</span></div>
+<a class="crumb" href="../">&larr; All of it</a><p class="lede">The ask for one positive blurb example was failing because it asked Matt to remember. Rebuilt it as recognition — a ten-blurb blind taste test at /taste/, three of ours hidden among seven real published ones. Every blurb item is now parked on his answer.</p><h1>Session — the blind taste test</h1>
+<h2>The state I found</h2>
+<p>Nothing unanswered in <code>chat.jsonl</code>; the last three lines were all mine. One
+active item, <code>blurb-eval-surplus</code>, whose <code>done_when</code> reads: <em>Matt names one
+blurb, from any book anywhere, that made him want to read it.</em> Two rounds had
+already asked him for it in plain words. He had not answered either.</p>
+<h2>What we decided</h2>
+<p><strong>The ask was the problem, not the answer.</strong> "Name a blurb you loved" is a
+recall task. It needs him to remember a paragraph from a book shop, find it,
+screenshot it, and send it. On a phone, in a spare minute, that is a large job,
+and the evidence is that it did not get done twice.</p>
+<p>So the ask was rebuilt as <strong>recognition</strong>: ten blurbs on one page, tap the ones
+you would read. Live at <code>/taste/</code>. Three minutes, no typing, no memory.</p>
+<p><strong>Seven real published blurbs, three of ours, blind.</strong> The real seven are jacket
+copy from <em>Salt</em>, <em>Material World</em>, <em>The Box</em>, <em>Stuff Matters</em>, <em>Cod</em>, <em>An
+Edible History of Humanity</em> and <em>Prisoners of Geography</em> — books that sold. Ours
+are the three Surplus drafts. All trimmed by deletion only, to 66–103 words, so
+length carries no signal. No titles, no authors, no covers.</p>
+<p><strong>Why ours are in there.</strong> A blind yes on our own copy is the strongest result
+available: it is a positive anchor <em>and</em> it is on a book we are actually writing.
+If he picks only real ones, the gap between his picks and ours is the diagnosis.
+If he picks nothing, that is the most useful answer of the three — it says the
+blurb is not the lever, and the money goes to the premise, the cover or the price
+instead. All three outcomes are informative, which is the test for whether an ask
+is worth sending.</p>
+<p><strong>Nothing new was researched.</strong> Run 6 had already collected ten real blurbs
+verbatim with source URLs and trimmed nine candidates. Eight of the ten items on
+the page are those files, re-shuffled and re-numbered. <em>Cod</em> was pulled in from
+the same file to round the set to ten.</p>
+<p><strong>The interaction is a tap plus one copy button.</strong> Tap toggles a blurb; a fixed
+foot bar shows the running list; the red button copies <code>I would read: 2, 7</code> to
+the clipboard so he pastes it straight into Telegram. Fifteen lines of
+JavaScript, no form, no backend, no FormSubmit dependency.</p>
+<h2>What we tried and abandoned</h2>
+<ul>
+<li><strong>Asking again in words.</strong> Two rounds of it produced nothing. Repeating a
+  failed ask louder is not a plan.</li>
+<li><strong>Finding a positive example myself.</strong> The whole point is that the missing
+  thing is <em>his</em> taste, not a better-argued judgement of mine. An example I chose
+  would recreate the run 6 circularity in a new place.</li>
+<li><strong>A grid of covers instead of blurbs.</strong> Tempting and prettier, but it would
+  test cover appeal, which is not the broken instrument.</li>
+<li><strong>A form that posts the answer.</strong> FormSubmit is still unactivated, so a form
+  would silently swallow the one answer we have been waiting a week for.</li>
+</ul>
+<h2>The queue changed shape</h2>
+<p><code>blurb-eval-surplus</code> is <strong>parked to <code>todo</code></strong>, explicitly waiting on Matt and
+nothing else — no further rewrite round can be validated against a pile of pure
+no's. <code>surplus-positive-example</code> now names the instrument and its <code>done_when</code> is
+his picks, or an explicit <em>none of them</em>. With no active item and the last word
+mine, the run goes quiet until he answers, which is the honest state.</p>
+<h2>Pointers</h2>
+<ul>
+<li><code>/taste/</code> — the page. <code>data/taste/index.html</code> is the source.</li>
+<li><code>data/taste/key.md</code> — <strong>the answer key. Do not show it to him before he
+  answers</strong>, and do not hint at which are ours; a primed answer is worth nothing.</li>
+<li><code>data/evals/surplus/r6-real-blurbs.md</code> — the ten real blurbs verbatim, each
+  with the publisher URL it came from.</li>
+<li><code>bin/build_site.py</code> — <code>taste</code> added to both surface lists and to the hub.</li>
+</ul>
+<footer>Draft — built by the agent, judged by Matt</footer>
+</div></body></html>

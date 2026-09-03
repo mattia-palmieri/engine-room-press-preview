@@ -1,0 +1,192 @@
+<!doctype html><html lang=en><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Ten backs of books &mdash; which ones would you read?</title>
+<meta name=description content="Ten blurbs, no titles, no authors. Tap the ones you would read. Three minutes.">
+<link rel=preconnect href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Newsreader:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel=stylesheet>
+<style>
+:root{--paper:#F7F6F1;--white:#fff;--ink:#14171A;--signal:#C1440E;
+--rule:#C7C4B8;--faint:#E4E2D8;--u:40px}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);
+ padding:var(--u) 0 140px}
+.gridlayer{position:fixed;top:0;bottom:0;left:50%;transform:translateX(-50%);
+ width:100%;max-width:1200px;pointer-events:none;z-index:0;
+ background-image:repeating-linear-gradient(to right,var(--faint) 0 1px,transparent 1px var(--u));
+ background-position-x:16px}
+@media(min-width:700px){.gridlayer{background-position-x:32px}}
+.w{max-width:1200px;margin:0 auto;position:relative;z-index:1;padding:0 16px}
+@media(min-width:700px){.w{padding:0 32px}}
+.col{max-width:640px}
+header{border-bottom:1px solid var(--rule);padding-bottom:24px;margin-bottom:var(--u)}
+h1{font:700 clamp(30px,6vw,52px)/1.08 "Space Grotesk",system-ui,sans-serif;
+ margin:0 0 24px;letter-spacing:-.02em;max-width:16ch}
+h1 em{font-style:normal;color:var(--signal)}
+p{font:400 18px/1.6 Newsreader,Georgia,serif;max-width:60ch;margin:0 0 16px}
+.lede{font-size:20px}
+.callout{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;margin:var(--u) 0 24px;
+ font:500 12px/1.4 "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase}
+.callout .tag{color:var(--signal)}
+.callout .lead{flex:1;border-top:1px dashed var(--rule);transform:translateY(-4px)}
+
+/* THE ITEM. A blurb is a flat field with a hairline. Tap toggles it. */
+ol.list{list-style:none;margin:0;padding:0;max-width:640px}
+li.b{margin:0 0 20px}
+button.card{display:block;width:100%;text-align:left;cursor:pointer;
+ background:var(--white);border:1px solid var(--rule);border-left:3px solid var(--rule);
+ border-radius:0;padding:20px 20px 22px;
+ -webkit-tap-highlight-color:transparent;transition:none}
+button.card .hd{display:flex;align-items:baseline;gap:12px;margin:0 0 12px;
+ font:500 11px/1.4 "IBM Plex Mono",monospace;letter-spacing:.14em;
+ text-transform:uppercase;color:#5c5f63}
+button.card .hd .n{background:var(--ink);color:var(--paper);padding:2px 8px}
+button.card .hd .lead{flex:1;border-top:1px dashed var(--rule);transform:translateY(-4px)}
+button.card .hd .state{color:#8b8e92}
+button.card .txt{font:400 17px/1.6 Newsreader,Georgia,serif;color:#3d4145;margin:0}
+button.card[aria-pressed=true]{border-color:var(--ink);border-left:3px solid var(--signal);
+ background:var(--paper)}
+button.card[aria-pressed=true] .hd .n{background:var(--signal)}
+button.card[aria-pressed=true] .hd .state{color:var(--signal)}
+button.card[aria-pressed=true] .txt{color:var(--ink)}
+
+/* THE TALLY. Fixed foot bar, the only red button on the page. */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--ink);
+ color:var(--paper);border-top:3px solid var(--signal)}
+.bar .in{max-width:1200px;margin:0 auto;padding:14px 16px;
+ display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+@media(min-width:700px){.bar .in{padding:14px 32px}}
+.bar .lab{font:500 11px/1.4 "IBM Plex Mono",monospace;letter-spacing:.14em;
+ text-transform:uppercase;color:#C9C6BC}
+.bar .picks{flex:1 1 120px;min-width:0;
+ font:700 18px/1.2 "Space Grotesk",system-ui,sans-serif;letter-spacing:.02em}
+.bar button{height:48px;padding:0 20px;border:0;border-radius:0;cursor:pointer;
+ background:var(--signal);color:#fff;
+ font:500 12px/1 "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase}
+.bar button[disabled]{background:#3a3d41;color:#8b8e92;cursor:default}
+footer{margin-top:var(--u);border-top:1px solid var(--rule);padding-top:20px}
+footer p{font:400 15px/1.6 Newsreader,Georgia,serif;color:#5c5f63}
+</style></head><body><div style="font:500 11px/1 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;background:#14171A;padding:11px 16px;text-align:center"><a href="../" style="color:#F7F6F1;text-decoration:none">&larr; Back to everything</a></div>
+<div class=gridlayer></div>
+<div class="w col">
+
+<header>
+<div class=callout><span class=tag>ASK</span><span>Three minutes, on your phone</span><span class=lead></span></div>
+<h1>Ten backs of books. Which ones would you <em>read</em>?</h1>
+<p class=lede>No titles. No authors. No covers. Just the paragraph you would get if you
+picked the book up and turned it over.</p>
+<p>Tap the ones that make you want to read the book. Not the ones you think are
+well written &mdash; the ones you would actually carry to the till. Tap nothing if
+nothing does that: <strong>that is a real answer too.</strong></p>
+<p>Then hit the red button at the bottom and send me the numbers.</p>
+</header>
+
+<div class=callout><span class=tag>01</span><span>The ten</span><span class=lead></span></div>
+
+<ol class=list>
+
+<li class=b><button class=card type=button aria-pressed=false data-n="1">
+<span class=hd><span class=n>NO. 01</span><span class=lead></span><span class=state>Tap if you would read it</span></span>
+<span class=txt>Homer called it a divine substance. Plato described it as especially dear to the gods. Salt has shaped civilisation from the beginning, and its story is a glittering, often surprising part of the history of mankind. Wars have been fought over salt and, while salt taxes secured empires across Europe and Asia, they have also inspired revolution &mdash; Gandhi's salt march in 1930 began the overthrow of British rule in India. From the rural Sichuan province where the last home-made soya sauce is produced to the Cheshire brine springs that supplied salt around the globe.</span>
+</button></li>
+
+<li class=b><button class=card type=button aria-pressed=false data-n="2">
+<span class=hd><span class=n>NO. 02</span><span class=lead></span><span class=state>Tap if you would read it</span></span>
+<span class=txt>Payday is late and nobody will tell you why. Three thousand years ago, the workmen who cut the pharaohs' tombs downed tools over exactly that: the grain rations had not arrived. Their scribe wrote it up, and the papyrus survives in a museum in Turin &mdash; the oldest strike anybody has a record of, over food owed. Wages were grain, because grain kept and a day's labour does not. Farming filled the store, the store paid the workforce, and the man holding the store set the terms. You will be able to explain what a wage really is.</span>
+</button></li>
+
+<li class=b><button class=card type=button aria-pressed=false data-n="3">
+<span class=hd><span class=n>NO. 03</span><span class=lead></span><span class=state>Tap if you would read it</span></span>
+<span class=txt>Sand, salt, iron, copper, oil and lithium. They built our world, and they will transform our future. They took us from the Dark Ages to the present day. They power our computers and phones, build our homes and offices, and create life-saving medicines. But most of us take these six crucial materials completely for granted. As we wrestle with climate change, energy crises and the threat of new global conflict, this book shows why these substances matter more than ever before, and how the hidden battle to control them will shape our geopolitical future.</span>
+</button></li>
+
+<li class=b><button class=card type=button aria-pressed=false data-n="4">
+<span class=hd><span class=n>NO. 04</span><span class=lead></span><span class=state>Tap if you would read it</span></span>
+<span class=txt>In April 1956, a refitted oil tanker carried fifty-eight shipping containers from Newark to Houston. From that modest beginning, container shipping developed into a huge industry that made the boom in global trade possible. Its adoption required huge sums of money, both from private investors and from ports that aspired to be on the leading edge of a new technology. It required years of high-stakes bargaining with two of the titans of organized labor, as well as delicate negotiations on standards that made it possible for almost any container to travel on any truck or train or ship.</span>
+</button></li>
+
+<li class=b><button class=card type=button aria-pressed=false data-n="5">
+<span class=hd><span class=n>NO. 05</span><span class=lead></span><span class=state>Tap if you would read it</span></span>
+<span class=txt>Grain filled a warehouse, and no one touched it. At Ostia, Rome's port, the grain store stood stacked full enough to feed the whole city for years without one new harvest. That much food sitting unused is not neutral. Whoever held the keys could feed the city, or not, and everyone knew it. The keys to that warehouse were worth more than any sword in Rome.</span>
+</button></li>
+
+<li class=b><button class=card type=button aria-pressed=false data-n="6">
+<span class=hd><span class=n>NO. 06</span><span class=lead></span><span class=state>Tap if you would read it</span></span>
+<span class=txt>Everything is made of something. From the everyday objects in our homes to the most extraordinary new materials that will shape our future, this book reveals the inner workings of the man-made world, and the miracles of craft, design, engineering and ingenuity that surround us every day. From the tea-cup to the jet engine, the silicon chip to the paper clip, from the ancient technologies of fabrics and ceramic to today's self-healing metals and bionic implants, this is a book to inspire amazement and delight at mankind's creativity.</span>
+</button></li>
+
+<li class=b><button class=card type=button aria-pressed=false data-n="7">
+<span class=hd><span class=n>NO. 07</span><span class=lead></span><span class=state>Tap if you would read it</span></span>
+<span class=txt>Wars have been fought over it, revolutions have been spurred by it, national diets have been based on it, economies have depended on it, and the settlement of North America was driven by it. It turns out to be the reason Europeans set sail across the Atlantic, and the only reason they could. It is also a tragic tale of environmental failure, of depleted fishing stocks where once the numbers were legendary.</span>
+</button></li>
+
+<li class=b><button class=card type=button aria-pressed=false data-n="8">
+<span class=hd><span class=n>NO. 08</span><span class=lead></span><span class=state>Tap if you would read it</span></span>
+<span class=txt>Picture a locked door with a sign that says staff only. Someone decided you don't get to see what's behind it. That habit is old. The first time humans grew more grain than they could eat in a year, someone built a room to hold the rest. Then they put a door on it. Everyone who wasn't allowed through that door had to work for the person who was. Every staff-only door today is a small copy of that first one.</span>
+</button></li>
+
+<li class=b><button class=card type=button aria-pressed=false data-n="9">
+<span class=hd><span class=n>NO. 09</span><span class=lead></span><span class=state>Tap if you would read it</span></span>
+<span class=txt>Throughout history, food has acted as a catalyst of social change, political organization, geopolitical competition, industrial development, military conflict, and economic expansion. The first civilizations were built on barley and wheat in the Near East, millet and rice in Asia, and corn and potatoes in the Americas. Why farming created a strictly ordered social hierarchy in contrast to the loose egalitarianism of hunter-gatherers is as interesting as the details of the complex cultures that emerged, eventually interconnected by commerce. Trade in exotic spices in particular spawned the age of exploration and the colonization of the New World.</span>
+</button></li>
+
+<li class=b><button class=card type=button aria-pressed=false data-n="10">
+<span class=hd><span class=n>NO. 10</span><span class=lead></span><span class=state>Tap if you would read it</span></span>
+<span class=txt>Maps have always captivated us, offering insights not only into our destinations but also into the broader world. Yet, when it comes to understanding geopolitics, many overlook the fundamental role of geography. All leaders of nations are constrained by geography &mdash; their choices limited by mountains, rivers, deserts, and seas. Through ten up-to-date maps, this book explores the landscapes and climates that constrain and empower nations across key parts of the globe, from Russia's vast tundras to China's mountainous borders, Africa's deserts to the Arctic's shifting ice.</span>
+</button></li>
+
+</ol>
+
+<footer>
+<div class=callout><span class=tag>02</span><span>Why I am asking</span><span class=lead></span></div>
+<p>I have built a machine that scores blurbs, and it is broken. Every verdict I hold
+from you is a <em>no</em>, and you cannot calibrate a scorer on nothing but no's.
+One yes &mdash; from any book, mine or somebody else's &mdash; is worth more than
+ten more drafts from me.</p>
+<p>Some of these are from books that sold hundreds of thousands of copies. Some are
+mine. I am not telling you which until you answer, because if I did, the answer
+would be worth nothing.</p>
+</footer>
+
+</div>
+
+<div class=bar><div class=in>
+<span class=lab>Your picks</span>
+<span class=picks id=picks>&mdash;</span>
+<button id=copy type=button disabled>Copy the numbers</button>
+</div></div>
+
+<script>
+var picked = [];
+function render(){
+  picked.sort(function(a,b){return a-b});
+  var p = document.getElementById('picks');
+  var c = document.getElementById('copy');
+  if(!picked.length){ p.innerHTML = '&mdash;'; c.disabled = true; c.textContent = 'Copy the numbers'; return; }
+  p.textContent = picked.join(', ');
+  c.disabled = false; c.textContent = 'Copy the numbers';
+}
+document.querySelectorAll('button.card').forEach(function(b){
+  b.addEventListener('click', function(){
+    var n = parseInt(b.dataset.n, 10);
+    var on = b.getAttribute('aria-pressed') === 'true';
+    b.setAttribute('aria-pressed', on ? 'false' : 'true');
+    b.querySelector('.state').textContent = on ? 'Tap if you would read it' : 'Yes — I would read this';
+    if(on){ picked = picked.filter(function(x){return x !== n}) } else { picked.push(n) }
+    render();
+  });
+});
+document.getElementById('copy').addEventListener('click', function(){
+  var t = 'I would read: ' + picked.join(', ');
+  var done = function(){ document.getElementById('copy').textContent = 'Copied — paste it to me'; };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(t).then(done, done);
+  } else {
+    var a = document.createElement('textarea');
+    a.value = t; document.body.appendChild(a); a.select();
+    try{ document.execCommand('copy') }catch(e){}
+    document.body.removeChild(a); done();
+  }
+});
+</script>
+</body></html>
