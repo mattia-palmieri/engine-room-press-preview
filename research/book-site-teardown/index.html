@@ -1,0 +1,192 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Book-site catalogue teardown — Engine Room Press</title><meta name="description" content="How real book sites lay out a multi-title catalogue, measured at 390px and 1440px — the pattern we should copy for /covers/.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"><style>
+:root{--paper:#F7F6F1;--white:#fff;--ink:#14171A;--signal:#C1440E;--blue:#173B4E;
+--rule:#C7C4B8;--faint:#E4E2D8}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);
+font:400 18px/1.62 Newsreader,Georgia,serif;-webkit-text-size-adjust:100%}
+.wrap{max-width:660px;margin:0 auto;padding:32px 20px 96px}
+a{color:var(--ink)}
+.mast{border-bottom:1px solid var(--ink);padding-bottom:10px;margin-bottom:28px;
+display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.mono,.tag,.mast,.kicker,.crumb,th{font-family:"IBM Plex Mono",ui-monospace,monospace;
+font-weight:500;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.mast a{text-decoration:none}
+h1{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:700;
+font-size:clamp(30px,8vw,44px);line-height:1.06;letter-spacing:-.02em;margin:0 0 14px}
+.lede{font-size:19px;color:#3a3f44;margin-bottom:14px}
+h2{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:23px;
+line-height:1.2;margin:38px 0 12px}
+h3{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:19px;margin:26px 0 8px}
+p,li{margin-bottom:12px}
+ul,ol{padding-left:22px}
+strong{font-weight:600}
+code{font-family:"IBM Plex Mono",monospace;font-size:.85em;background:#ECEAE0;padding:1px 4px}
+pre{background:var(--ink);color:#F7F6F1;padding:16px;overflow-x:auto;margin:16px 0;font-size:13px}
+pre code{background:none;color:inherit;padding:0}
+blockquote{border-left:2px solid var(--signal);padding-left:14px;color:#3a3f44;margin:16px 0}
+hr{border:0;border-top:1px solid var(--rule);margin:32px 0}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:16px 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--rule);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:#ECEAE0;font-size:11px}
+img{max-width:100%;height:auto;display:block}
+/* section head with figure number */
+.fig{display:flex;align-items:baseline;gap:12px;margin:44px 0 4px;
+border-top:1px solid var(--ink);padding-top:10px}
+.fig .n{color:var(--signal)}
+.fig h2{margin:0;font-size:21px}
+.note{color:#3a3f44;font-size:16px;margin:4px 0 14px}
+/* rows */
+a.row{display:block;text-decoration:none;color:inherit;border:1px solid var(--rule);
+border-top:0;background:var(--white);padding:15px 16px}
+a.row:first-of-type{border-top:1px solid var(--rule)}
+a.row:hover{border-color:var(--signal)}
+a.row .t{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:17px}
+a.row .t .arw{color:var(--signal)}
+a.row .s{display:block;color:#3a3f44;font-size:15px;line-height:1.45;margin-top:4px}
+a.row .d{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+color:#6b6f73;text-transform:uppercase;margin-top:6px;display:block}
+.crumb{display:inline-block;margin-bottom:22px;text-decoration:none;color:var(--signal)}
+footer{margin-top:56px;border-top:1px solid var(--rule);padding-top:14px;
+font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+text-transform:uppercase;color:#6b6f73}
+.badge{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;
+padding:2px 6px;border:1px solid var(--rule);text-transform:uppercase}
+.badge.active{border-color:var(--signal);color:var(--signal)}
+.badge.done{color:#6b6f73}
+</style></head><body><div class="wrap">
+<div class="mast"><a href="../">Engine Room Press</a><span>Working preview</span></div>
+<a class="crumb" href="../">&larr; All of it</a><p class="lede">How real book sites lay out a multi-title catalogue, measured at 390px and 1440px — the pattern we should copy for /covers/.</p><h1>Book-site catalogue teardown</h1>
+<p>Measured live in a real browser (computed CSS, not eyeballed), 2026-09-03.
+Screenshots in <code>data/research/book-sites/</code>.</p>
+<p>Sternberg Press was dead (SSL error) — substituted with New York Review Books
+(nyrb.com/collections/classics), a well-run Shopify catalogue at similar scale.
+Stripe Press is a WebGL scroll-carousel, not a CSS grid — kept as a qualitative
+data point only, not a copyable layout.</p>
+<h2>Measured numbers</h2>
+<table>
+<thead>
+<tr>
+<th>Site</th>
+<th>Cols @390</th>
+<th>Cover w×h @390</th>
+<th>Cols @1440</th>
+<th>Cover w×h @1440</th>
+<th>Aspect ratio</th>
+<th>Gap</th>
+<th>Side padding @390</th>
+<th>Page max-width</th>
+<th>Text under cover</th>
+<th>Blurb shown in grid?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fitzcarraldo Editions (<code>/shop/</code>)</td>
+<td>2</td>
+<td>155×194</td>
+<td>4</td>
+<td>320×399</td>
+<td>0.80 (3D render)</td>
+<td>16px</td>
+<td>24px</td>
+<td>~1425px (near-fluid)</td>
+<td>none — title/author printed on the cover art itself</td>
+<td>No — click through to product page</td>
+</tr>
+<tr>
+<td>Standard Ebooks (<code>/ebooks</code>)</td>
+<td>2</td>
+<td>122×181</td>
+<td>4</td>
+<td>224×335</td>
+<td>0.67 (true 2:3)</td>
+<td>44px</td>
+<td>44px</td>
+<td>1320px</td>
+<td>Title (bold) + author (italic), both below cover</td>
+<td>No — detail page only</td>
+</tr>
+<tr>
+<td>Persephone Books (<code>/collections/all</code>)</td>
+<td>2</td>
+<td>138×138 (square crop)</td>
+<td>5–6</td>
+<td>162×162</td>
+<td>1.0 (Shopify default square)</td>
+<td>30px</td>
+<td>35px</td>
+<td>~1450px, fluid</td>
+<td>Title (colour) + author + price</td>
+<td>No — detail page</td>
+</tr>
+<tr>
+<td>Verso Books (<code>/collections/catalog</code>)</td>
+<td>2</td>
+<td>~79×145 (height-locked, width floats)</td>
+<td>6</td>
+<td>~155×280</td>
+<td>varies, ~0.55 (fixed height, natural width)</td>
+<td>~99px mobile / ~80px desktop</td>
+<td>20px</td>
+<td>~1400px</td>
+<td>Title + "by Author" (linked) + price + sale badge</td>
+<td>No — detail page</td>
+</tr>
+<tr>
+<td>NYRB Classics (<code>/collections/classics</code>)</td>
+<td>2</td>
+<td>168×268</td>
+<td>4</td>
+<td>260×416</td>
+<td>0.63 (true 2:3)</td>
+<td>10px</td>
+<td>15px</td>
+<td>1200px (Shopify <code>page-width</code>)</td>
+<td>Title only (author on cover art)</td>
+<td>No — detail page, but sticky "Filter and sort" bar aids browsing</td>
+</tr>
+<tr>
+<td>Stripe Press (qualitative)</td>
+<td>— WebGL horizontal ribbon, not a grid</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>none in the ribbon</td>
+<td>No — click-through only</td>
+</tr>
+</tbody>
+</table>
+<h2>What repeats across nearly all of them</h2>
+<ol>
+<li><strong>Two columns on mobile, always.</strong> Every real grid (not the Stripe outlier) uses exactly 2 columns at 390px. Nobody tries 1 or 3.</li>
+<li><strong>The blurb never lives in the grid.</strong> Every site keeps the grid to cover + at most title/author/price, and pushes the blurb to a click-through detail page. A grid with visible blurbs does not appear anywhere in this set.</li>
+<li><strong>Gap is small relative to cover width</strong> — roughly 8–20% of cover width, not a wide gutter. Standard Ebooks' 44px gap is the outlier (also has 44px side padding, so the grid reads as heavily inset, deliberate breathing room for a huge catalogue).</li>
+<li><strong>True book-proportioned covers (2:3, ~0.63–0.67 ratio) read as more "real"</strong> than square-cropped ones. Standard Ebooks and NYRB, the two with true book ratio, look most like a bookshelf; Persephone's square crop and Fitzcarraldo's 3D render read more "product photo."</li>
+<li><strong>Side padding on mobile is small</strong> — 15–24px on the tightest, most confident layouts (NYRB, Fitzcarraldo); Standard Ebooks' 44px is unusually generous and reads more spacious/institutional, matching its huge catalogue.</li>
+<li><strong>Desktop max-width sits around 1200–1450px</strong>, never full-bleed to the viewport edge — always some centred column even on a wide screen.</li>
+<li><strong>Nothing browsable beyond the grid itself for 16-ish items.</strong> None of these sites add sticky filters or section headers until the catalogue is in the hundreds (Standard Ebooks, with thousands of titles, is the only one with heavy filter UI). At our scale (16 covers) a plain grid, optionally with light section headers, is what real sites do — filter chrome would be over-building.</li>
+</ol>
+<h2>Recommended spec for our 16-cover <code>/covers/</code> shelf</h2>
+<p>Base pattern: <strong>NYRB Classics</strong>, because it has the tightest, most confident mobile
+layout (true 2:3 covers, minimal padding, no wasted chrome) and it is the closest
+match to what we already have — type-only cover art with no photography to crop.</p>
+<ul>
+<li><strong>Columns:</strong> 2 at mobile (≤600px), 4 at desktop (≥1000px). No 3-column tier — none of the reference sites use one, and it fights a 2:3 cover ratio.</li>
+<li><strong>Cover size:</strong> keep our existing 2:3 portrait ratio. Cover width = <code>(container width − side padding×2 − gap) / 2</code> on mobile; let it scale fluidly, don't fix px.</li>
+<li><strong>Gap:</strong> 12px between covers, both axes. (Between NYRB's 10px and Fitzcarraldo's 16px — tight, not a wide gutter.)</li>
+<li><strong>Side padding on mobile:</strong> 16px (matches NYRB's 15px; anchors to our existing text-column grid per <code>design.md</code> rule 7).</li>
+<li><strong>Page max-width on desktop:</strong> 1200px, centred.</li>
+<li><strong>Text under the cover:</strong> title only. No author line (we're a faceless imprint, no author persona — <code>positioning.md</code>), no price on this page (price lives on the offer, not the coming-soon shelf).</li>
+<li><strong>Blurb:</strong> not in the grid, at any width. It lives one tap away — tapping/clicking a cover opens the blurb (inline expand under that cover, or a lightbox/detail view — either is fine, but the grid itself must stay cover+title only, per every reference site).</li>
+<li><strong>Grouping:</strong> keep our existing four-part grouping from <code>catalogue.md</code>, rendered as a plain section heading above each group of 4 covers — no filters, no sort, no sticky controls. At 16 items that chrome is unearned; add it only if the catalogue grows past ~50.</li>
+</ul>
+<p>This is a direct, minimal change from what's on the site now: keep the part-grouping and type-only covers we already built, tighten the grid to 2/4 columns with a small fixed gap and small side padding, drop any per-cover blurb text from the grid, and move the blurb behind a tap.</p>
+<footer>Draft — built by the agent, judged by Matt</footer>
+</div></body></html>
