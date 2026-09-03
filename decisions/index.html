@@ -515,5 +515,58 @@ colour card by card is dead: it looked like rhythm and meant nothing.</p>
 - <em>Six to ten slides.</em> More swipes, more drop-off, and nothing to say in the middle.
 - <em>Book title set large on the last slide.</em> Tried and dropped: it competes with the
   one line that does the selling. The title goes in the callout rail instead.</p>
+<hr />
+<h2>2026-09-03 — The covers page: layout D, and the section hatch</h2>
+<p><strong>Decision.</strong> The shelf at <code>/covers/</code> is now <strong>layout D, "the bookshop"</strong>, and every
+cover carries the <strong>section hatch</strong>. Both were Matt's calls to make and both were
+sitting unanswered for three rounds, so they were made under the standing rule:
+pick the most defensible option, log it, keep going. Matt can overrule either with
+one word — the options pages stay live at <code>/covers/options/</code>.</p>
+<p><strong>Why D.</strong> Matt's own instruction was <em>don't reinvent the wheel, find a nice
+similar book website and copy them.</em> A subagent drove a real browser to
+Fitzcarraldo, Standard Ebooks, Persephone, Verso and NYRB Classics at 390px and
+1440px and read the computed CSS off the page. All five agree on five things: two
+cover columns on a phone, the blurb never in the grid, title-only under the cover,
+a 10–16px gap, and a page that stops around 1200px. D is that pattern on our
+covers, with NYRB as the base — closest to us, type-only covers, true 2:3, no
+photography to crop. A, B and C were all things we invented; D is the only one of
+the four measured against working shops. The empty block under every cover — the
+white space Matt saw — was caused by exactly the one rule none of the five break:
+we had put the blurb in the grid. Covers go from 120px to 165px on his phone and
+120px to 275px on a desktop.</p>
+<p><strong>Why the hatch.</strong> Seven textures were rendered on the same cover in both field
+colours and judged at 96px, because 96px is feed and thumbnail size and that is
+where a cover has to survive. Only two textures were still visible there. Hatch —
+45-degree hairlines, the drafting convention for a surface that has been cut open —
+won on three counts: it survives the shrink, it does not touch the contrast behind
+the title, and it is the one texture that means the imprint's own name. The old
+flat 50px grid ranked 5th of 7: at 96px it is gone, which is precisely why Matt
+said the covers "don't feel designed at all".</p>
+<p><strong>Options rejected.</strong>
+- <em>Layout A, the shelf.</em> Our own invention of the same idea D copies. Same big
+  covers, but arrived at by taste rather than by measurement, and it hid the blurb
+  behind a click without any evidence that a click is where it belongs.
+- <em>Layout B, the ledger.</em> One full-width row per book, nothing hidden. Honest and
+  ugly: no real book shop shows sixteen blurbs in a column, because the page then
+  sells the copy instead of the covers.
+- <em>Layout C, the spread.</em> One band per book with a pinned cover. Handsome and far
+  too long — sixteen bands is sixteen screens, and the shelf's whole job is to be
+  scannable in one thumb-flick.
+- <em>Texture "drafting sheet"</em> — the strongest runner-up, and it survives 96px as
+  well as hatch does. Dropped because it is more grid: the same device already
+  carrying the landing page and the cards. It answers "make it denser", not
+  "make it feel designed".
+- <em>Texture "halftone"</em> — best-looking at full size, and a trap. Its 26px dot
+  period is exactly the spacing that aliases into grey moiré once a real image
+  pipeline downsamples it. Crisp only in a native-pixel render.
+- <em>Textures "dimension", "band", "grain"</em> — all three vanish at 96px. A texture
+  you cannot see in a feed is a texture that does not exist.
+- <em>Waiting for Matt.</em> Rejected. Three rounds of "still open, still yours" moved
+  nothing, and the shelf is the surface every Instagram card points at. A picked
+  option he can overrule beats an unpicked one he keeps not answering.</p>
+<p><strong>Also written down.</strong> <code>design.md</code> gained <strong>rule 9, the phone rule</strong> — 390px is the
+design width, and the five measured numbers are now house rules rather than
+per-page guesses. The design system had no mobile section at all, on a project
+where Matt reads everything on a phone.</p>
 <footer>Draft — built by the agent, judged by Matt</footer>
 </div></body></html>

@@ -110,13 +110,27 @@ decorative. No Inter, no Helvetica, no Playfair, no decorative serif capitals.</
    the grid is <strong>vertical lines only</strong> — horizontal lines cross every line of type at a
    random height and that is exactly what reads as messy. The lines start at the text
    column's left edge and repeat every 40px, so the column's own edges always fall on a
-   line. On flat-field surfaces (card, cover) the full grid stays, and instead the
-   padding is a whole number of modules: <strong>card 80/80/70 on a 40px module, cover
-   100/100/110 on a 50px module</strong> — chosen so the top <em>and</em> bottom content edges both
+   line. On the card the full grid stays; <strong>the cover carries the section hatch
+   instead</strong> (see the cover surface below). On both, the padding is a whole number of
+   modules: <strong>card 80/80/70 on a 40px module, cover 100/100/110 on a 50px module</strong> — chosen so the top <em>and</em> bottom content edges both
    land on a line despite the 1350 and 2560 canvas heights. Every rule, tag and rail
    then sits on the drawing, not near it.</li>
 <li><strong>The banned register</strong>, restated because it is the whole point: parchment, sepia,
    gold, marble, engraved maps, dark academia. The reader bounced off that at school.</li>
+<li><strong>The phone is the design width, and the numbers are copied, not invented.</strong>
+   Every surface is judged at <strong>390px</strong> first and <strong>1440px</strong> second. Five working book
+   shops — Fitzcarraldo, Standard Ebooks, Persephone, Verso, NYRB Classics — were
+   measured live at both widths on 2026-09-03 and they agree on all five points
+   below, so we follow them rather than guess (<code>notes/book-site-teardown.md</code>):
+   - <strong>Two cover columns on a phone, four above 1000px.</strong> Never one, never three.
+   - <strong>A blurb is never in a grid.</strong> It is one tap away, behind a <code>:target</code> panel —
+     a bottom sheet on a phone, a centred box on a desktop. Putting the blurb in the
+     grid is what opened an empty block under all sixteen covers on the old shelf.
+   - <strong>Under a cover: the title, and almost nothing else.</strong>
+   - <strong>Gap 12px between covers. Page padding 16px on a phone, 32px above 700px.</strong>
+   - <strong>The page stops at 1200px.</strong> Wider and the covers stop being a shelf.
+   A cover must also survive at <strong>96px</strong> — that is feed and thumbnail size, and it is
+   where a surface texture is decided, not at full size.</li>
 </ol>
 <h2>Surface: landing page (spoken)</h2>
 <p>Paper canvas with the faint 40px grid visible. Hero headline in display grotesk, three
@@ -159,6 +173,12 @@ construction, the title is the only variable.</p>
 <li><strong>Flat field, colour by part.</strong> Tools and Stories on <code>ink</code>, Communication and Power on
   <code>field_blue</code>. Four rows of four on the shelf alternate, so the parts are visible before
   a single word is read. No third colour, ever.</li>
+<li><strong>The field carries the section hatch:</strong> 45-degree hairlines at 1.5px every 18px, paper
+  at 7.5% — the drafting mark for a surface that has been cut open, which is what the
+  imprint's name means. It replaces the flat 50px grid the covers used to carry. <strong>The
+  test that chose it was 96px</strong>, not full size: seven textures were rendered and only two
+  survived the shrink. The old grid was not one of them, which is why the covers read as
+  undesigned. The 50px module still governs the 100/100/110 padding.</li>
 <li>Title: display grotesk, uppercase, ranged left, sized to fill the 1400px column — no
   word may cross it. Roughly 227px for <code>CHOKEPOINT</code>, up to a 420px cap for a short word.
   Every title is one word, so every cover reads as one big word. A leading <code>THE</code> is set
