@@ -1,0 +1,132 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Covers page — desktop layout and cover texture — Engine Room Press</title><meta name="description" content="Diagnosed why /covers/ is ugly on desktop, then built three real layout options and seven cover textures for Matt to pick from at /covers/options/.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"><style>
+:root{--paper:#F7F6F1;--white:#fff;--ink:#14171A;--signal:#C1440E;--blue:#173B4E;
+--rule:#C7C4B8;--faint:#E4E2D8}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);
+font:400 18px/1.62 Newsreader,Georgia,serif;-webkit-text-size-adjust:100%}
+.wrap{max-width:660px;margin:0 auto;padding:32px 20px 96px}
+a{color:var(--ink)}
+.mast{border-bottom:1px solid var(--ink);padding-bottom:10px;margin-bottom:28px;
+display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.mono,.tag,.mast,.kicker,.crumb,th{font-family:"IBM Plex Mono",ui-monospace,monospace;
+font-weight:500;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.mast a{text-decoration:none}
+h1{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:700;
+font-size:clamp(30px,8vw,44px);line-height:1.06;letter-spacing:-.02em;margin:0 0 14px}
+.lede{font-size:19px;color:#3a3f44;margin-bottom:14px}
+h2{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:23px;
+line-height:1.2;margin:38px 0 12px}
+h3{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:19px;margin:26px 0 8px}
+p,li{margin-bottom:12px}
+ul,ol{padding-left:22px}
+strong{font-weight:600}
+code{font-family:"IBM Plex Mono",monospace;font-size:.85em;background:#ECEAE0;padding:1px 4px}
+pre{background:var(--ink);color:#F7F6F1;padding:16px;overflow-x:auto;margin:16px 0;font-size:13px}
+pre code{background:none;color:inherit;padding:0}
+blockquote{border-left:2px solid var(--signal);padding-left:14px;color:#3a3f44;margin:16px 0}
+hr{border:0;border-top:1px solid var(--rule);margin:32px 0}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:16px 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--rule);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:#ECEAE0;font-size:11px}
+img{max-width:100%;height:auto;display:block}
+/* section head with figure number */
+.fig{display:flex;align-items:baseline;gap:12px;margin:44px 0 4px;
+border-top:1px solid var(--ink);padding-top:10px}
+.fig .n{color:var(--signal)}
+.fig h2{margin:0;font-size:21px}
+.note{color:#3a3f44;font-size:16px;margin:4px 0 14px}
+/* rows */
+a.row{display:block;text-decoration:none;color:inherit;border:1px solid var(--rule);
+border-top:0;background:var(--white);padding:15px 16px}
+a.row:first-of-type{border-top:1px solid var(--rule)}
+a.row:hover{border-color:var(--signal)}
+a.row .t{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:17px}
+a.row .t .arw{color:var(--signal)}
+a.row .s{display:block;color:#3a3f44;font-size:15px;line-height:1.45;margin-top:4px}
+a.row .d{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+color:#6b6f73;text-transform:uppercase;margin-top:6px;display:block}
+.crumb{display:inline-block;margin-bottom:22px;text-decoration:none;color:var(--signal)}
+footer{margin-top:56px;border-top:1px solid var(--rule);padding-top:14px;
+font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+text-transform:uppercase;color:#6b6f73}
+.badge{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;
+padding:2px 6px;border:1px solid var(--rule);text-transform:uppercase}
+.badge.active{border-color:var(--signal);color:var(--signal)}
+.badge.done{color:#6b6f73}
+</style></head><body><div class="wrap">
+<div class="mast"><a href="../">Engine Room Press</a><span>Working preview</span></div>
+<a class="crumb" href="../">&larr; All of it</a><p class="lede">Diagnosed why /covers/ is ugly on desktop, then built three real layout options and seven cover textures for Matt to pick from at /covers/options/.</p><h1>Covers page — desktop layout and cover texture</h1>
+<p>Matt: <em>"the covers page is ugly on desktop, lots of white space, no visual
+hierarchy, no clear layout. Propose different options. The covers also lack
+something, just a plain colour bg... doesn't feel designed at all."</em></p>
+<p>Two separate problems, so two separate choices, on one page:
+<strong><a href="https://mattia-palmieri.github.io/engine-room-press-preview/covers/options/">https://mattia-palmieri.github.io/engine-room-press-preview/covers/options/</a></strong></p>
+<h2>Diagnosis of the live page (why he is right)</h2>
+<p>Screenshotted at 1440px. Four faults, all measurable:</p>
+<ol>
+<li><strong>The covers are 120px wide on a 1440px screen.</strong> The best asset we own is a
+   postage stamp and the page is ~70% grey text.</li>
+<li><strong>A dead gap under every cover.</strong> The blurb sits in <code>grid-row:2</code> of the item
+   grid, so it starts below the cover <em>and</em> below the deck — leaving an empty
+   block to the left of the blurb, ~150px tall, sixteen times. That is the white
+   space he saw.</li>
+<li><strong>The page is capped at 1080px.</strong> On a 1440 screen a third of the desktop is
+   empty margin and the grid lines drift off the text.</li>
+<li><strong>No hierarchy.</strong> Deck and blurb are both Newsreader at 17/16px. Nothing tells
+   the eye where to start.</li>
+</ol>
+<h2>What was built</h2>
+<p><strong>Decision 1 — three layouts, all sixteen books, real blurbs, all working.</strong></p>
+<ul>
+<li><strong>A · Shelf</strong> — covers big, four across, part rows. Title + deck only; the blurb
+  is behind a <code>&lt;details&gt;</code> click. The page sells the covers. Cost: a click to read.</li>
+<li><strong>B · Ledger</strong> — one full-width row per book: number, cover chip, title+deck,
+  blurb. Nothing hidden, nothing ragged, no dead space. Cost: covers stay small.</li>
+<li><strong>C · Spread</strong> — one band per book, 220px cover on the left (sticky while you
+  read), the whole entry beside it. Cost: the longest page.</li>
+</ul>
+<p><strong>Decision 2 — seven cover textures</strong>, same title, same type, shown big <em>and</em> at
+160px (Amazon) and 96px (feed), on both <code>ink</code> and <code>field_blue</code>:
+control (today), drafting sheet (fine mesh + heavy line every 250px), dimension
+lines (the title measured, drafting-style, with corner ticks), section hatch (45°
+hairlines), halftone screen, paper grain (SVG noise, no pattern), split field
+(one hairline, lighter tint above).</p>
+<h2>Decisions taken on Matt's behalf</h2>
+<ul>
+<li><strong>Show, do not describe.</strong> He asked for "options"; options he has to imagine
+  are worthless. Everything is a real page with real content.</li>
+<li><strong>A texture, never an illustration.</strong> <code>design.md</code> says the title is the cover and
+  sixteen must read as one imprint. Every treatment is a surface, not art, so it
+  survives the thumbnail test — which is why each is shown at 96px too.</li>
+<li><strong>No new colours.</strong> All seven textures are paper-white at low opacity on the two
+  existing fields.</li>
+<li><strong>Signal red stayed rationed</strong> (design.md rule 3): the first drafts had a red
+  "+" on all sixteen items in A and a red number tag on all sixteen in C. Both
+  pulled back to ink.</li>
+</ul>
+<h2>Traps hit and paid for</h2>
+<ul>
+<li><strong>Inline SVG noise needs literal <code>width</code>/<code>height</code> attributes.</strong> <code>position:absolute;
+  inset:0</code> does <em>not</em> size an <code>&lt;svg&gt;</code> — it rendered at its default 300×150 in the top
+  corner and the render still looked plausible. Also <code>mix-blend-mode:overlay</code> cancels
+  itself on a near-black field; plain low opacity is what works.</li>
+<li><strong>Halftone and grain at "tasteful" opacity are invisible.</strong> First pass at .16/.05
+  looked identical to the control. Textures on a dark field need roughly double what
+  looks right in the CSS.</li>
+</ul>
+<h2>Open</h2>
+<p>Matt replies with a letter and a number. Then: apply the winning layout to
+<code>data/covers/index.html</code>, the winning texture to <code>data/covers/build.py</code>, re-render
+all sixteen covers, and write both into <code>design.md</code> (the cover surface section, and
+a new shelf-page template). The <code>/covers/options/</code> folder can be deleted after.</p>
+<h2>Pointers</h2>
+<ul>
+<li><code>data/covers/options/</code> — three generators (<code>build_layouts.py</code>, <code>build_treatments.py</code>,
+  <code>build_pages.py</code>). <strong>Never hand-edit the generated html.</strong></li>
+<li>Layouts are generated from <code>data/covers/covers.json</code>, the same source as the live page.</li>
+</ul>
+<footer>Draft — built by the agent, judged by Matt</footer>
+</div></body></html>
