@@ -72,8 +72,12 @@ new fonts or new colours.</p>
   paper_white:  &quot;#FFFFFF&quot;   # component fields, form inputs
   ink:          &quot;#14171A&quot;   # all body and display text; also a flat field on cards
   signal:       &quot;#C1440E&quot;   # oxide red. Callout tags, one word of emphasis, buttons.
-  field_blue:   &quot;#173B4E&quot;   # second flat field, cards and covers — stops a grid
-                            # reading as one block. Never used as text colour on paper.
+  # THE FOUR FIELDS — one per part of the catalogue, and never a fifth. Flat
+  # fields for covers and cards only; none is ever a text colour on paper.
+  field_iron:   &quot;#14171A&quot;   # Part I   Tools          — iron black (same as ink)
+  field_blue:   &quot;#173B4E&quot;   # Part II  Communication  — steel blue
+  field_copper: &quot;#17342A&quot;   # Part III Stories        — oxidised copper
+  field_aub:    &quot;#251830&quot;   # Part IV  Power          — aubergine
   rule:         &quot;#C7C4B8&quot;   # hairlines, borders
   rule_faint:   &quot;#E4E2D8&quot;   # the 40px measured grid
 
@@ -142,16 +146,18 @@ text. No navigation, no footer menu, no linktree, one action on the page.</p>
 <p>The tie-break surface: Instagram is our only channel, so the card must win at 25% size
 in a scrolling feed.</p>
 <ul>
-<li><strong>Flat field, not paper.</strong> Full-bleed <code>ink</code> or <code>field_blue</code>.</li>
+<li><strong>Flat field, not paper.</strong> Full-bleed, one of the four part fields.</li>
 <li><strong>The carousel colour rule — colour carries meaning, not rhythm.</strong> A carousel is one
-  post, so it is one colour: slides 1 to n-1 carry <strong>the colour of the book's cover</strong>
-  (Tools and Stories on <code>ink</code>, Communication and Power on <code>field_blue</code>). <strong>The last
-  slide flips to the other field</strong>, because the last slide is the ask and it should
-  announce itself before a word is read. Brand cards with no book behind them are
-  always <code>ink</code>. <strong>News carousels obey the same rule</strong>, taking the colour of the book
-  they land on: Hormuz lands on <em>The Barrel</em> (Part I), so slides 1 and 2 are <code>ink</code>
-  and slide 3, the ask, flips to <code>field_blue</code>. Alternating colour slide by slide is
-  banned — it looked like rhythm and meant nothing.</li>
+  post, so it is one colour: slides 1 to n-1 carry <strong>the field colour of the book's
+  part</strong> — the same four fields as the covers, so a card and its cover are obviously
+  the same object. <strong>The last slide flips to <code>field_blue</code></strong>, or to <code>ink</code> if the book
+  is already a Part II book, because the last slide is the ask and it should announce
+  itself before a word is read. Brand cards with no book behind them are always <code>ink</code>.
+  <strong>News carousels obey the same rule</strong>, taking the colour of the book they land on:
+  Hormuz lands on <em>The Barrel</em> (Part I), so slides 1 and 2 are <code>ink</code> and slide 3, the
+  ask, flips to <code>field_blue</code>. Alternating colour slide by slide is banned — it looked
+  like rhythm and meant nothing. <strong>The ten built cards still carry the old two-colour
+  scheme and are wrong</strong> until they are regenerated (<code>cards-recolour</code> in the queue).</li>
 <li><strong>Headline: display grotesk, 76–96px, max 14 words, filling the upper two-thirds.</strong>
   If it needs more than 14 words it is not a card, it is a caption.</li>
 <li>One word may take <code>signal</code> red. One only.</li>
@@ -170,28 +176,73 @@ construction, the title is the only variable.</p>
   with it. The cover carries the title and <em>one</em> footer mark — nothing else. Series
   name, part, "no. 9 of 16", the one-line deck and the coming-soon state all belong on
   the page around the cover, never on it.</li>
-<li><strong>Flat field, colour by part.</strong> Tools and Stories on <code>ink</code>, Communication and Power on
-  <code>field_blue</code>. Four rows of four on the shelf alternate, so the parts are visible before
-  a single word is read. No third colour, ever.</li>
-<li><strong>The field carries the section hatch:</strong> 45-degree hairlines at 1.5px every 18px, paper
-  at 7.5% — the drafting mark for a surface that has been cut open, which is what the
-  imprint's name means. It replaces the flat 50px grid the covers used to carry. <strong>The
-  test that chose it was 96px</strong>, not full size: seven textures were rendered and only two
-  survived the shrink. The old grid was not one of them, which is why the covers read as
-  undesigned. The 50px module still governs the 100/100/110 padding.</li>
-<li>Title: display grotesk, uppercase, ranged left, sized to fill the 1400px column — no
+<li><strong>Four materials: one field colour and one hatch per part, and never a fifth.</strong>
+  Each part is a different material cut open, in the real ISO 128 drafting hatches, so
+  a reader can tell a Tools book from a Power book before reading a word. Pitch 24px,
+  line weight 2px, at full 1600px size:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Field</th>
+<th>Material</th>
+<th>Hatch</th>
+<th>Opacity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I Tools</td>
+<td><code>#14171A</code> iron black</td>
+<td>steel</td>
+<td>even 45° section hatch</td>
+<td>24%</td>
+</tr>
+<tr>
+<td>II Communication</td>
+<td><code>#173B4E</code> steel blue</td>
+<td>glass</td>
+<td>alternating long/short 45°</td>
+<td>14%</td>
+</tr>
+<tr>
+<td>III Stories</td>
+<td><code>#17342A</code> oxidised copper</td>
+<td>weave</td>
+<td>cross-hatch both ways</td>
+<td>13%</td>
+</tr>
+<tr>
+<td>IV Power</td>
+<td><code>#251830</code> aubergine</td>
+<td>concrete</td>
+<td>stipple grid + sparse strokes</td>
+<td>14%</td>
+</tr>
+</tbody>
+</table>
+<p>Ink carries a heavier hand than the rest because a white hairline on near-black has
+  the least apparent contrast of the four fields. Match the <em>rendered</em> weight, not the
+  number. The 50px module still governs the 100/100/110 padding.
+- <strong>A texture is decided at 96px, never at full size.</strong> Render the whole shelf at 96px
+  and look at the PNG. Two schemes died here: a flat 50px grid that vanished into a
+  slab, then a 7.5% hatch Matt called too subtle. Loudness alone is not the fix either
+  — a two-colour shelf with the hatch cranked to 20% was built and rejected, and it is
+  why the answer had to be colour <em>and</em> texture together
+  (<code>data/covers/options/palette/verdict.md</code>).
+- Title: display grotesk, uppercase, ranged left, sized to fill the 1400px column — no
   word may cross it. Roughly 227px for <code>CHOKEPOINT</code>, up to a 420px cap for a short word.
   Every title is one word, so every cover reads as one big word. A leading <code>THE</code> is set
-  at 0.30em in muted paper, on its own line above.</li>
-<li>The title block sits at roughly 47% height, air above and below. Do not centre it and
-  do not top-anchor it: both were tried and both read as an empty page.</li>
-<li><strong>The one footer mark:</strong> a hairline, then the red signal tag with the book number on
+  at 0.30em in muted paper, on its own line above.
+- The title block sits at roughly 47% height, air above and below. Do not centre it and
+  do not top-anchor it: both were tried and both read as an empty page.
+- <strong>The one footer mark:</strong> a hairline, then the red signal tag with the book number on
   the left and <code>ENGINE ROOM PRESS</code> in mono 32px on the right. One line, bottom of the
-  cover. That is the entire remaining furniture.</li>
-<li><strong>The legibility floor:</strong> shrink the cover to 160px wide. If the title is not readable,
+  cover. That is the entire remaining furniture.
+- <strong>The legibility floor:</strong> shrink the cover to 160px wide. If the title is not readable,
   the type is too small. At 160px the footer is deliberately illegible — it is a mark,
-  not information.</li>
-</ul>
+  not information.</p>
 <p><strong>Killed 2026-09-01</strong> (Matt counted six labels fighting one title): the top rail
 (<code>ENGINE ROOM PRESS</code> / <code>NO. 09 / 16</code>), the numbered callout with <code>PART III · STORIES</code>,
 the Newsreader deck, and the bottom rail <code>THE ESSENTIAL SIXTEEN</code> / <code>COMING SOON</code>. The

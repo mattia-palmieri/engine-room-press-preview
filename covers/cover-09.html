@@ -5,20 +5,20 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=IBM+Plex+Mono:wght@500&display=block" rel="stylesheet">
 <style>
-  :root { --ink:#14171A; --blue:#173B4E; --paper:#F7F6F1; --signal:#C1440E; }
+  :root { --field:#17342A; --paper:#F7F6F1; --signal:#C1440E; }
   * { margin:0; padding:0; box-sizing:border-box; }
   html,body { width:1600px; height:2560px; }
-  body { background:var(--ink); overflow:hidden; -webkit-font-smoothing:antialiased; }
+  body { background:var(--field); overflow:hidden; -webkit-font-smoothing:antialiased; }
   .cover { position:relative; width:1600px; height:2560px; padding:100px 100px 110px;
             display:flex; flex-direction:column; color:var(--paper); }
-  /* SECTION HATCH - 45-degree hairlines, the drafting convention for a surface
-     that has been cut open. Picked 2026-09-03 over six other textures because it
-     is the only one still visible at 96px, which is feed and thumbnail size.
-     It replaces the flat 50px grid, which vanished at thumbnail and read as a
-     plain slab. The 50px module still governs the 100/100/110 padding. */
+  /* MATERIAL HATCH — part III, weave. The four parts carry the four ISO 128
+     drafting hatches, so a reader can tell a Tools book from a Power book before
+     reading a word. Sized and weighted to survive 96px, which is feed and
+     thumbnail size and the only size at which a cover texture is decided.
+     The 50px module still governs the 100/100/110 padding. */
   .grid { position:absolute; inset:0; pointer-events:none;
-     background-image:
-       repeating-linear-gradient(45deg, rgba(247,246,241,.075) 0 1.5px, transparent 1.5px 18px); }
+     background-image: repeating-linear-gradient(45deg,rgba(247,246,241,0.13) 0 2px,transparent 2px 24px),repeating-linear-gradient(-45deg,rgba(247,246,241,0.13) 0 2px,transparent 2px 24px);
+     background-size: auto; }
   .sp-a { flex:1.15 1 0; }
   .sp-b { flex:1 1 0; }
   h1 { position:relative; font-family:"Space Grotesk",sans-serif; font-weight:700;
