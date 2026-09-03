@@ -1,0 +1,118 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Blurb eval, run 1 — Surplus — Engine Room Press</title><meta name="description" content="Built the buy/no-buy eval for blurbs and ran it on Surplus — the live blurb was rejected 3/3 by blind judges, the Turin-strike draft was the only unanimous buy and shipped. Three transferable rules now in hooks.md.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"><style>
+:root{--paper:#F7F6F1;--white:#fff;--ink:#14171A;--signal:#C1440E;--blue:#173B4E;
+--rule:#C7C4B8;--faint:#E4E2D8}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);
+font:400 18px/1.62 Newsreader,Georgia,serif;-webkit-text-size-adjust:100%}
+.wrap{max-width:660px;margin:0 auto;padding:32px 20px 96px}
+a{color:var(--ink)}
+.mast{border-bottom:1px solid var(--ink);padding-bottom:10px;margin-bottom:28px;
+display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.mono,.tag,.mast,.kicker,.crumb,th{font-family:"IBM Plex Mono",ui-monospace,monospace;
+font-weight:500;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.mast a{text-decoration:none}
+h1{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:700;
+font-size:clamp(30px,8vw,44px);line-height:1.06;letter-spacing:-.02em;margin:0 0 14px}
+.lede{font-size:19px;color:#3a3f44;margin-bottom:14px}
+h2{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:23px;
+line-height:1.2;margin:38px 0 12px}
+h3{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:19px;margin:26px 0 8px}
+p,li{margin-bottom:12px}
+ul,ol{padding-left:22px}
+strong{font-weight:600}
+code{font-family:"IBM Plex Mono",monospace;font-size:.85em;background:#ECEAE0;padding:1px 4px}
+pre{background:var(--ink);color:#F7F6F1;padding:16px;overflow-x:auto;margin:16px 0;font-size:13px}
+pre code{background:none;color:inherit;padding:0}
+blockquote{border-left:2px solid var(--signal);padding-left:14px;color:#3a3f44;margin:16px 0}
+hr{border:0;border-top:1px solid var(--rule);margin:32px 0}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:16px 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--rule);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:#ECEAE0;font-size:11px}
+img{max-width:100%;height:auto;display:block}
+/* section head with figure number */
+.fig{display:flex;align-items:baseline;gap:12px;margin:44px 0 4px;
+border-top:1px solid var(--ink);padding-top:10px}
+.fig .n{color:var(--signal)}
+.fig h2{margin:0;font-size:21px}
+.note{color:#3a3f44;font-size:16px;margin:4px 0 14px}
+/* rows */
+a.row{display:block;text-decoration:none;color:inherit;border:1px solid var(--rule);
+border-top:0;background:var(--white);padding:15px 16px}
+a.row:first-of-type{border-top:1px solid var(--rule)}
+a.row:hover{border-color:var(--signal)}
+a.row .t{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:17px}
+a.row .t .arw{color:var(--signal)}
+a.row .s{display:block;color:#3a3f44;font-size:15px;line-height:1.45;margin-top:4px}
+a.row .d{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+color:#6b6f73;text-transform:uppercase;margin-top:6px;display:block}
+.crumb{display:inline-block;margin-bottom:22px;text-decoration:none;color:var(--signal)}
+footer{margin-top:56px;border-top:1px solid var(--rule);padding-top:14px;
+font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+text-transform:uppercase;color:#6b6f73}
+.badge{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;
+padding:2px 6px;border:1px solid var(--rule);text-transform:uppercase}
+.badge.active{border-color:var(--signal);color:var(--signal)}
+.badge.done{color:#6b6f73}
+</style></head><body><div class="wrap">
+<div class="mast"><a href="../">Engine Room Press</a><span>Working preview</span></div>
+<a class="crumb" href="../">&larr; All of it</a><p class="lede">Built the buy/no-buy eval for blurbs and ran it on Surplus — the live blurb was rejected 3/3 by blind judges, the Turin-strike draft was the only unanimous buy and shipped. Three transferable rules now in hooks.md.</p><h1>Blurb eval, run 1 — Surplus</h1>
+<h2>What we decided</h2>
+<p><strong>The six-question audit in <code>hooks.md</code> was never a gate.</strong> It passed the Surplus
+blurb and Matt rejected it. It checks legibility, not desire. It stays as a
+floor; the new eval decides.</p>
+<p><strong>The eval is at <code>data/evals/surplus/eval.md</code>.</strong> Three criteria taken verbatim
+from Matt's three complaints — <em>I don't understand what it's about / I'm not
+hyped / I don't get how it helps me understand the current world</em> — scored 0-3
+by cold judges, plus one binary gate: <strong>would you pay $9 having read nothing
+else?</strong> Ships on 3/3 Yes with no criterion below 2.</p>
+<p><strong>The eval validated itself on run 1.</strong> The blurb that was live went in as an
+unlabelled control and was rejected by all three judges. It reproduces Matt's
+verdict, which is the only reason to trust it.</p>
+<p><strong>Shipped: the Turin strike blurb (K10).</strong> Deir el-Medina, year 29 of Ramesses
+III — the workmen cutting the pharaohs' tombs struck because the grain rations
+were late; the papyrus is in the Museo Egizio. Only unanimous Yes. Subject 3.0,
+hype 3.0, leverage 2.67. Live on <code>/covers/</code> and in <code>catalogue.md</code>. Shipped
+<strong>verbatim</strong> — editing the winner after judging would void the run.</p>
+<h2>Three findings, and they apply to all sixteen books</h2>
+<p>Now written into <code>hooks.md</code>.</p>
+<ol>
+<li><strong>Gesture at the category, never name the instance.</strong> 11 of 13 drafts failed
+   this and all three judges found it independently. Naming "your rent" and then
+   promising to explain your rent spends the promise inside the blurb.</li>
+<li><strong>Show one checkable thing.</strong> Every Yes contained a verifiable object. Every
+   No asserted a chain and asked to be believed.</li>
+<li><strong>A scene beats a mechanism.</strong> The winner was the only draft with people in it.</li>
+</ol>
+<p>Plus a warning: six of thirteen drafts sold a famous Sapiens chapter. Novelty
+must come from the evidence, not the thesis.</p>
+<h2>What we tried and abandoned</h2>
+<ul>
+<li><strong>Strategy D attacked the premise</strong> — retitle to <em>The Spare Mouth</em>, <em>The
+  Granary</em> or <em>The Ratchet</em>, and drop Surplus from position 01. All three
+  reframes scored below the winner and <em>The Spare Mouth</em> was the draft one judge
+  said he would be most embarrassed to own. <strong>The title and the launch position
+  are not the problem — the blurb was.</strong> Do not re-open this without new evidence.</li>
+<li>Considered hand-editing K10 to fix its one leverage-2 score. Rejected: changing
+  the winner after the judging invalidates the run. Re-judge or ship as-is.</li>
+</ul>
+<h2>Open questions</h2>
+<ul>
+<li><strong>Only Matt closes this item.</strong> <code>done_when</code> is his word, not the judges'.</li>
+<li><strong>Do the other fifteen get re-run?</strong> Almost certainly — they were written
+  against the old audit and rule 1 predicts most of them pre-chew the leverage.
+  Not queued yet; the cost is ~7 subagents per book.</li>
+<li>Judge 2 flagged overstated claims in drafts we did not ship (<code>class begins
+  there</code>, <code>storage came before farming</code>). Worth a sweep of the live sixteen.</li>
+</ul>
+<h2>Pointers</h2>
+<ul>
+<li><code>data/evals/surplus/</code> — eval spec, the 12 drafts by strategy, the anonymised
+  candidate sheet the judges saw, three judge reports.</li>
+<li><code>docs/hooks.md</code> — rewritten head: floor vs gate, and the three rules.</li>
+<li>Still open and still Matt's: the FormSubmit activation click.</li>
+</ul>
+<footer>Draft — built by the agent, judged by Matt</footer>
+</div></body></html>
