@@ -1,0 +1,111 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Cover textures — Engine Room Press</title><link rel=preconnect href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Newsreader:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel=stylesheet><style>
+:root{--paper:#F7F6F1;--white:#fff;--ink:#14171A;--signal:#C1440E;--rule:#C7C4B8;--faint:#E4E2D8}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);padding:0 0 96px}
+.w{max-width:1320px;margin:0 auto;padding:0 32px}
+.sw{position:sticky;top:0;z-index:9;background:var(--ink);color:var(--paper);
+ font:500 11px/44px "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase}
+.sw .w{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.sw a{color:#9EA3A7;text-decoration:none}.sw a:hover{color:var(--paper)}
+.sw a.on{color:var(--signal)}.sw .nm{color:var(--paper);margin-right:auto}
+header{padding:64px 0 32px;border-bottom:1px solid var(--rule);margin-bottom:56px}
+h1{font:700 clamp(30px,4.4vw,56px)/1.05 "Space Grotesk",system-ui,sans-serif;
+ margin:0 0 24px;letter-spacing:-.025em;max-width:20ch}
+h1 em{font-style:normal;color:var(--signal)}
+p{font:400 19px/1.6 Newsreader,Georgia,serif;max-width:64ch;margin:0 0 16px}
+.callout{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;margin:64px 0 24px;
+ font:500 12px/1.4 "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase}
+.callout .tag{color:var(--signal)}
+.callout .lead{flex:1;border-top:1px dashed var(--rule);transform:translateY(-4px)}
+/* texture rows */
+.row{display:grid;grid-template-columns:300px 300px minmax(0,1fr);gap:40px;
+ align-items:start;padding:48px 0;border-bottom:1px solid var(--faint)}
+.row:first-of-type{border-top:1px solid var(--rule)}
+.fr{border:1px solid var(--rule);line-height:0}.fr img{width:100%;display:block}
+.nm2{font:700 28px/1.1 "Space Grotesk",system-ui,sans-serif;letter-spacing:-.02em;margin:0 0 12px}
+.why{font:400 17px/1.6 Newsreader,Georgia,serif;color:#3d4145;margin:0 0 24px;max-width:46ch}
+.thumbs{display:flex;align-items:flex-end;gap:24px;border-top:1px solid var(--faint);padding-top:20px}
+.thumbs figure{margin:0}
+.thumbs img{display:block;border:1px solid var(--rule)}
+.thumbs figcaption{font:500 10px/1.4 "IBM Plex Mono",monospace;letter-spacing:.12em;
+ text-transform:uppercase;color:#5c5f63;padding-top:8px}
+.key{font:500 11px/1.4 "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;
+ color:var(--signal);margin:0 0 10px}
+/* index cards */
+.opts{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:8px}
+.opt{border:1px solid var(--rule);background:var(--white);padding:32px;text-decoration:none;
+ color:var(--ink);display:block}
+.opt:hover{border-color:var(--ink)}
+.opt h3{font:700 26px/1.1 "Space Grotesk",system-ui,sans-serif;letter-spacing:-.02em;margin:12px 0}
+.opt p{font:400 16px/1.55 Newsreader,Georgia,serif;color:#3d4145;margin:0 0 16px}
+.opt .go{font:500 11px/1.4 "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;
+ color:var(--signal)}
+.opts.one{grid-template-columns:1fr}
+.opt .key{color:#5c5f63}
+@media(max-width:900px){.row{grid-template-columns:minmax(0,1fr)}.opts{grid-template-columns:1fr}}
+</style></head><body><div class=sw><div class=w><span class=nm>Engine Room Press &middot; pick one</span><a href="layout-a.html">A &middot; Shelf</a><a href="layout-b.html">B &middot; Ledger</a><a href="layout-c.html">C &middot; Spread</a><a href="treatments.html" class=on>Textures</a><a href="index.html">Back</a></div></div><div class=w><header>
+<h1>The cover surface. <em>Pick one texture.</em></h1>
+<p>Same title, same type, same rules &mdash; only the surface behind the words changes.
+Two sizes matter: the big one is how it looks on the shelf page, the small ones are how it
+looks as an Amazon thumbnail and in a feed, which is where it actually has to survive.</p>
+<p>Tell me a number. They can also be combined &mdash; grain under any of the others.</p>
+</header>
+<div class=callout><span class=tag>Textures</span><span class=lead></span><span>Seven options</span></div>
+<div class=row>
+ <span class=fr><img src="t-control-ink.png" alt="Control — what is live now on ink" loading=lazy></span>
+ <span class=fr><img src="t-control-blue.png" alt="Control — what is live now on blue" loading=lazy></span>
+ <div><p class=key>Texture 00</p><h2 class=nm2>Control — what is live now</h2><p class=why>A single 50px grid at 10%. Even and flat. This is the one you said feels undesigned.</p>
+  <div class=thumbs>
+   <figure><img src="t-control-ink.png" width=160 alt=""><figcaption>160px &mdash; Amazon</figcaption></figure>
+   <figure><img src="t-control-ink.png" width=96 alt=""><figcaption>96px &mdash; feed</figcaption></figure>
+   <figure><img src="t-control-blue.png" width=96 alt=""><figcaption>96px &mdash; blue</figcaption></figure>
+  </div></div></div><div class=row>
+ <span class=fr><img src="t-sheet-ink.png" alt="Drafting sheet on ink" loading=lazy></span>
+ <span class=fr><img src="t-sheet-blue.png" alt="Drafting sheet on blue" loading=lazy></span>
+ <div><p class=key>Texture 01</p><h2 class=nm2>Drafting sheet</h2><p class=why>Two grids, not one: a fine 50px mesh plus a heavy line every 250px. The field now has structure, like real engineering paper.</p>
+  <div class=thumbs>
+   <figure><img src="t-sheet-ink.png" width=160 alt=""><figcaption>160px &mdash; Amazon</figcaption></figure>
+   <figure><img src="t-sheet-ink.png" width=96 alt=""><figcaption>96px &mdash; feed</figcaption></figure>
+   <figure><img src="t-sheet-blue.png" width=96 alt=""><figcaption>96px &mdash; blue</figcaption></figure>
+  </div></div></div><div class=row>
+ <span class=fr><img src="t-dimension-ink.png" alt="Dimension lines on ink" loading=lazy></span>
+ <span class=fr><img src="t-dimension-blue.png" alt="Dimension lines on blue" loading=lazy></span>
+ <div><p class=key>Texture 02</p><h2 class=nm2>Dimension lines</h2><p class=why>The grid goes quiet and the drawing device does the work: the title is measured, the way a part is measured on a technical drawing. Corner ticks, an extension line each side, one mono figure.</p>
+  <div class=thumbs>
+   <figure><img src="t-dimension-ink.png" width=160 alt=""><figcaption>160px &mdash; Amazon</figcaption></figure>
+   <figure><img src="t-dimension-ink.png" width=96 alt=""><figcaption>96px &mdash; feed</figcaption></figure>
+   <figure><img src="t-dimension-blue.png" width=96 alt=""><figcaption>96px &mdash; blue</figcaption></figure>
+  </div></div></div><div class=row>
+ <span class=fr><img src="t-hatch-ink.png" alt="Section hatch on ink" loading=lazy></span>
+ <span class=fr><img src="t-hatch-blue.png" alt="Section hatch on blue" loading=lazy></span>
+ <div><p class=key>Texture 03</p><h2 class=nm2>Section hatch</h2><p class=why>45-degree hairlines, the drafting convention for a surface that has been cut open. Straight from the name: the engine room, opened up.</p>
+  <div class=thumbs>
+   <figure><img src="t-hatch-ink.png" width=160 alt=""><figcaption>160px &mdash; Amazon</figcaption></figure>
+   <figure><img src="t-hatch-ink.png" width=96 alt=""><figcaption>96px &mdash; feed</figcaption></figure>
+   <figure><img src="t-hatch-blue.png" width=96 alt=""><figcaption>96px &mdash; blue</figcaption></figure>
+  </div></div></div><div class=row>
+ <span class=fr><img src="t-halftone-ink.png" alt="Halftone screen on ink" loading=lazy></span>
+ <span class=fr><img src="t-halftone-blue.png" alt="Halftone screen on blue" loading=lazy></span>
+ <div><p class=key>Texture 04</p><h2 class=nm2>Halftone screen</h2><p class=why>A printed dot screen instead of a drawn line. Warmer and more print-like; the field stops looking like a slab of colour.</p>
+  <div class=thumbs>
+   <figure><img src="t-halftone-ink.png" width=160 alt=""><figcaption>160px &mdash; Amazon</figcaption></figure>
+   <figure><img src="t-halftone-ink.png" width=96 alt=""><figcaption>96px &mdash; feed</figcaption></figure>
+   <figure><img src="t-halftone-blue.png" width=96 alt=""><figcaption>96px &mdash; blue</figcaption></figure>
+  </div></div></div><div class=row>
+ <span class=fr><img src="t-grain-ink.png" alt="Paper grain on ink" loading=lazy></span>
+ <span class=fr><img src="t-grain-blue.png" alt="Paper grain on blue" loading=lazy></span>
+ <div><p class=key>Texture 05</p><h2 class=nm2>Paper grain</h2><p class=why>No pattern at all — just fibre noise, so the flat colour is not perfectly flat. The quietest option. Reads as printed board rather than a screen fill.</p>
+  <div class=thumbs>
+   <figure><img src="t-grain-ink.png" width=160 alt=""><figcaption>160px &mdash; Amazon</figcaption></figure>
+   <figure><img src="t-grain-ink.png" width=96 alt=""><figcaption>96px &mdash; feed</figcaption></figure>
+   <figure><img src="t-grain-blue.png" width=96 alt=""><figcaption>96px &mdash; blue</figcaption></figure>
+  </div></div></div><div class=row>
+ <span class=fr><img src="t-band-ink.png" alt="Split field on ink" loading=lazy></span>
+ <span class=fr><img src="t-band-blue.png" alt="Split field on blue" loading=lazy></span>
+ <div><p class=key>Texture 06</p><h2 class=nm2>Split field</h2><p class=why>No pattern at all. The field is cut in two by one hairline: a lighter tint above, the true colour below, and the title sits on the join. Structure instead of texture.</p>
+  <div class=thumbs>
+   <figure><img src="t-band-ink.png" width=160 alt=""><figcaption>160px &mdash; Amazon</figcaption></figure>
+   <figure><img src="t-band-ink.png" width=96 alt=""><figcaption>96px &mdash; feed</figcaption></figure>
+   <figure><img src="t-band-blue.png" width=96 alt=""><figcaption>96px &mdash; blue</figcaption></figure>
+  </div></div></div>
+</div></body></html>

@@ -1,0 +1,80 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Pick the shelf layout and the cover texture — Engine Room Press</title><link rel=preconnect href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Newsreader:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel=stylesheet><style>
+:root{--paper:#F7F6F1;--white:#fff;--ink:#14171A;--signal:#C1440E;--rule:#C7C4B8;--faint:#E4E2D8}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);padding:0 0 96px}
+.w{max-width:1320px;margin:0 auto;padding:0 32px}
+.sw{position:sticky;top:0;z-index:9;background:var(--ink);color:var(--paper);
+ font:500 11px/44px "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase}
+.sw .w{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.sw a{color:#9EA3A7;text-decoration:none}.sw a:hover{color:var(--paper)}
+.sw a.on{color:var(--signal)}.sw .nm{color:var(--paper);margin-right:auto}
+header{padding:64px 0 32px;border-bottom:1px solid var(--rule);margin-bottom:56px}
+h1{font:700 clamp(30px,4.4vw,56px)/1.05 "Space Grotesk",system-ui,sans-serif;
+ margin:0 0 24px;letter-spacing:-.025em;max-width:20ch}
+h1 em{font-style:normal;color:var(--signal)}
+p{font:400 19px/1.6 Newsreader,Georgia,serif;max-width:64ch;margin:0 0 16px}
+.callout{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;margin:64px 0 24px;
+ font:500 12px/1.4 "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase}
+.callout .tag{color:var(--signal)}
+.callout .lead{flex:1;border-top:1px dashed var(--rule);transform:translateY(-4px)}
+/* texture rows */
+.row{display:grid;grid-template-columns:300px 300px minmax(0,1fr);gap:40px;
+ align-items:start;padding:48px 0;border-bottom:1px solid var(--faint)}
+.row:first-of-type{border-top:1px solid var(--rule)}
+.fr{border:1px solid var(--rule);line-height:0}.fr img{width:100%;display:block}
+.nm2{font:700 28px/1.1 "Space Grotesk",system-ui,sans-serif;letter-spacing:-.02em;margin:0 0 12px}
+.why{font:400 17px/1.6 Newsreader,Georgia,serif;color:#3d4145;margin:0 0 24px;max-width:46ch}
+.thumbs{display:flex;align-items:flex-end;gap:24px;border-top:1px solid var(--faint);padding-top:20px}
+.thumbs figure{margin:0}
+.thumbs img{display:block;border:1px solid var(--rule)}
+.thumbs figcaption{font:500 10px/1.4 "IBM Plex Mono",monospace;letter-spacing:.12em;
+ text-transform:uppercase;color:#5c5f63;padding-top:8px}
+.key{font:500 11px/1.4 "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;
+ color:var(--signal);margin:0 0 10px}
+/* index cards */
+.opts{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:8px}
+.opt{border:1px solid var(--rule);background:var(--white);padding:32px;text-decoration:none;
+ color:var(--ink);display:block}
+.opt:hover{border-color:var(--ink)}
+.opt h3{font:700 26px/1.1 "Space Grotesk",system-ui,sans-serif;letter-spacing:-.02em;margin:12px 0}
+.opt p{font:400 16px/1.55 Newsreader,Georgia,serif;color:#3d4145;margin:0 0 16px}
+.opt .go{font:500 11px/1.4 "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;
+ color:var(--signal)}
+.opts.one{grid-template-columns:1fr}
+.opt .key{color:#5c5f63}
+@media(max-width:900px){.row{grid-template-columns:minmax(0,1fr)}.opts{grid-template-columns:1fr}}
+</style></head><body><div class=sw><div class=w><span class=nm>Engine Room Press &middot; pick one</span><a href="layout-a.html">A &middot; Shelf</a><a href="layout-b.html">B &middot; Ledger</a><a href="layout-c.html">C &middot; Spread</a><a href="treatments.html">Textures</a><a href="index.html" class=on>Back</a></div></div><div class=w><header>
+<h1>Two decisions. <em>Pick one of each.</em></h1>
+<p>You said the shelf page is ugly on a desktop &mdash; too much empty space, no hierarchy
+&mdash; and that the covers themselves feel undesigned. Those are two separate fixes, so
+here are two separate choices. Everything below is real: all sixteen books, real blurbs,
+working pages.</p>
+<p>Reply with a letter and a number, like <b>&ldquo;B and 02&rdquo;</b>.</p>
+</header>
+
+<div class=callout><span class=tag>Decision 1</span><span class=lead></span><span>The desktop layout</span></div>
+<div class=opts>
+<a class=opt href="layout-a.html"><p class=key>Option A</p><h3>The shelf</h3>
+<p>The covers get big and sit four across, like a bookshop table. Each one carries only its
+title and its one line; the blurb hides behind a click. The page sells the covers.</p>
+<p>Cost: you have to click to read a blurb.</p><span class=go>Open A &rarr;</span></a>
+
+<a class=opt href="layout-b.html"><p class=key>Option B</p><h3>The ledger</h3>
+<p>One line per book, straight across the full width: number, cover, title, blurb. Nothing is
+hidden and nothing is ragged. It reads like a catalogue, which is what it is.</p>
+<p>Cost: the covers stay small.</p><span class=go>Open B &rarr;</span></a>
+
+<a class=opt href="layout-c.html"><p class=key>Option C</p><h3>The spread</h3>
+<p>One book per band, the cover big on the left and the whole entry set beside it. Each book
+gets a moment. The cover pins itself while you read.</p>
+<p>Cost: the longest page &mdash; sixteen bands of scrolling.</p><span class=go>Open C &rarr;</span></a>
+</div>
+
+<div class=callout><span class=tag>Decision 2</span><span class=lead></span><span>The cover surface</span></div>
+<div class="opts one">
+<a class=opt href="treatments.html"><p class=key>Textures</p><h3>Seven surfaces</h3>
+<p>The same cover under seven treatments &mdash; drafting sheet, dimension lines, section
+hatch, halftone screen, paper grain, split field, and what is live now as the control.
+Each one shown big and at thumbnail size.</p><span class=go>Open the textures &rarr;</span></a>
+</div>
+</div></body></html>
