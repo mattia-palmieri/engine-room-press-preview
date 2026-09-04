@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>references</title>
+<style>
+:root{--bg:#f6f5f2;--panel:#fff;--line:#e4e1da;--ink:#1c1b19;--muted:#8a8579;--accent:#c96442;--sel:#efeae2;--ok:#2f7d4f;--no:#b23b3b}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}
+.bar{display:flex;gap:6px;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--panel);position:sticky;top:0;z-index:2;align-items:center;flex-wrap:wrap}
+.bar button{border:1px solid var(--line);background:var(--bg);border-radius:7px;padding:6px 12px;font-size:12.5px;font-weight:600;color:var(--muted);cursor:pointer}
+.bar button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.bar .jump{margin-left:auto;display:flex;gap:6px}
+.bar .copy{background:var(--ink);color:#fff;border-color:var(--ink)}
+.pane{padding:20px;max-width:1100px;margin:0 auto}
+.pane[hidden]{display:none}
+h1{font-size:22px;margin:0 0 6px} h2{font-size:18px;margin:36px 0 4px} .cnt{color:var(--muted);font-weight:400;font-size:14px}
+p{line-height:1.6;color:#333} .intro{color:var(--muted);margin:0 0 14px;font-size:14px}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
+.grid-site{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.grid-blurb{grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column}
+.card.liked{outline:3px solid var(--ok)} .card.disliked{opacity:.45;outline:3px solid var(--no)}
+.media{background:var(--sel);display:flex;justify-content:center;align-items:flex-start;gap:6px;padding:10px;min-height:120px;flex-wrap:wrap}
+.media img{max-width:100%;max-height:340px;object-fit:contain;border-radius:3px;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+.media img.phone{max-height:420px;width:calc(50% - 6px)} .media img.desk{width:100%;max-height:none}
+.noimg{color:var(--muted);font-size:12px;padding:40px 0}
+.blurb{font-family:Georgia,serif;font-size:14.5px;line-height:1.55;padding:6px;text-align:left}
+.meta{padding:10px 12px 12px;display:flex;flex-direction:column;gap:4px}
+.t{font-weight:700;font-size:14px} .s{font-size:12px;color:var(--muted)} .w{font-size:13px;line-height:1.45} .sold{font-size:12px;color:var(--accent)}
+.lnk{font-size:12px;color:var(--muted)}
+.vote{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.vote button{border:1px solid var(--line);background:var(--bg);border-radius:6px;padding:5px 10px;font-size:12px;font-weight:600;cursor:pointer}
+.vote .like.on{background:var(--ok);color:#fff;border-color:var(--ok)} .vote .dislike.on{background:var(--no);color:#fff;border-color:var(--no)}
+.vote .note{flex:1;min-width:100px;border:1px solid var(--line);border-radius:6px;padding:5px 8px;font-size:12px}
+pre{background:var(--sel);padding:12px;border-radius:8px;white-space:pre-wrap;font-size:12px}
+#out{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9;padding:18px;overflow:auto}
+#out .box{background:var(--panel);border-radius:12px;padding:16px;max-width:560px;margin:40px auto}
+#out textarea{width:100%;height:220px;font-family:ui-monospace,Menlo,monospace;font-size:12px;border:1px solid var(--line);border-radius:8px;padding:10px}
+#out button{margin-top:10px;border:0;background:var(--ink);color:#fff;border-radius:8px;padding:10px 16px;font-size:14px;font-weight:600}
+.first{background:#fff;border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:8px;padding:12px 14px;margin:0 0 16px}
+.first b{color:var(--accent)}
+@media(max-width:640px){
+ .pane{padding:14px}
+ .bar{padding:10px 12px;gap:5px}
+ .bar button{padding:7px 10px;font-size:12px}
+ .bar .jump{margin-left:0;width:100%;gap:5px;flex-wrap:wrap}
+ .bar .jump button{flex:1 1 0}
+ .bar .jump .copy{flex:1 0 100%;padding:10px;font-size:14px;margin-top:2px}
+ .media img{max-height:240px}
+ .grid{grid-template-columns:1fr}
+ .grid-site,.grid-blurb{grid-template-columns:1fr}
+ .vote button{flex:1;padding:10px;font-size:14px}
+ .vote .note{flex-basis:100%}
+}
+</style></head><body><div style="font:500 11px/1 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;background:#14171A;padding:11px 16px;text-align:center"><a href="../" style="color:#F7F6F1;text-decoration:none">&larr; Back to everything</a></div>
+<div class="bar">
+  <button id="tab-view" class="active" onclick="show('view')">View</button>
+  <button id="tab-notes" onclick="show('notes')">Notes</button>
+  <div class="jump">
+    <button onclick="go('cover')">Covers</button><button onclick="go('site')">Sites</button><button onclick="go('social')">Social</button><button onclick="go('blurb')">Blurbs</button>
+    <button class="copy" onclick="copyPicks()">Copy my picks</button>
+  </div>
+</div>
+<div id="view" class="pane">
+  <h1>Tap what you like</h1>
+  <p class="first"><b>Do the Covers only.</b> Sixteen taps, one minute. That alone unblocks me — I rebuild our covers first. Sites, Social and Blurbs are there if you have more time, but skip them without guilt.</p>
+  <p class="intro">Every item here is real: a book that sold, a real publisher site, a real account, a real back cover. None of it is mine. Green = would pick it up. Red = no. Ignore the subject, look at the object. Your taps stay in this browser, so you can stop and come back. When done, hit <b>Copy my picks</b> and paste it to me on Telegram.</p>
+  <section id="sec-cover"><h2>Covers <span class="cnt">16</span></h2><p class="intro">Real covers, different devices. Tap Like on the ones you would pick up in a shop. Ignore the subject; look at the object.</p><div class="grid grid-cover">
+<div class="card" data-id="cover:01-sapiens.jpg">
+  <div class="media"><img src="refs/covers/01-sapiens.jpg" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">Sapiens: A Brief History of Humankind</div>
+    <div class="s">Yuval Noah Harari · 2011 · typographic</div>
+    <div class="w">the title word fills most of the cover in large serif type, with a small fingerprint graphic replacing the dot on the &#x27;i&#x27;</div>
+    <div class="sold">20M+ copies</div>
+    <div class="vote">
+      <button class="like" onclick="vote('cover:01-sapiens.jpg',1)">Like</button>
+      <button class="dislike" onclick="vote('cover:01-sapiens.jpg',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('cover:01-sapiens.jpg',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="cover:02-guns-germs-steel.jpg">
+  <div class="media"><img src="refs/covers/02-guns-germs-steel.jpg" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">Guns, Germs, and Steel: The Fates of Human Societies</div>
+    <div class="s">Jared Diamond · 1997 · illustrated</div>
+    <div class="w">a painted historical battle scene fills the top half, with the title stacked in bold orange type below it</div>
+    <div class="sold">Pulitzer Prize winner</div>
+    <div class="vote">
+      <button class="like" onclick="vote('cover:02-guns-germs-steel.jpg',1)">Like</button>
+      <button class="dislike" onclick="vote('cover:02-guns-germs-steel.jpg',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('cover:02-guns-germs-steel.jpg',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="cover:03-silk-roads.jpg">
+  <div class="media"><img src="refs/covers/03-silk-roads.jpg" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">The Silk Roads: A New History of the World</div>
+    <div class="s">Peter Frankopan · 2015 · illustrated</div>
+    <div class="w">an ornate repeating tile/dome pattern in blue and gold covers the full background behind the title</div>
+    
+    <div class="vote">
+      <button class="like" onclick="vote('cover:03-silk-roads.jpg',1)">Like</button>
+      <button class="dislike" onclick="vote('cover:03-silk-roads.jpg',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('cover:03-silk-roads.jpg',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="cover:04-prisoners-of-geography.jpg">
+  <div class="media"><img src="refs/covers/04-prisoners-of-geography.jpg" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">Prisoners of Geography: Ten Maps That Tell You Everything You Need to Know About Global Politics</div>
+    <div class="s">Tim Marshall · 2015 · illustrated</div>
+    <div class="w">a world map is built entirely out of colored word-cloud text listing geopolitical terms</div>
+    <div class="sold">No. 1 Sunday Times bestseller</div>
+    <div class="vote">
+      <button class="like" onclick="vote('cover:04-prisoners-of-geography.jpg',1)">Like</button>
+      <button class="dislike" onclick="vote('cover:04-prisoners-of-geography.jpg',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('cover:04-prisoners-of-geography.jpg',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="cover:05-the-box.jpg">
+  <div class="media"><img src="refs/covers/05-the-box.jpg" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">The Box: How the Shipping Container Made the World Smaller and the World Economy Bigger</div>
+    <div class="s">Marc Levinson · 2006 · illustrated</div>
+    <div class="w">a blue engineering blueprint drawing of a shipping container is rendered as line art on a white ground</div>
+    
+    <div class="vote">
+      <button class="like" onclick="vote('cover:05-the-box.jpg',1)">Like</button>
+      <button class="dislike" onclick="vote('cover:05-the-box.jpg',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('cover:05-the-box.jpg',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="cover:06-salt.jpg">
+  <div class="media"><img src="refs/covers/06-salt.jpg" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">Salt: A World History</div>
+    <div class="s">Mark Kurlansky · 2002 · typographic</div>
+    <div class="w">the title in large white serif type dominates a near-black cover, with one small line-drawn salt shaker as the only image</div>
+    <div class="sold">New York Times bestseller</div>
+    <div class="vote">
+      <button class="like" onclick="vote('cover:06-salt.jpg',1)">Like</button>
+      <button class="dislike" onclick="vote('cover:06-salt.jpg',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('cover:06-salt.jpg',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="cover:07-debt.jpg">
+  <div class="media"><img src="refs/covers/07-debt.jpg" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">Debt: The First 5,000 Years</div>
+    <div class="s">David Graeber · 2011 · illustrated</div>
+    <div class="w">the cover is die-cut to look like a torn paper receipt printed with the title, centered on a flat red background</div>
+    <div class="sold">International bestseller</div>
+    <div class="vote">
+      <button class="like" onclick="vote('cover:07-debt.jpg',1)">Like</button>
+      <button class="dislike" onclick="vote('cover:07-debt.jpg',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('cover:07-debt.jpg',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="cover:08-why-nations-fail.jpg">
+  <div class="media"><img src="refs/covers/08-why-nations-fail.jpg" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">Why Nations Fail: The Origins of Power, Prosperity, and Poverty</div>
+    <div class="s">Daron Acemoglu and James Robinson · 2012 · photographic</div>
+    <div class="w">a real photograph of a dense slum skyline runs full-bleed behind the bold black title stack</div>
+    
+    <div class="vote">
+      <button class="like" onclick="vote('cover:08-why-nations-fail.jpg',1)">Like</button>
+      <button class="dislike" onclick="vote('cover:08-why-nations-fail.jpg',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('cover:08-why-nations-fail.jpg',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="cover:09-chip-war.jpg">
+  <div class="media"><img src="refs/covers/09-chip-war.jpg" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">Chip War: The Fight for the World&#x27;s Most Critical Technology</div>
+    <div class="s">Chris Miller · 2022 · illustrated</div>
+    <div class="w">a photographed microchip is inset into a graphic of the US flag, replacing part of the stripes</div>
+    
+    <div class="vote">
+      <button class="like" onclick="vote('cover:09-chip-war.jpg',1)">Like</button>
+      <button class="dislike" onclick="vote('cover:09-chip-war.jpg',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('cover:09-chip-war.jpg',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="cover:10-dawn-of-everything.jpg">
+  <div class="media"><img src="refs/covers/10-dawn-of-everything.jpg" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">The Dawn of Everything: A New History of Humanity</div>
+    <div class="s">David Graeber and David Wengrow · 2021 · typographic</div>
+    <div class="w">solid orange background with only bold red title and author type, no imagery at all</div>
+    
+    <div class="vote">
+      <button class="like" onclick="vote('cover:10-dawn-of-everything.jpg',1)">Like</button>
+      <button class="dislike" onclick="vote('cover:10-dawn-of-everything.jpg',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('cover:10-dawn-of-everything.jpg',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="cover:11-nexus.jpg">
+  <div class="media"><img src="refs/covers/11-nexus.jpg" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">Nexus: A Brief History of Information Networks from the Stone Age to AI</div>
+    <div class="s">Yuval Noah Harari · 2024 · photographic</div>
+    <div class="w">a photograph of a single pigeon sits above the title, on an otherwise plain cream background</div>
+    <div class="sold">No. 1 New York Times bestselling author</div>
+    <div class="vote">
+      <button class="like" onclick="vote('cover:11-nexus.jpg',1)">Like</button>
+      <button class="dislike" onclick="vote('cover:11-nexus.jpg',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('cover:11-nexus.jpg',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="cover:12-empire-of-cotton.jpg">
+  <div class="media"><img src="refs/covers/12-empire-of-cotton.jpg" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">Empire of Cotton: A Global History</div>
+    <div class="s">Sven Beckert · 2014 · illustrated</div>
+    <div class="w">three small vintage engravings of cotton production are stacked vertically down the cover</div>
+    <div class="sold">Winner of the Bancroft Prize</div>
+    <div class="vote">
+      <button class="like" onclick="vote('cover:12-empire-of-cotton.jpg',1)">Like</button>
+      <button class="dislike" onclick="vote('cover:12-empire-of-cotton.jpg',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('cover:12-empire-of-cotton.jpg',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="cover:13-pelican-economics.jpg">
+  <div class="media"><img src="refs/covers/13-pelican-economics.jpg" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">Economics: The User&#x27;s Guide</div>
+    <div class="s">Ha-Joon Chang / Pelican Books · 2014 · series-system</div>
+    <div class="w">series colour-coding and a cream background carry small colored icons and economist portraits, distinguishing this Pelican title within its house-style relaunch line</div>
+    
+    <div class="vote">
+      <button class="like" onclick="vote('cover:13-pelican-economics.jpg',1)">Like</button>
+      <button class="dislike" onclick="vote('cover:13-pelican-economics.jpg',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('cover:13-pelican-economics.jpg',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="cover:14-penguin-great-ideas-thoreau.jpg">
+  <div class="media"><img src="refs/covers/14-penguin-great-ideas-thoreau.jpg" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">Where I Lived, and What I Lived For</div>
+    <div class="s">Henry David Thoreau / Penguin Great Ideas · 2005 · series-system</div>
+    <div class="w">a small centered woodcut-style illustration and fixed type layout is reused across every title in the Penguin Great Ideas series, only the image and text changing</div>
+    
+    <div class="vote">
+      <button class="like" onclick="vote('cover:14-penguin-great-ideas-thoreau.jpg',1)">Like</button>
+      <button class="dislike" onclick="vote('cover:14-penguin-great-ideas-thoreau.jpg',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('cover:14-penguin-great-ideas-thoreau.jpg',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="cover:15-fitzcarraldo-this-little-art.jpg">
+  <div class="media"><img src="refs/covers/15-fitzcarraldo-this-little-art.jpg" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">This Little Art</div>
+    <div class="s">Kate Briggs / Fitzcarraldo Editions · 2017 · series-system</div>
+    <div class="w">a flat solid blue background with centered serif type only and no imagery, the plain-colour-plus-type formula that marks every Fitzcarraldo nonfiction title</div>
+    
+    <div class="vote">
+      <button class="like" onclick="vote('cover:15-fitzcarraldo-this-little-art.jpg',1)">Like</button>
+      <button class="dislike" onclick="vote('cover:15-fitzcarraldo-this-little-art.jpg',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('cover:15-fitzcarraldo-this-little-art.jpg',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="cover:16-object-lessons-fake.jpg">
+  <div class="media"><img src="refs/covers/16-object-lessons-fake.jpg" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">Fake</div>
+    <div class="s">Kati Stevens / Object Lessons, Bloomsbury · 2019 · series-system</div>
+    <div class="w">a single flat-colour illustration of the object named in the title sits on a dark ground under the fixed &#x27;Object Lessons&#x27; series masthead</div>
+    
+    <div class="vote">
+      <button class="like" onclick="vote('cover:16-object-lessons-fake.jpg',1)">Like</button>
+      <button class="dislike" onclick="vote('cover:16-object-lessons-fake.jpg',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('cover:16-object-lessons-fake.jpg',this.value)">
+    </div>
+  </div>
+</div></div></section><section id="sec-site"><h2>Book websites <span class="cnt">12</span></h2><p class="intro">Phone view first, desktop under it. Tap Like if you would trust this shop with $69.</p><div class="grid grid-site">
+<div class="card" data-id="site:pelican">
+  <div class="media"><img class="phone" src="refs/sites/01-pelican-phone.png" loading="lazy"><img class="desk" src="refs/sites/01-pelican-desktop.png" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">Pelican Books (Penguin imprint)</div>
+    <div class="s">Accessible non-fiction paperbacks on big intellectual topics (economics, evolution, history) under the Penguin umbrella.</div>
+    <div class="w">Every cover is the same teal-blue palette with a simple line illustration and bold sans headline type — the series look is the brand, not the author.</div>
+    <div class="sold">No direct cart on this page; each title links to a Penguin product page that sells through Penguin&#x27;s own checkout and links out to retailers (Amazon, Waterstones, etc.).</div><a class="lnk" href="https://www.penguin.co.uk/series/PELBKS/pelican-books" target="_blank">open site</a>
+    <div class="vote">
+      <button class="like" onclick="vote('site:pelican',1)">Like</button>
+      <button class="dislike" onclick="vote('site:pelican',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('site:pelican',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="site:fitzcarraldo">
+  <div class="media"><img class="phone" src="refs/sites/02-fitzcarraldo-phone.png" loading="lazy"><img class="desk" src="refs/sites/02-fitzcarraldo-desktop.png" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">Fitzcarraldo Editions</div>
+    <div class="s">Literary fiction and essays in translation, plus some non-fiction.</div>
+    <div class="w">Every book is the same plain blue (fiction) or white (essays) cover with centered serif type and no imagery — the uniform spine-as-brand look, shot here as stacked physical books on concrete.</div>
+    <div class="sold">Direct cart on-site (&quot;My basket&quot;), full checkout, no link-outs.</div><a class="lnk" href="https://fitzcarraldoeditions.com" target="_blank">open site</a>
+    <div class="vote">
+      <button class="like" onclick="vote('site:fitzcarraldo',1)">Like</button>
+      <button class="dislike" onclick="vote('site:fitzcarraldo',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('site:fitzcarraldo',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="site:verso">
+  <div class="media"><img class="phone" src="refs/sites/03-verso-phone.png" loading="lazy"><img class="phone" src="refs/sites/03-verso-book-phone.png" loading="lazy"><img class="desk" src="refs/sites/03-verso-desktop.png" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">Verso Books</div>
+    <div class="s">Left political theory, history, and current-affairs non-fiction, plus some fiction.</div>
+    <div class="w">Red/black/yellow constructivist-poster palette, bold condensed display type, photographed book stacks; each cover keeps its own art but a consistent red logo mark ties them together.</div>
+    <div class="sold">Direct cart on-site with a running sitewide discount banner and a paid &quot;Book Club&quot; subscription (monthly pick) alongside single-title purchase.</div><a class="lnk" href="https://www.versobooks.com" target="_blank">open site</a>
+    <div class="vote">
+      <button class="like" onclick="vote('site:verso',1)">Like</button>
+      <button class="dislike" onclick="vote('site:verso',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('site:verso',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="site:nyrb">
+  <div class="media"><img class="phone" src="refs/sites/04-nyrb-phone.png" loading="lazy"><img class="phone" src="refs/sites/04-nyrb-book-phone.png" loading="lazy"><img class="desk" src="refs/sites/04-nyrb-desktop.png" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">New York Review Books</div>
+    <div class="s">Reissued literary classics and essays (NYRB Classics) plus some new non-fiction.</div>
+    <div class="w">Small oval &quot;nyrb&quot; logo lockup, cream/navy card backgrounds behind cover art, painterly and archival cover imagery that varies per title with no single unifying color.</div>
+    <div class="sold">Direct cart (Shopify-style), a paid Book Club subscription, and curated multi-book &quot;bundles&quot; sold as one purchase.</div><a class="lnk" href="https://www.nyrb.com" target="_blank">open site</a>
+    <div class="vote">
+      <button class="like" onclick="vote('site:nyrb',1)">Like</button>
+      <button class="dislike" onclick="vote('site:nyrb',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('site:nyrb',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="site:charco">
+  <div class="media"><img class="phone" src="refs/sites/05-charco-phone.png" loading="lazy"><img class="desk" src="refs/sites/05-charco-desktop.png" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">Charco Press</div>
+    <div class="s">Contemporary Latin American fiction in translation, plus an &quot;Artstore&quot; of related prints.</div>
+    <div class="w">Bright geometric mosaic graphics (triangles) in pink/yellow/red/cream over a dark ground, used as a recurring hero pattern behind rotating title art.</div>
+    <div class="sold">Direct cart on-site, separate &quot;Bookstore&quot; and &quot;Artstore&quot; sections under one checkout.</div><a class="lnk" href="https://www.charcopress.com" target="_blank">open site</a>
+    <div class="vote">
+      <button class="like" onclick="vote('site:charco',1)">Like</button>
+      <button class="dislike" onclick="vote('site:charco',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('site:charco',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="site:stripepress">
+  <div class="media"><img class="phone" src="refs/sites/06-stripepress-phone.png" loading="lazy"><img class="phone" src="refs/sites/06-stripepress-book-phone.png" loading="lazy"><img class="desk" src="refs/sites/06-stripepress-desktop.png" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">Stripe Press</div>
+    <div class="s">Short non-fiction on technology, economics, and progress, aimed at founders/operators.</div>
+    <div class="w">Near-black background with a single vertical stack of book spines rendered in 3D, each spine a different muted color/material (cloth, foil) — the shelf itself is the homepage, no grid of cover thumbnails.</div>
+    <div class="sold">Book page links out to Amazon and other retailers rather than selling direct — no on-site cart.</div><a class="lnk" href="https://press.stripe.com" target="_blank">open site</a>
+    <div class="vote">
+      <button class="like" onclick="vote('site:stripepress',1)">Like</button>
+      <button class="dislike" onclick="vote('site:stripepress',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('site:stripepress',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="site:persephone">
+  <div class="media"><img class="phone" src="refs/sites/08-persephone-desktop.png" loading="lazy"><img class="phone" src="refs/sites/08-persephone-phone.png" loading="lazy"><img class="desk" src="refs/sites/08-persephone-desktop.png" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">Persephone Books</div>
+    <div class="s">Reprinted neglected fiction and non-fiction, mostly by women writers, mid-20th century.</div>
+    <div class="w">Every book has the same plain dove-grey jacket with only title/author in a thin serif, but a unique patterned endpaper (shown as fabric-like swatches) and matching bookmark — the grey uniform plus a hidden pattern inside is the whole device.</div>
+    <div class="sold">Direct cart (&quot;Basket&quot;) on-site; also sells matching merch (bags, cards) alongside books.</div><a class="lnk" href="https://persephonebooks.co.uk" target="_blank">open site</a>
+    <div class="vote">
+      <button class="like" onclick="vote('site:persephone',1)">Like</button>
+      <button class="dislike" onclick="vote('site:persephone',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('site:persephone',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="site:tinhouse">
+  <div class="media"><img class="phone" src="refs/sites/09-tinhouse-phone.png" loading="lazy"><img class="desk" src="refs/sites/09-tinhouse-desktop.png" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">Tin House</div>
+    <div class="s">Literary fiction, non-fiction and poetry.</div>
+    <div class="w">Tin House is no longer an independent storefront — it is now presented as one imprint page inside Zando&#x27;s dark, minimal, single-serif-wordmark house style with a small lantern icon.</div>
+    <div class="sold">No direct cart on this page; it is a brand/imprint landing page inside the parent publisher Zando&#x27;s site, linking to individual book pages.</div><a class="lnk" href="https://zandoprojects.com/imprints/tin-house" target="_blank">open site</a>
+    <div class="vote">
+      <button class="like" onclick="vote('site:tinhouse',1)">Like</button>
+      <button class="dislike" onclick="vote('site:tinhouse',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('site:tinhouse',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="site:canongate">
+  <div class="media"><img class="phone" src="refs/sites/11-canongate-phone.png" loading="lazy"><img class="desk" src="refs/sites/11-canongate-desktop.png" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">Canongate</div>
+    <div class="s">General trade fiction and non-fiction from an independent Scottish publisher.</div>
+    <div class="w">Full-bleed tiled wallpaper of book covers behind a large centered wordmark and tagline (&quot;Publisher. Always independent.&quot;) — the backlist itself becomes the texture/background.</div>
+    <div class="sold">No direct cart visible on the homepage; links through to individual book pages which point to retailers rather than an in-house checkout.</div><a class="lnk" href="https://canongate.co.uk" target="_blank">open site</a>
+    <div class="vote">
+      <button class="like" onclick="vote('site:canongate',1)">Like</button>
+      <button class="dislike" onclick="vote('site:canongate',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('site:canongate',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="site:pushkinpress">
+  <div class="media"><img class="phone" src="refs/sites/12-pushkinpress-phone.png" loading="lazy"><img class="desk" src="refs/sites/12-pushkinpress-desktop.png" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">Pushkin Press</div>
+    <div class="s">Literary fiction in translation and some non-fiction.</div>
+    <div class="w">Warm burnt-orange background as a constant field color behind a rotating single-book hero (cover art, quote, title, author), with a thin script-style logo.</div>
+    <div class="sold">Direct cart on-site (basket icon with item count) via a dedicated &quot;Store&quot; section.</div><a class="lnk" href="https://pushkinpress.com" target="_blank">open site</a>
+    <div class="vote">
+      <button class="like" onclick="vote('site:pushkinpress',1)">Like</button>
+      <button class="dislike" onclick="vote('site:pushkinpress',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('site:pushkinpress',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="site:blinkist">
+  <div class="media"><img class="phone" src="refs/sites/13-blinkist-phone.png" loading="lazy"><img class="desk" src="refs/sites/13-blinkist-desktop.png" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">Blinkist</div>
+    <div class="s">15-minute text/audio summaries of non-fiction books and podcasts, delivered through an app (not physical or ebook sales).</div>
+    <div class="w">Flat, friendly SaaS-app look: rounded sans-serif type, pastel highlight chips around keywords, app-store-style phone mockups showing the product UI instead of book covers.</div>
+    <div class="sold">Subscription only (&quot;Get started&quot; free trial into a recurring plan), no single-item purchase.</div><a class="lnk" href="https://www.blinkist.com" target="_blank">open site</a>
+    <div class="vote">
+      <button class="like" onclick="vote('site:blinkist',1)">Like</button>
+      <button class="dislike" onclick="vote('site:blinkist',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('site:blinkist',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="site:imprintapp">
+  <div class="media"><img class="phone" src="refs/sites/14-imprint-phone.png" loading="lazy"><img class="desk" src="refs/sites/14-imprint-desktop.png" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">Imprint</div>
+    <div class="s">Visual, illustrated explainers of non-fiction topics (science, history, economics) as an app.</div>
+    <div class="w">Editorial-illustration style: hand-drawn diagrams and infographics laid over app-screen mockups, black serif wordmark, mostly white background with colorful diagram accents rather than book covers.</div>
+    <div class="sold">Subscription app with a sitewide discount promo banner; no single-item or physical purchase.</div><a class="lnk" href="https://www.imprintapp.com" target="_blank">open site</a>
+    <div class="vote">
+      <button class="like" onclick="vote('site:imprintapp',1)">Like</button>
+      <button class="dislike" onclick="vote('site:imprintapp',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('site:imprintapp',this.value)">
+    </div>
+  </div>
+</div></div></section><section id="sec-social"><h2>Social <span class="cnt">13</span></h2><p class="intro">WEAK SECTION: Instagram is login-walled for the agent, so the Instagram images are profile pictures only, not posts. The style text is what matters here. A one-time Instagram login in the agent browser turns this into real grids.</p><div class="grid grid-social">
+<div class="card" data-id="social:01-howhistorylooks.jpg">
+  <div class="media"><img src="refs/social/01-howhistorylooks.jpg" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">@howhistorylooks</div>
+    <div class="s">6.3M · single</div>
+    <div class="w">Bold white sans-serif headline in all caps overlaid on a photo, roughly half single-image text-cards and half vertical Reel/Clip video in the visible grid — no consistent voiceover, hook text is baked into the image itself. Image saved is only the account&#x27;s small profile-picture thumbnail (Instagram serves post images only to logged-in sessions); grid style described from docs/notes/channel-deepdive.md.</div>
+    <a class="lnk" href="https://www.instagram.com/howhistorylooks/" target="_blank">open</a>
+    <div class="vote">
+      <button class="like" onclick="vote('social:01-howhistorylooks.jpg',1)">Like</button>
+      <button class="dislike" onclick="vote('social:01-howhistorylooks.jpg',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('social:01-howhistorylooks.jpg',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="social:02-historydefined.jpg">
+  <div class="media"><img src="refs/social/02-historydefined.jpg" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">@historydefined</div>
+    <div class="s">313K · single</div>
+    <div class="w">Single-image &#x27;photo + caption card&#x27; — a black text banner across the top ~15% of a historical photo, one paragraph of story text below, quieter than howhistorylooks&#x27; bold-headline treatment. Grid appears stale (last active post visible Feb 2026). Image saved is the profile-picture thumbnail only; grid style from docs/notes/channel-deepdive.md.</div>
+    <a class="lnk" href="https://www.instagram.com/historydefined/" target="_blank">open</a>
+    <div class="vote">
+      <button class="like" onclick="vote('social:02-historydefined.jpg',1)">Like</button>
+      <button class="dislike" onclick="vote('social:02-historydefined.jpg',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('social:02-historydefined.jpg',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="social:03-ancient-origins.jpg">
+  <div class="media"><img src="refs/social/03-ancient-origins.jpg" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">@ancient_origins</div>
+    <div class="s">172K · carousel</div>
+    <div class="w">Photo-led single images — archaeological photos, artifact shots, quote graphics — with a light text overlay or pull-quote, lighter treatment than the bold-headline accounts; leans photo/carousel over video, and pairs with the richest funnel of any comp (linktree to newsletter, paid &#x27;Premium&#x27; tier, merch store). Image saved is the profile-picture thumbnail only; grid style from docs/notes/channel-deepdive.md.</div>
+    <a class="lnk" href="https://www.instagram.com/ancient_origins/" target="_blank">open</a>
+    <div class="vote">
+      <button class="like" onclick="vote('social:03-ancient-origins.jpg',1)">Like</button>
+      <button class="dislike" onclick="vote('social:03-ancient-origins.jpg',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('social:03-ancient-origins.jpg',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="social:04-whencyclopedia.jpg">
+  <div class="media"><img src="refs/social/04-whencyclopedia.jpg" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">@whencyclopedia</div>
+    <div class="s">153K · carousel</div>
+    <div class="w">Mostly carousels — portrait paintings, maps, artifact photos with text overlay — plus occasional Clip/Reels; nonprofit-backed (World History Encyclopedia), so only mostly faceless (at least one plain staff-selfie post seen), flagged as a partial comp. Image saved is the profile-picture thumbnail only; grid style from docs/notes/channel-deepdive.md.</div>
+    <a class="lnk" href="https://www.instagram.com/whencyclopedia/" target="_blank">open</a>
+    <div class="vote">
+      <button class="like" onclick="vote('social:04-whencyclopedia.jpg',1)">Like</button>
+      <button class="dislike" onclick="vote('social:04-whencyclopedia.jpg',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('social:04-whencyclopedia.jpg',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="social:05-geopolitical-guy.jpg">
+  <div class="media"><img src="refs/social/05-geopolitical-guy.jpg" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">@geopolitical.guy</div>
+    <div class="s">377K · carousel</div>
+    <div class="w">Data-visualization carousels — bar charts, choropleth maps, &#x27;problem to solution&#x27; flag-icon meme grids; not history narrowly but the same big-idea/explainer niche, and the cleanest funnel found (direct one-click bio link to a Substack newsletter, no linktree step). Image saved is the profile-picture thumbnail only; grid style from docs/notes/channel-deepdive.md.</div>
+    <a class="lnk" href="https://www.instagram.com/geopolitical.guy/" target="_blank">open</a>
+    <div class="vote">
+      <button class="like" onclick="vote('social:05-geopolitical-guy.jpg',1)">Like</button>
+      <button class="dislike" onclick="vote('social:05-geopolitical-guy.jpg',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('social:05-geopolitical-guy.jpg',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="social:13-byzantine-history.jpg">
+  <div class="media"><img src="refs/social/13-byzantine-history.jpg" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">@byzantine_history</div>
+    <div class="s">74.8K · carousel</div>
+    <div class="w">Carousels of AI-generated/illustrated Byzantine imagery, credited to multiple named posters in captions — reads as multi-contributor or reposted content. Bio has no link, no email, no store at all: proof volume and reach can exist with zero conversion mechanism, a pattern to avoid. Image saved is the profile-picture thumbnail only, from a logged-out og:image fetch; grid style from docs/notes/channel-deepdive.md.</div>
+    <a class="lnk" href="https://www.instagram.com/byzantine_history/" target="_blank">open</a>
+    <div class="vote">
+      <button class="like" onclick="vote('social:13-byzantine-history.jpg',1)">Like</button>
+      <button class="dislike" onclick="vote('social:13-byzantine-history.jpg',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('social:13-byzantine-history.jpg',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="social:06-thepudding.jpg">
+  <div class="media"><img src="refs/social/06-thepudding.jpg" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">@thepudding</div>
+    <div class="s"> · carousel</div>
+    <div class="w">Data-journalism brand known for essay-style visual narrative and chart-driven storytelling; on Instagram it repurposes its chart/graphic essays into single-image and carousel data-viz posts rather than plain text cards. Image saved is the profile-picture thumbnail only, from a logged-out og:image fetch — could not confirm current grid style beyond the brand&#x27;s known chart-first identity.</div>
+    <a class="lnk" href="https://www.instagram.com/thepudding/" target="_blank">open</a>
+    <div class="vote">
+      <button class="like" onclick="vote('social:06-thepudding.jpg',1)">Like</button>
+      <button class="dislike" onclick="vote('social:06-thepudding.jpg',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('social:06-thepudding.jpg',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="social:07-visualcapitalist.jpg">
+  <div class="media"><img src="refs/social/07-visualcapitalist.jpg" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">Visual Capitalist (@visualcap)</div>
+    <div class="s"> · single</div>
+    <div class="w">Signature device is the full-bleed data infographic — one dense chart or ranked-bar graphic per post, brand-colored, minimal surrounding text, built for a single high-information image rather than a multi-slide carousel. Image saved is the profile-picture thumbnail only, from a logged-out og:image fetch.</div>
+    <a class="lnk" href="https://www.instagram.com/visualcap/" target="_blank">open</a>
+    <div class="vote">
+      <button class="like" onclick="vote('social:07-visualcapitalist.jpg',1)">Like</button>
+      <button class="dislike" onclick="vote('social:07-visualcapitalist.jpg',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('social:07-visualcapitalist.jpg',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="social:08-morningbrew.jpg">
+  <div class="media"><img src="refs/social/08-morningbrew.jpg" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">Morning Brew (@morningbrew)</div>
+    <div class="s"> · single</div>
+    <div class="w">Known for a consistent flat-illustration meme/explainer style — bold sans headline plus a simple cartoon illustration on a solid brand color, built for a fast single-glance read rather than long-form text. Image saved is the profile-picture thumbnail only, from a logged-out og:image fetch.</div>
+    <a class="lnk" href="https://www.instagram.com/morningbrew/" target="_blank">open</a>
+    <div class="vote">
+      <button class="like" onclick="vote('social:08-morningbrew.jpg',1)">Like</button>
+      <button class="dislike" onclick="vote('social:08-morningbrew.jpg',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('social:08-morningbrew.jpg',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="social:09-theeconomist.jpg">
+  <div class="media"><img src="refs/social/09-theeconomist.jpg" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">The Economist (@theeconomist)</div>
+    <div class="s"> · single</div>
+    <div class="w">House style is a red-accented graphic or chart with a short, precise headline — the print cover&#x27;s visual language (red masthead bar, serif/sans mix) translated into a single Instagram image, low on typographic flourish. Image saved is the profile-picture thumbnail only, from a logged-out og:image fetch.</div>
+    <a class="lnk" href="https://www.instagram.com/theeconomist/" target="_blank">open</a>
+    <div class="vote">
+      <button class="like" onclick="vote('social:09-theeconomist.jpg',1)">Like</button>
+      <button class="dislike" onclick="vote('social:09-theeconomist.jpg',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('social:09-theeconomist.jpg',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="social:10-nytimes.jpg">
+  <div class="media"><img src="refs/social/10-nytimes.jpg" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">The New York Times (@nytimes)</div>
+    <div class="s"> · carousel</div>
+    <div class="w">Mix of striking photojournalism carried by a single caption line and occasional plain black-on-white &#x27;text card&#x27; quote posts pulled straight from an article headline or pull-quote, minimal design beyond typography and whitespace. Image saved is the profile-picture thumbnail only, from a logged-out og:image fetch.</div>
+    <a class="lnk" href="https://www.instagram.com/nytimes/" target="_blank">open</a>
+    <div class="vote">
+      <button class="like" onclick="vote('social:10-nytimes.jpg',1)">Like</button>
+      <button class="dislike" onclick="vote('social:10-nytimes.jpg',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('social:10-nytimes.jpg',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="social:11-behance-history-infographic-carousel.jpg">
+  <div class="media"><img src="refs/social/11-behance-history-infographic-carousel.jpg" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">&quot;Instagram Carousel - Infographic&quot; — Srihari Rao (Behance)</div>
+    <div class="s"> · carousel</div>
+    <div class="w">A 7-slide isometric-illustration infographic carousel designed so consecutive slides form one continuous image across the swipe, creating an illusion of movement rather than discrete cards — a real design-portfolio example of the &#x27;carousel as one long image&#x27; device, downloaded verbatim as the project&#x27;s own cover image (og:image, 1400x1050 real photo/illustration, not an avatar).</div>
+    <a class="lnk" href="https://www.behance.net/gallery/132183839/Instagram-Carousel-Infographic" target="_blank">open</a>
+    <div class="vote">
+      <button class="like" onclick="vote('social:11-behance-history-infographic-carousel.jpg',1)">Like</button>
+      <button class="dislike" onclick="vote('social:11-behance-history-infographic-carousel.jpg',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('social:11-behance-history-infographic-carousel.jpg',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="social:12-behance-carousel-template.jpg">
+  <div class="media"><img src="refs/social/12-behance-carousel-template.jpg" loading="lazy"></div>
+  <div class="meta">
+    <div class="t">&quot;Instagram Carousel Template&quot; (Behance)</div>
+    <div class="s"> · carousel</div>
+    <div class="w">A generic multi-slide Instagram carousel template (title slide + supporting content slides, consistent grid/margin system) — included as a baseline example of a clean, reusable slide system rather than a one-off illustration. Downloaded verbatim as the project&#x27;s own cover image (og:image, 1400x1050, real design work, not an avatar).</div>
+    <a class="lnk" href="https://www.behance.net/gallery/102977487/Instagram-Carousel-Template" target="_blank">open</a>
+    <div class="vote">
+      <button class="like" onclick="vote('social:12-behance-carousel-template.jpg',1)">Like</button>
+      <button class="dislike" onclick="vote('social:12-behance-carousel-template.jpg',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('social:12-behance-carousel-template.jpg',this.value)">
+    </div>
+  </div>
+</div></div></section><section id="sec-blurb"><h2>Blurbs <span class="cnt">12</span></h2><p class="intro">Real back-cover copy from books that sold. Tap Like on the ones that make you want the book.</p><div class="grid grid-blurb">
+<div class="card" data-id="blurb:Salt: A World History">
+  <div class="media"><div class="blurb">Homer called it a divine substance. Plato described it as especially dear to the gods. Salt has shaped civilisation from the beginning, and its story is a glittering, often surprising part of the history of mankind. Wars have been fought over salt and, while salt taxes secured empires across Europe and Asia, they have also inspired revolution — Gandhi&#x27;s salt march in 1930 began the overthrow of British rule in India. From the rural Sichuan province where the last home-made soya sauce is produced to the Cheshire brine springs that supplied salt around the globe.</div></div>
+  <div class="meta">
+    <div class="t">Salt: A World History</div>
+    <div class="s">Mark Kurlansky · authority-first</div>
+    <div class="w">Two short authority citations (Homer, Plato) establish salt&#x27;s ancient prestige before the thesis sentence names the book&#x27;s actual claim.</div>
+    
+    <div class="vote">
+      <button class="like" onclick="vote('blurb:Salt: A World History',1)">Like</button>
+      <button class="dislike" onclick="vote('blurb:Salt: A World History',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('blurb:Salt: A World History',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="blurb:Material World">
+  <div class="media"><div class="blurb">Sand, salt, iron, copper, oil and lithium. They built our world, and they will transform our future. They took us from the Dark Ages to the present day. They power our computers and phones, build our homes and offices, and create life-saving medicines. But most of us take these six crucial materials completely for granted. As we wrestle with climate change, energy crises and the threat of new global conflict, this book shows why these substances matter more than ever before, and how the hidden battle to control them will shape our geopolitical future.</div></div>
+  <div class="meta">
+    <div class="t">Material World</div>
+    <div class="s">Ed Conway · list-of-wonders</div>
+    <div class="w">Opens with a bare noun list (six materials, no verb) then a blunt two-clause claim about their power — wonder before argument.</div>
+    
+    <div class="vote">
+      <button class="like" onclick="vote('blurb:Material World',1)">Like</button>
+      <button class="dislike" onclick="vote('blurb:Material World',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('blurb:Material World',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="blurb:The Box: How the Shipping Container Made the World Smaller and the World Economy Bigger">
+  <div class="media"><div class="blurb">In April 1956, a refitted oil tanker carried fifty-eight shipping containers from Newark to Houston. From that modest beginning, container shipping developed into a huge industry that made the boom in global trade possible. Its adoption required huge sums of money, both from private investors and from ports that aspired to be on the leading edge of a new technology. It required years of high-stakes bargaining with two of the titans of organized labor, as well as delicate negotiations on standards that made it possible for almost any container to travel on any truck or train or ship.</div></div>
+  <div class="meta">
+    <div class="t">The Box: How the Shipping Container Made the World Smaller and the World Economy Bigger</div>
+    <div class="s">Marc Levinson · scene-first</div>
+    <div class="w">A single dated, concrete event (a specific tanker, route, and container count) opens before the sentence pulls back to the industry it caused.</div>
+    
+    <div class="vote">
+      <button class="like" onclick="vote('blurb:The Box: How the Shipping Container Made the World Smaller and the World Economy Bigger',1)">Like</button>
+      <button class="dislike" onclick="vote('blurb:The Box: How the Shipping Container Made the World Smaller and the World Economy Bigger',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('blurb:The Box: How the Shipping Container Made the World Smaller and the World Economy Bigger',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="blurb:Stuff Matters">
+  <div class="media"><div class="blurb">Everything is made of something. From the everyday objects in our homes to the most extraordinary new materials that will shape our future, this book reveals the inner workings of the man-made world, and the miracles of craft, design, engineering and ingenuity that surround us every day. From the tea-cup to the jet engine, the silicon chip to the paper clip, from the ancient technologies of fabrics and ceramic to today&#x27;s self-healing metals and bionic implants, this is a book to inspire amazement and delight at mankind&#x27;s creativity.</div></div>
+  <div class="meta">
+    <div class="t">Stuff Matters</div>
+    <div class="s">Mark Miodownik · list-of-wonders</div>
+    <div class="w">A four-word truism opens, then the second sentence sweeps from &#x27;everyday objects&#x27; to &#x27;extraordinary new materials&#x27; to promise breadth rather than a single argument.</div>
+    
+    <div class="vote">
+      <button class="like" onclick="vote('blurb:Stuff Matters',1)">Like</button>
+      <button class="dislike" onclick="vote('blurb:Stuff Matters',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('blurb:Stuff Matters',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="blurb:Cod: A Biography of the Fish That Changed the World">
+  <div class="media"><div class="blurb">Wars have been fought over it, revolutions have been spurred by it, national diets have been based on it, economies have depended on it, and the settlement of North America was driven by it. It turns out to be the reason Europeans set sail across the Atlantic, and the only reason they could. It is also a tragic tale of environmental failure, of depleted fishing stocks where once the numbers were legendary.</div></div>
+  <div class="meta">
+    <div class="t">Cod: A Biography of the Fish That Changed the World</div>
+    <div class="s">Mark Kurlansky · question-first</div>
+    <div class="w">Five anaphoric clauses pile up consequences of an unnamed &#x27;it&#x27; before the subject is finally revealed, turning the opening into a withheld-answer puzzle.</div>
+    
+    <div class="vote">
+      <button class="like" onclick="vote('blurb:Cod: A Biography of the Fish That Changed the World',1)">Like</button>
+      <button class="dislike" onclick="vote('blurb:Cod: A Biography of the Fish That Changed the World',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('blurb:Cod: A Biography of the Fish That Changed the World',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="blurb:An Edible History of Humanity">
+  <div class="media"><div class="blurb">Throughout history, food has acted as a catalyst of social change, political organization, geopolitical competition, industrial development, military conflict, and economic expansion. The first civilizations were built on barley and wheat in the Near East, millet and rice in Asia, and corn and potatoes in the Americas. Why farming created a strictly ordered social hierarchy in contrast to the loose egalitarianism of hunter-gatherers is as interesting as the details of the complex cultures that emerged, eventually interconnected by commerce. Trade in exotic spices in particular spawned the age of exploration and the colonization of the New World.</div></div>
+  <div class="meta">
+    <div class="t">An Edible History of Humanity</div>
+    <div class="s">Tom Standage · thesis-first</div>
+    <div class="w">A single abstract thesis sentence (food as catalyst, six paired nouns) is stated flatly before any example, textbook-register rather than narrative.</div>
+    
+    <div class="vote">
+      <button class="like" onclick="vote('blurb:An Edible History of Humanity',1)">Like</button>
+      <button class="dislike" onclick="vote('blurb:An Edible History of Humanity',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('blurb:An Edible History of Humanity',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="blurb:Prisoners of Geography">
+  <div class="media"><div class="blurb">Maps have always captivated us, offering insights not only into our destinations but also into the broader world. Yet, when it comes to understanding geopolitics, many overlook the fundamental role of geography. All leaders of nations are constrained by geography — their choices limited by mountains, rivers, deserts, and seas. Through ten up-to-date maps, this book explores the landscapes and climates that constrain and empower nations across key parts of the globe, from Russia&#x27;s vast tundras to China&#x27;s mountainous borders, Africa&#x27;s deserts to the Arctic&#x27;s shifting ice.</div></div>
+  <div class="meta">
+    <div class="t">Prisoners of Geography</div>
+    <div class="s">Tim Marshall · question-first</div>
+    <div class="w">States a comfortable premise about maps, then corrects it (&#x27;Yet... many overlook&#x27;) before pivoting into the book&#x27;s actual promise — a premise-correction-tour structure.</div>
+    
+    <div class="vote">
+      <button class="like" onclick="vote('blurb:Prisoners of Geography',1)">Like</button>
+      <button class="dislike" onclick="vote('blurb:Prisoners of Geography',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('blurb:Prisoners of Geography',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="blurb:Sapiens: A Brief History of Humankind">
+  <div class="media"><div class="blurb">What makes us brilliant? What makes us deadly? What makes us Sapiens?
+
+Yuval Noah Harari challenges everything we know about being human.
+
+Earth is 4.5 billion years old. In just a fraction of that time, one species among countless others has conquered it: us.
+
+In this bold and provocative book, Yuval Noah Harari explores who we are, how we got here and where we&#x27;re going.</div></div>
+  <div class="meta">
+    <div class="t">Sapiens: A Brief History of Humankind</div>
+    <div class="s">Yuval Noah Harari · question-first</div>
+    <div class="w">Three staccato rhetorical questions in a row, each ending on the same word (&#x27;Sapiens&#x27;), open before any claim is made — pure hook, no content yet.</div>
+    
+    <div class="vote">
+      <button class="like" onclick="vote('blurb:Sapiens: A Brief History of Humankind',1)">Like</button>
+      <button class="dislike" onclick="vote('blurb:Sapiens: A Brief History of Humankind',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('blurb:Sapiens: A Brief History of Humankind',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="blurb:Fifty Things That Made the Modern Economy">
+  <div class="media"><div class="blurb">I&#x27;ve tried to paint a picture of economic change by telling the stories of the ideas, people, and tools that had far-reaching and unexpected consequences for all of us. Drawing from the hugely popular BBC radio program and podcast &quot;50 Things That Made The Modern Economy,&quot; I discuss the inventions that have transformed the ways we work, play and live. From the plough to artificial intelligence, from Gillette&#x27;s disposable razor to Ikea&#x27;s Billy bookcase, I recount each invention&#x27;s own memorable story and introduce you to the characters who developed them, profited from them, and were ruined by them. New ideas and inventions have woven, tangled or sliced right through the invisible economic web that surrounds us every day…</div></div>
+  <div class="meta">
+    <div class="t">Fifty Things That Made the Modern Economy</div>
+    <div class="s">Tim Harford · list-of-wonders</div>
+    <div class="w">First-person authorial voice (&#x27;I&#x27;ve tried to&#x27;) states intent directly, then the second sentence fires a rapid list of concrete objects (plough, razor, bookcase) to promise variety.</div>
+    
+    <div class="vote">
+      <button class="like" onclick="vote('blurb:Fifty Things That Made the Modern Economy',1)">Like</button>
+      <button class="dislike" onclick="vote('blurb:Fifty Things That Made the Modern Economy',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('blurb:Fifty Things That Made the Modern Economy',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="blurb:Chip War: The Fight for the World&#x27;s Most Critical Technology">
+  <div class="media"><div class="blurb">An epic account of the decades-long battle to control what has emerged as the world&#x27;s most critical resource—microchip technology—with the United States and China increasingly in conflict.
+
+You may be surprised to learn that microchips are the new oil—the scarce resource on which the modern world depends. Today, military, economic, and geopolitical power are built on a foundation of computer chips. Virtually everything— from missiles to microwaves, smartphones to the stock market — runs on chips. Until recently, America designed and built the fastest chips and maintained its lead as the #1 superpower. Now, America&#x27;s edge is slipping, undermined by competitors in Taiwan, Korea, Europe, and, above all, China…</div></div>
+  <div class="meta">
+    <div class="t">Chip War: The Fight for the World&#x27;s Most Critical Technology</div>
+    <div class="s">Chris Miller · thesis-first</div>
+    <div class="w">Opens with a jacket-copy category label (&#x27;An epic account...&#x27;) then a direct-address hook (&#x27;You may be surprised&#x27;) that states the book&#x27;s central analogy — chips as the new oil — immediately.</div>
+    
+    <div class="vote">
+      <button class="like" onclick="vote('blurb:Chip War: The Fight for the World&#x27;s Most Critical Technology',1)">Like</button>
+      <button class="dislike" onclick="vote('blurb:Chip War: The Fight for the World&#x27;s Most Critical Technology',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('blurb:Chip War: The Fight for the World&#x27;s Most Critical Technology',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="blurb:Economics: The User&#x27;s Guide">
+  <div class="media"><div class="blurb">What is economics? How does the global economy work? What do different economic theories tell us about the world?
+
+In Economics: The User&#x27;s Guide, bestselling author Ha-Joon Chang explains how the global economy works, and why anyone can understand the dismal science. Unlike many economists who claim there is only one way of &#x27;doing economics&#x27;, he introduces readers to a wide range of economic theories, from classical to Keynesian, revealing how they all have their strengths, weaknesses and blind spots. By ignoring the received wisdom, and exposing the myriad forces that shape our financial fate, Chang provides the tools that every responsible citizen needs to understand — and address — our current economic woes.</div></div>
+  <div class="meta">
+    <div class="t">Economics: The User&#x27;s Guide</div>
+    <div class="s">Ha-Joon Chang · question-first</div>
+    <div class="w">Three plain factual questions open in sequence before the author and thesis are introduced by name — a textbook-style question ladder rather than a scene or claim.</div>
+    
+    <div class="vote">
+      <button class="like" onclick="vote('blurb:Economics: The User&#x27;s Guide',1)">Like</button>
+      <button class="dislike" onclick="vote('blurb:Economics: The User&#x27;s Guide',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('blurb:Economics: The User&#x27;s Guide',this.value)">
+    </div>
+  </div>
+</div>
+<div class="card" data-id="blurb:Debt: The First 5,000 Years">
+  <div class="media"><div class="blurb">Before there was money, there was debt. Every economics textbook says the same: money was invented to replace onerous and complicated barter systems—to relieve ancient people from having to haul their goods to market. The problem with this version of history? There&#x27;s not a shred of evidence to support it. He shows that for more than 5,000 years, since the beginnings of the first agrarian empires, humans have used elaborate credit systems to buy and sell goods—that is, long before the invention of coins or cash. It is in this era, argues, that we also first encounter a society divided into debtors and creditors.</div></div>
+  <div class="meta">
+    <div class="t">Debt: The First 5,000 Years</div>
+    <div class="s">David Graeber · thesis-first</div>
+    <div class="w">A four-word inversion of conventional wisdom (&#x27;Before there was money, there was debt&#x27;) opens, then the second sentence states and immediately attacks the textbook consensus it&#x27;s replacing.</div>
+    
+    <div class="vote">
+      <button class="like" onclick="vote('blurb:Debt: The First 5,000 Years',1)">Like</button>
+      <button class="dislike" onclick="vote('blurb:Debt: The First 5,000 Years',-1)">No</button>
+      <input class="note" placeholder="why? (optional)" oninput="note('blurb:Debt: The First 5,000 Years',this.value)">
+    </div>
+  </div>
+</div></div></section>
+</div>
+<div id="notes" class="pane" hidden>
+  <h1>Notes</h1>
+  <p><b>Why this exists.</b> Every surface so far was made from rules the agent wrote for itself, then graded by judges the agent also wrote. That loop makes "competent average". Taste transfers through examples, not adjectives. This page is the example set. Your likes become the brief; everything gets rebuilt against them, and the audit question changes from "does it pass the rubric" to "does it belong next to the five things Matt liked".</p>
+  <p><b>What was collected and how.</b> Covers: real jackets via Open Library / Google Books by ISBN. Sites: live screenshots at phone and desktop width. Social: Instagram is login-walled for the agent browser, so images came from og:image, Behance/Dribbble and press pages; some accounts have no image — that is a tool gap, not a judgement. Blurbs: seven reused from the taste test, five more fetched verbatim from publisher pages.</p>
+  <p><b>How to read your own answer.</b> Pick freely; there is no right set. What matters is the pattern across your picks: plain vs pictorial, type vs image, one colour vs many, scene-first vs thesis-first. The agent reads the pattern, not the count.</p>
+  <p><b>Not collected.</b> Anything from Pinterest or Google Images (walled). Instagram grids (walled) — a one-time login in the agent's own Chrome window fixes this.</p>
+</div>
+<script>
+const KEY='refs-votes';
+let st={}; try{st=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+function vote(id,v){st[id]=st[id]||{};st[id].v=(st[id].v===v)?0:v;save();paint()}
+function note(id,t){st[id]=st[id]||{};st[id].n=t;save()}
+function paint(){document.querySelectorAll('.card').forEach(c=>{const s=st[c.dataset.id]||{};c.classList.toggle('liked',s.v===1);c.classList.toggle('disliked',s.v===-1);c.querySelector('.like').classList.toggle('on',s.v===1);c.querySelector('.dislike').classList.toggle('on',s.v===-1);const n=c.querySelector('.note');if(s.n&&!n.value)n.value=s.n})}
+function show(w){document.getElementById('view').hidden=w!=='view';document.getElementById('notes').hidden=w!=='notes';document.getElementById('tab-view').classList.toggle('active',w==='view');document.getElementById('tab-notes').classList.toggle('active',w==='notes')}
+function go(k){show('view');document.getElementById('sec-'+k).scrollIntoView({behavior:'smooth'})}
+function copyPicks(){const L=[],N=[];for(const [id,s] of Object.entries(st)){const line=id+(s.n?' \u2014 '+s.n:'');if(s.v===1)L.push('+ '+line);if(s.v===-1)N.push('- '+line)}
+if(!L.length&&!N.length){alert('Nothing tapped yet. Tap Like or No on a few covers first.');return}
+const txt='LIKE\n'+(L.join('\n')||'(none)')+'\n\nNO\n'+(N.join('\n')||'(none)');
+const ta=document.getElementById('outtext');ta.value=txt;document.getElementById('out').style.display='block';
+try{navigator.clipboard.writeText(txt)}catch(e){}
+ta.focus();ta.select();}
+function closeOut(){document.getElementById('out').style.display='none'}
+paint();
+</script><div id="out" onclick="if(event.target.id==='out')closeOut()">
+  <div class="box">
+    <p style="margin:0 0 8px;font-size:14px"><b>Copied.</b> If nothing landed in your clipboard, hold on the text below, Select All, Copy. Then paste it to me on Telegram.</p>
+    <textarea id="outtext" readonly></textarea>
+    <button onclick="closeOut()">Done</button>
+  </div>
+</div>
+</body></html>
