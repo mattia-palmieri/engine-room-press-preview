@@ -1,0 +1,104 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Refs picker: phone QA — Engine Room Press</title><meta name="description" content="Proved the /refs/ picker really works on a phone — load, taps, copy, no overflow. The block is now genuinely Matt, not our bug. Tap targets bumped to 46px.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"><style>
+:root{--paper:#F7F6F1;--white:#fff;--ink:#14171A;--signal:#C1440E;--blue:#173B4E;
+--rule:#C7C4B8;--faint:#E4E2D8}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);
+font:400 18px/1.62 Newsreader,Georgia,serif;-webkit-text-size-adjust:100%}
+.wrap{max-width:660px;margin:0 auto;padding:32px 20px 96px}
+a{color:var(--ink)}
+.mast{border-bottom:1px solid var(--ink);padding-bottom:10px;margin-bottom:28px;
+display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.mono,.tag,.mast,.kicker,.crumb,th{font-family:"IBM Plex Mono",ui-monospace,monospace;
+font-weight:500;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.mast a{text-decoration:none}
+h1{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:700;
+font-size:clamp(30px,8vw,44px);line-height:1.06;letter-spacing:-.02em;margin:0 0 14px}
+.lede{font-size:19px;color:#3a3f44;margin-bottom:14px}
+h2{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:23px;
+line-height:1.2;margin:38px 0 12px}
+h3{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:19px;margin:26px 0 8px}
+p,li{margin-bottom:12px}
+ul,ol{padding-left:22px}
+strong{font-weight:600}
+code{font-family:"IBM Plex Mono",monospace;font-size:.85em;background:#ECEAE0;padding:1px 4px}
+pre{background:var(--ink);color:#F7F6F1;padding:16px;overflow-x:auto;margin:16px 0;font-size:13px}
+pre code{background:none;color:inherit;padding:0}
+blockquote{border-left:2px solid var(--signal);padding-left:14px;color:#3a3f44;margin:16px 0}
+hr{border:0;border-top:1px solid var(--rule);margin:32px 0}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:16px 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--rule);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:#ECEAE0;font-size:11px}
+img{max-width:100%;height:auto;display:block}
+/* section head with figure number */
+.fig{display:flex;align-items:baseline;gap:12px;margin:44px 0 4px;
+border-top:1px solid var(--ink);padding-top:10px}
+.fig .n{color:var(--signal)}
+.fig h2{margin:0;font-size:21px}
+.note{color:#3a3f44;font-size:16px;margin:4px 0 14px}
+/* rows */
+a.row{display:block;text-decoration:none;color:inherit;border:1px solid var(--rule);
+border-top:0;background:var(--white);padding:15px 16px}
+a.row:first-of-type{border-top:1px solid var(--rule)}
+a.row:hover{border-color:var(--signal)}
+a.row .t{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;font-size:17px}
+a.row .t .arw{color:var(--signal)}
+a.row .s{display:block;color:#3a3f44;font-size:15px;line-height:1.45;margin-top:4px}
+a.row .d{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+color:#6b6f73;text-transform:uppercase;margin-top:6px;display:block}
+.crumb{display:inline-block;margin-bottom:22px;text-decoration:none;color:var(--signal)}
+footer{margin-top:56px;border-top:1px solid var(--rule);padding-top:14px;
+font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+text-transform:uppercase;color:#6b6f73}
+.badge{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;
+padding:2px 6px;border:1px solid var(--rule);text-transform:uppercase}
+.badge.active{border-color:var(--signal);color:var(--signal)}
+.badge.done{color:#6b6f73}
+</style></head><body><div class="wrap">
+<div class="mast"><a href="../">Engine Room Press</a><span>Working preview</span></div>
+<a class="crumb" href="../">&larr; All of it</a><p class="lede">Proved the /refs/ picker really works on a phone — load, taps, copy, no overflow. The block is now genuinely Matt, not our bug. Tap targets bumped to 46px.</p><h1>Refs picker: phone QA</h1>
+<p>Short round. Nothing was unanswered in Telegram, and the one active item
+(<code>references-picks</code>) is blocked on Matt pasting his cover picks. Rather than
+nag him a third time — I had messaged 5 minutes earlier — I checked the thing
+we were asking him to use.</p>
+<h2>Why this round existed</h2>
+<p>Two rounds died waiting on picks because the picker only lived on
+<code>localhost:8723</code>, which a phone cannot open. That mistake has one root cause:
+<strong>we never tested the artefact against reality.</strong> Publishing it to <code>/refs/</code>
+fixed the address. It did not prove the page works. This round proves it.</p>
+<h2>What we decided</h2>
+<p><strong>Verify before asking again.</strong> If we are going to spend Matt's attention on
+one action, the action must be known-good first. Repeating an ask is cheap for
+us and expensive for him.</p>
+<h2>What we found — all pass</h2>
+<p>Live URL, real GitHub Pages, headless Chrome at 390x844 with a mobile UA:</p>
+<ul>
+<li>Page loads; COVERS is the first section, no hunting.</li>
+<li>All 16 cover images render (lazy-load, then <code>naturalWidth &gt; 0</code>).</li>
+<li>Like / No change state visibly on tap.</li>
+<li><strong>COPY MY PICKS works</strong>: clipboard write succeeds, a "Copied" modal with a
+  Done button confirms it, and the fallback textarea shows the exact text so
+  he can grab it by hand if the clipboard is blocked.</li>
+<li>No horizontal overflow: <code>scrollWidth</code> 390 = viewport 390.</li>
+<li>No console errors.</li>
+<li>Assets checked with plain curl too: <code>/refs/</code>, cover jpgs and site pngs all
+  200 with real byte counts.</li>
+</ul>
+<p>One nit, now fixed: the Like / No buttons were 38px tall on a phone, under the
+44px thumb minimum. They are <code>min-height:46px</code>, font 15px, and republished.</p>
+<p>Full write-up and three screenshots: <code>data/refs-qa/PHONE-TEST.md</code>. Kept out of
+<code>data/refs/</code> on purpose — that directory is published verbatim, and QA notes
+are not for Matt.</p>
+<h2>Open questions</h2>
+<p>Nothing technical. <strong>The only open thing is Matt's sixteen taps.</strong> There is no
+longer any hypothesis that a bug is eating them.</p>
+<h2>Pointers</h2>
+<ul>
+<li><code>data/refs/index.html</code> — the picker source, hand-maintained; regenerate the
+  underlying references with <code>python3 data/workspace/build_refs.py</code>.</li>
+<li><code>data/refs-qa/PHONE-TEST.md</code> — this round's evidence.</li>
+</ul>
+<footer>Draft — built by the agent, judged by Matt</footer>
+</div></body></html>
