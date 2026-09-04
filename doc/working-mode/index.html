@@ -102,6 +102,21 @@ Live at <a href="https://mattia-palmieri.github.io/engine-room-press-preview/">h
 <p><strong>Run <code>bin/publish.sh</code> at the end of any round that changed a doc or a
 deliverable.</strong> A Telegram message with no updated page behind it is half a
 report. Never hand-edit <code>data/site/</code> — it is wiped on every build.</p>
+<h2>The workspace is where design work happens</h2>
+<p><code>data/workspace/</code> is a local viewer: file list + live HTML preview + chat.
+Start it with <code>python3 data/workspace/server.py</code> (port 8723, not supervised —
+check it is up before pointing Matt at it). Every artifact for Matt goes in
+<code>data/workspace/artifacts/</code> as one HTML file with <strong>View / Notes tabs</strong> baked
+in — View is the thing, Notes is the reasoning, so chat stays to one-line pings.
+<strong>Edit in place</strong>, do not spawn v2/v3 files; git holds history. Matt writes in
+the chat panel; it lands in <code>data/workspace/messages.jsonl</code>. Read it when he
+says "check" (no trigger exists yet). Design references live in
+<code>data/workspace/artifacts/refs/</code>; rebuild the reference page with
+<code>python3 data/workspace/build_refs.py</code>.</p>
+<p><strong>Browser access, tested 2026-09-04:</strong> <code>rb</code> reaches Amazon, Goodreads, Behance,
+Dribbble, publisher sites; Open Library covers API works by ISBN with plain curl.
+Instagram and Pinterest are login-walled, Google Images throws reCAPTCHA. The fix is
+Matt logging in once in the agent's own Chrome window, never his personal Chrome.</p>
 <h2>What Matt does himself</h2>
 <ul>
 <li><strong>Accounts he runs:</strong> Instagram, TikTok, Pinterest, Reddit, X, Medium,

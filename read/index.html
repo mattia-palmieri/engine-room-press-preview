@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Surplus — chapter one</title>
+<style>
+:root{--bg:#f6f5f2;--panel:#fff;--line:#e4e1da;--ink:#1c1b19;--muted:#8a8579;--accent:#c96442;--sel:#efeae2}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}
+.bar{display:flex;gap:6px;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--panel);position:sticky;top:0;z-index:2;align-items:center}
+.bar button{border:1px solid var(--line);background:var(--bg);border-radius:7px;padding:6px 14px;font-size:12.5px;font-weight:600;color:var(--muted);cursor:pointer}
+.bar button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.bar .tag{margin-left:auto;font-size:12px;color:var(--muted)}
+.pane{padding:28px 22px 90px;max-width:640px;margin:0 auto}
+.pane[hidden]{display:none}
+#view{font-family:Georgia,"Iowan Old Style",serif;font-size:18.5px;line-height:1.62;color:#232220}
+#view p{margin:0 0 1.15em}
+#view .ct{font-family:-apple-system,BlinkMacSystemFont,sans-serif;font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700;margin:0 0 28px;line-height:1.4}
+#view .sub{font-family:-apple-system,BlinkMacSystemFont,sans-serif;font-size:16px;font-weight:700;letter-spacing:.01em;margin:34px 0 12px;color:var(--ink)}
+#view p:first-of-type{font-size:20px;line-height:1.5}
+#notes{font-size:14.5px;line-height:1.6}
+#notes h1{font-size:20px;margin:0 0 14px} #notes h2{font-size:15px;margin:26px 0 8px;color:var(--accent)}
+#notes p{margin:0 0 10px;color:#333} #notes li{margin-bottom:6px;color:#333}
+table{border-collapse:collapse;width:100%;font-size:12.5px;margin:6px 0 4px}
+th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top;background:var(--panel)}
+th{background:var(--sel);font-size:12px}
+code{background:var(--sel);padding:1px 5px;border-radius:4px;font-size:.9em}
+</style></head><body><div style="font:500 11px/1 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;background:#14171A;padding:11px 16px;text-align:center"><a href="../" style="color:#F7F6F1;text-decoration:none">&larr; Back to everything</a></div>
+<div class="bar">
+  <button id="tab-view" class="active" onclick="show('view')">View</button>
+  <button id="tab-notes" onclick="show('notes')">Notes</button>
+  <span class="tag">The Surplus &middot; ch.1 &middot; 2,668 words &middot; ~11 min</span>
+</div>
+<div id="view" class="pane">
+<h1 class="ct">1. Food You Cannot Hide</h1>
+<p>Every crown ever worn sat on top of food that nobody ate that day.</p>
+<p>Not on courage, not on iron, not on the favour of a god. On grain in a room, going nowhere, belonging to somebody. Take that room out of the story and the whole cast leaves with it. No kings. No taxes, no cities, no clerks, no borders, no police. We are going to spend this book in that room, and the aim is that by the last page you find it in places it has no business being: in a salt cavern full of oil, in a container yard, in whatever the news is worried about tonight.</p>
+<p>The version most of us were given runs in one direction and takes about a sentence. People learned to farm. Farming made more food than they could eat. The extra food freed some of them from the fields, and the freed ones became priests, soldiers, scribes and kings. Plenty at one end, civilisation at the other.</p>
+<p>The facts in that sentence are mostly fine. The arrow is backwards.</p>
+<p>More food does not, by itself, produce anybody with power over you. A forager who finds an unusually good tree has more food. Nobody crowns him. He eats well for a fortnight and the tree is still standing there for everyone else. Abundance on its own buys you a fat month, not a dynasty.</p>
+<p>What changed was not the amount. It was that the new food could not be hidden.</p>
+<p>Grain grows in the open, at head height, in a field a stranger can stand at the edge of and price with his eyes. It ripens all at once, inside a window of a few weeks, and if it is not cut in that window it is lost. Once cut it is dry, heavy, identical, and it sits in one heap in one place for months. Every one of those traits is a convenience for the farmer. Every one of them is a larger convenience for a man with a spear who has never farmed anything.</p>
+<p>A surplus is not food you have. It is food somebody else can find.</p>
+<h2 class="sub">Fifteen Days of Bread</h2>
+<p>In the middle of the first century, the emperor Claudius was cornered by a crowd in the Roman Forum and pelted with crusts of bread. Suetonius, who never met a humiliating detail he did not keep, is our source for the crusts. He ruled an empire that ran from the Atlantic to the Euphrates, and he was chased across his own capital by people throwing food at him because there was not enough of it.</p>
+<p>Tacitus, writing up the same year, gives the reason in half a sentence that is worse than the riot. The city had food for no more than fifteen days.</p>
+<p>Rome at that point was the largest city on earth: something near a million people, though nobody counted and the modern estimates run from three quarters of a million upwards. It ate somewhere between a hundred and fifty and four hundred thousand tonnes of wheat a year. That range is not sloppiness on my part. It is the actual state of the argument between historians, and it is worth noticing early, because a book like this one will keep handing over numbers that were never really measured. Almost none of that wheat grew anywhere near Rome. It came by sea, from Egypt and North Africa, in a sailing season that shut in the winter.</p>
+<p>Fifteen days. The greatest city in the world, and the gap between order and a mob was a fortnight of bread. What saved Claudius was not a strategic reserve. It was mild weather, which kept ships moving through a season when they normally stopped.</p>
+<p>Rome did not hold a stockpile. It held a delivery.</p>
+<p>This is the first thing to unlearn, and I have had to unlearn it myself while writing this: the great warehouses of the ancient world were not insurance against famine. They were pressure vessels on a pipe. They smoothed a harvest that arrived in a lump into a city that ate every day. Which means that whoever stood at the valve could open it, or not, and every single person in that city knew which of the two was happening within about a week.</p>
+<p>Most governments now keep a number like Claudius&#x27;s fifteen days written down somewhere. Very few of them enjoy saying it out loud.</p>
+<h2 class="sub">The Pit Came Before the Field</h2>
+<p>Go back eleven thousand years, to a settlement called Dhra&#x27; in the Jordan Valley, near the Dead Sea.</p>
+<p>Between the houses there, the archaeologists Ian Kuijt and Bill Finlayson excavated four round buildings, each about three metres across. The interesting part is the floor. It was not on the ground. It was held up on notched upright stones carrying wooden beams, and it was laid on a slope of about seven degrees, so that air moved underneath and rodents had nothing easy to climb. These were granaries, purpose-built, engineered against damp and rats.</p>
+<p>Inside was barley. Wild barley. Nobody at Dhra&#x27; had domesticated anything.</p>
+<p>That is the finding, published in 2009, and it turns the familiar order of events around. Farming did not produce storage. Storage came first, by centuries at least. People built the warehouse before they invented the crop.</p>
+<p>Which tells us something about what those people were actually doing, and it was not accumulating wealth. They were frightened of next spring. A raised floor at seven degrees is not the work of anyone feeling rich. It is the work of people who have watched a year&#x27;s food go mouldy or get eaten by mice, and have decided, with some effort and some carpentry, that it is not happening again. The first surplus in the archaeological record is not a triumph. It is a hedge against hunger.</p>
+<p>And it changed everything, because a hedge against hunger is also, from the outside, a target.</p>
+<p>Kuijt and Finlayson are careful about how far they will go, and I will be too: the granaries at Dhra&#x27; sit between the houses rather than inside any one of them, and the excavators say plainly that they cannot tell from this who controlled what went in or came out. Storage is what is proved. Ownership is not.</p>
+<p>Here is the strongest evidence against the argument of this book, and it belongs here rather than in a footnote at the back. Thousands of years after Dhra&#x27;, at Catalhoyuk in what is now Turkey, the archaeobotanist Amy Bogaard and her colleagues found the stores tucked inside individual houses, in side rooms, each one sized roughly to what that household had grown. No central granary. No temple taking a cut. Just families, each holding their own. That settlement ran for a thousand years and produced no king at all.</p>
+<p>So storage is not enough. People held grain for millennia and stayed more or less level with each other. Something else has to arrive before a store becomes a throne.</p>
+<h2 class="sub">What a Tax Man Can See</h2>
+<p>The something else is somebody strong enough to take a share. But strength is cheap and always has been. The question is what makes taking a share worth the trouble, repeatable, and cheap enough to become routine, which is the difference between a raid and a tax.</p>
+<p>Three economists, Joram Mayshar, Omer Moav and Luigi Pascali, put a hard test to this in 2022. Their move was to stop asking how much food a place could grow and start asking what kind. Cereals against roots and tubers. Wheat, barley, rice and maize on one side. Cassava, yams and potatoes on the other.</p>
+<p>The difference is mechanical and it is almost embarrassing in how small it is. A tuber sits in the ground. There is no ripening day, no harvest week, no heap. The farmer digs up what the family needs and leaves the rest where it is, alive, underground, indistinguishable from dirt. Try to assess that field with your eyes and you have nothing. Try to seize the crop and you are digging for a fortnight, in the wrong places, while the family watches.</p>
+<p>Their finding is the clean version of everything in this chapter: hierarchy follows the crop, not the yield. Land productivity, taken on its own, does not predict the appearance of states. Dependence on cereals does. It was never about how much there was. It was about whether an outsider could see it, count it, and carry it away.</p>
+<p>James Scott, from the other end of the university, arrived somewhere similar in a book called Against the Grain. His word for it is legibility: the state can read a wheat field the way it cannot read a swamp, a forest or a yam patch, and states go where they can read. He goes further than I will, arguing that early states were coercive and unpleasant enough that people had to be held in them.</p>
+<p>I should say where this is contested, because it is. Miriam Stark, an archaeologist of Southeast Asia, points at Angkor, the largest city in the pre-modern world, in rice country, and argues that its politics do not fit the model at all. A study published in 2025 by Christopher Opie and Quentin Atkinson ran the correlation across eight hundred and sixty-eight societies and found grain and statehood locked together tightly enough that in their sample almost no society became a state without grain. Almost. There were fourteen exceptions, nearly all in tropical Africa.</p>
+<p>Fourteen is not zero, and the honest description of what we have is a strong pattern with real holes in it, not a law of nature. This is a lens for looking at the world, and it is a good one. It is not a proof.</p>
+<p>What the lens does explain, immediately and almost too neatly, is writing.</p>
+<p>The earliest writing we have is from Uruk, in southern Iraq, and the striking thing about it is what is missing. Of the oldest tablets, on the analysis of Robert Englund, who spent a career reading them, well under one per cent are anything other than accounts. No stories. No prayers, no laws, no poems. Grain in, grain out, so many head of livestock, so many workers, this much to each. Writing did not begin as literature and get demoted to bookkeeping. It began as bookkeeping, and only later got promoted.</p>
+<p>And at the same sites, in enormous numbers, sits the single most common object of the period: a crude, mass-produced clay bowl with a bevelled rim, which Hans Nissen and his colleagues read as a standard ration measure. Not a bowl a family owned. A bowl that meant a portion.</p>
+<p>The first mass-produced object in human history appears to be a serving.</p>
+<h2 class="sub">Stored Hunger</h2>
+<p>Now go back to Rome&#x27;s port at Ostia, and look at the buildings that Claudius was fifteen days from emptying.</p>
+<p>The Grandi Horrea have walls of tufa blocks and a courtyard floored in waterproof cement, laid so that spilled and damp grain could not rot the structure. In a later rebuild, the floors were lifted onto low pillars so that air could move underneath the sacks. That is the raised floor from Dhra&#x27;, eleven thousand years on. Between one and the other lie farming, cities, bronze, iron, writing, empire, and nobody had improved on the good idea, which was to keep the food off the ground and away from the rats.</p>
+<p>Nearby stood the hall of the grain measurers, and its floor still carries a mosaic of them at work. Three men handle a measure, and one holds a rutellum, a straight rod dragged across the top of the vessel to strike the grain level, so that nobody can heap it up or scoop it short. Beside them a boy holds a cord strung with nine wooden tickets and signals the number nine with his hand. Somewhere on that floor is a boast about five thousand measures handled in a single day.</p>
+<p>This is what a surplus actually looks like on the ground. It looks like counting.</p>
+<p>Every one of those objects is an instrument of trust and mistrust at once. The rod exists because someone would otherwise shave the measure. The tickets exist because someone would otherwise lose count on purpose. In the city itself, a citizen entitled to the public grain carried a small lead token and handed it in at a window to draw his month&#x27;s ration, because otherwise he would come twice.</p>
+<p>And around all that counting, Roman politics organises itself with no subtlety at all. In the second century before Christ, Gaius Gracchus passes a law selling grain to citizens below the market price. Two generations later, Clodius makes it free. The year after that, a shortage puts a riot in the Forum, a consul is stoned in the street, and the Senate responds by handing Pompey a five-year command over the grain supply of the entire empire. A man was given something close to the powers of a king because bread was short in one city.</p>
+<p>Historians still argue about what the Roman grain dole was for, and both readings are alive: welfare that kept the poor from starving, or a leash that kept them from burning the place down. The Romans themselves were cynical about it in their own lifetimes. The argument does not need settling here, because either way the mechanism is identical. Someone holds the food. Everyone else needs it. That relationship is the state, in its smallest working form.</p>
+<p>Which is why it is worth being precise about what those warehouses contained, because it was never really food. Food is what you eat. What was stacked at Ostia was other people&#x27;s hunger, bought in advance and held for later: bought cheap in a good year, at a good price, from a farmer with more grain than he could eat and no way to keep it. Call it stored hunger. It is the thing this whole book is about, and the term will be used exactly this way from here on.</p>
+<p>Stored hunger has properties that food does not. It does not spoil in a season, so it can be lent. It can be counted, so it can be taxed. It can be moved, so it can be concentrated, and once concentrated it needs guarding, which requires men, who need feeding, which is paid for out of the same heap. It buys loyalty more reliably than money, because a man can refuse a coin. And it goes up in value precisely when everybody is most desperate, which is the property that makes it political rather than merely valuable.</p>
+<p>Nobody designed any of this. That is the part worth sitting with. No one at Dhra&#x27; was building an institution. They were sloping a floor to keep barley dry through a bad spring. Everything that followed came out of the fact that a room full of dry barley is the first thing in the world it was worth being cruel about.</p>
+<p>We keep telling this as a story about plenty, because plenty is the flattering half. The other half is that the same heap which fed the city is the reason the city could be owned. There is no version of the surplus that comes with only the good half attached. The store and the throne are the same object, seen from inside and from outside.</p>
+<p>And once the heap exists, one question exists with it, and it has never been answered permanently anywhere: who holds the key. That question does not stay in the warehouse. It gets written down, and the moment it is written down it can be argued about, inherited, forged and enforced.</p>
+<p>Which is when the trouble really starts.</p>
+</div>
+<div id="notes" class="pane" hidden>
+
+<h1>Notes — chapter one</h1>
+
+<h2>What this chapter is doing</h2>
+<p><b>Thesis, stated on page one:</b> a surplus is not abundance, it is exposure. Grain
+built states not by feeding more people but by being impossible to hide.</p>
+<p><b>The reframe (one per chapter, house style):</b> the schoolbook arrow runs
+farming &rarr; plenty &rarr; leisure &rarr; kings. Reversed here: the crop that could be
+<i>seen, counted and carried away</i> is the cause; the yield is not.</p>
+<p><b>The coinage (one per book):</b> <b>stored hunger</b> — grain in a store is not food,
+it is other people's future hunger bought in advance. Defined at the moment it is coined,
+in section four, and it is reused unchanged for the rest of the book.</p>
+<p><b>Honesty clause (mandatory):</b> Catalhoyuk. The strongest evidence against this book's
+argument is placed in the body, not the back matter — a thousand years of decentralised
+household storage that produced no king.</p>
+
+<h2>Every claim, and where it comes from</h2>
+<table>
+<tr><th>Claim in the chapter</th><th>Source</th><th>Status</th></tr>
+<tr><td>Claudius pelted with crusts of bread in the Forum</td><td>Suetonius, <i>Claudius</i> 18 — attributed in the prose, and the attribution itself is the hedge</td><td>Ancient testimony, flagged as such</td></tr>
+<tr><td>Rome had food for no more than fifteen days, AD 51</td><td>Tacitus, <i>Annals</i> 12.43</td><td>Solid (ancient source, named in text)</td></tr>
+<tr><td>Rome ate 150,000–400,000 tonnes of wheat a year; population near a million</td><td>Erdkamp 2005 (~150,000 t), Rickman 1980 (~272,000 t), Mattingly &amp; Aldrete 2000 (237,000 t); high end from <i>Res Gestae</i>-derived reconstructions</td><td>Genuinely contested — the chapter says so out loud, on purpose</td></tr>
+<tr><td>Grain arrived by sea from Egypt and North Africa, season closed in winter</td><td>Rickman 1980; Erdkamp 2005</td><td>Solid</td></tr>
+<tr><td>Dhra': four round granaries ~3 m across, floors on notched stones, ~7&deg; slope, wild barley, ~11,000 years ago, pre-domestication</td><td>Kuijt &amp; Finlayson, <i>PNAS</i> 106(27), 2009</td><td>Solid, landmark, uncontested</td></tr>
+<tr><td>Excavators cannot say who controlled access</td><td>Kuijt &amp; Finlayson 2009</td><td>Solid — their own caution, quoted as caution</td></tr>
+<tr><td>Catalhoyuk: stores in side rooms of individual houses, sized to the household</td><td>Amy Bogaard (Oxford), Catalhoyuk archaeobotany; Bogaard/Fochesato/Bowles on the farming-inequality nexus</td><td>Solid</td></tr>
+<tr><td>Hierarchy tracks the crop, not the yield; cereals vs roots and tubers</td><td>Mayshar, Moav &amp; Pascali, "The Origin of the State: Land Productivity or Appropriability?", <i>Journal of Political Economy</i> 130(4), 2022</td><td>Solid claim, named in prose</td></tr>
+<tr><td>Legibility; early states as coercive</td><td>James C. Scott, <i>Against the Grain</i>, Yale, 2017</td><td>Named, and the chapter marks where it declines to follow him</td></tr>
+<tr><td>Angkor does not fit the model</td><td>Miriam Stark, <i>Cambridge Archaeological Journal</i> 29(4), 2019</td><td>Named counter-position</td></tr>
+<tr><td>868 societies; near-zero statehood without grain; fourteen exceptions, mostly tropical Africa</td><td>Opie &amp; Atkinson, <i>Nature Human Behaviour</i>, 2025</td><td>Solid; the exceptions are named rather than buried</td></tr>
+<tr><td>Under 1% of the earliest Uruk tablets are anything but accounts</td><td>Robert Englund (CDLI); Nissen, Damerow &amp; Englund, <i>Archaic Bookkeeping</i>, 1993</td><td>Solid</td></tr>
+<tr><td>Bevelled-rim bowl as standard ration measure</td><td>Hans Nissen and colleagues, <i>Archaic Bookkeeping</i>, 1993</td><td>Solid as an interpretation; the chapter says "read as", not "was"</td></tr>
+<tr><td>Grandi Horrea: tufa walls, waterproof floor, later raised floors on pillars</td><td>ostia-antica.org excavation record; Rickman 1971</td><td>Solid</td></tr>
+<tr><td>Mosaic of the grain measurers: rutellum, boy with nine tickets on a cord, 5,000 measures in a day</td><td>Aula dei Mensores, Ostia, 3rd c. AD; inscription reading per O. Minaud</td><td>Solid object; the inscription reading is one scholar's</td></tr>
+<tr><td>Tessera frumentaria — lead token for a month's ration</td><td>Surviving examples in museum collections</td><td>Solid</td></tr>
+<tr><td>Gracchus 123 BC subsidised grain; Clodius 58 BC free; 57 BC riot, consul stoned, Pompey given a five-year command over the grain supply</td><td>Plutarch, Appian, Cassius Dio; standard narrative accounts</td><td>Solid</td></tr>
+<tr><td>Welfare or control — still argued</td><td>Erdkamp 2005 vs the "bread and circuses" reading, already cynical in Juvenal</td><td>Presented as open, not resolved</td></tr>
+</table>
+
+<h2>A factual error this research found in our own copy</h2>
+<p>The catalogue blurb for this book says the grain store at Ostia held "enough to feed the
+whole city for years." <b>That is false and it cannot ship.</b> The best-documented
+warehouse ground floor holds roughly 6,000–7,000 tonnes against a city eating 150,000
+tonnes or more a year, and Tacitus has Rome down to fifteen days in AD 51. The horrea
+buffered a shipping season, not a famine. The chapter uses the true version, which is
+better anyway: fifteen days is a far more frightening number than "years".</p>
+
+<h2>What I deliberately did not do</h2>
+<ul>
+<li><b>No Kushim tablet.</b> It is Harari's worked example. Uruk is reached through
+Englund's accounting percentages and the bevelled-rim bowl instead.</li>
+<li><b>No opening scene.</b> House style bans "it was a cold morning in Ostia" — the
+chapter opens on a flat claim at maximum scale and the first named human arrives in the
+second section, as payoff.</li>
+<li><b>No invented physical detail.</b> Nobody is imagined kneeling or sweating. Every
+object in the chapter is one an archaeologist has published.</li>
+<li><b>No false binary.</b> Three live positions on storage and hierarchy are in the
+research file; the chapter carries all three rather than spining on two.</li>
+</ul>
+
+<h2>Flags before this is ever printed</h2>
+<ul>
+<li>Verify the Suetonius bread-crusts passage against a Loeb text (currently from secondary summary).</li>
+<li>Verify the Tacitus 12.43 wording against Loeb rather than an online translation.</li>
+<li>Confirm the exact wording of the mensores mosaic inscription and Minaud's reading.</li>
+<li>Mayshar/Moav/Pascali was read via abstract, companion working papers and secondary
+summaries — the JPE PDF would not fetch. Check no number is misattributed before print.</li>
+</ul>
+
+<h2>House-style checklist</h2>
+<ul>
+<li>Title is a verdict, not a topic — <i>Food You Cannot Hide</i>.</li>
+<li>One reframe, with its honesty clause (Catalhoyuk, in the body).</li>
+<li>Pendulum swings: Claudius &rarr; the empire's grain arithmetic; Dhra' &rarr; the species;
+Ostia's measurers &rarr; the state in its smallest working form. More than three.</li>
+<li>No middle distance — no "several other cities also stored grain" anywhere.</li>
+<li>Verdict sentences, short, no new information: "Rome did not hold a stockpile. It held a
+delivery." / "It looks like counting." / "The arrow is backwards."</li>
+<li>Close re-abstracts, higher and darker, and does not recap: who holds the key.</li>
+<li>Length 2,668 words against a ~4,000 target chapter. Deliberately at the low end for a
+first chapter; if it reads thin, the place to grow it is a fourth worked example.</li>
+</ul>
+
+<h2>The one thing this draft is for</h2>
+<p>The gate in <code>plan.md</code> is not whether it is accurate. It is whether Matt was
+<b>bored</b>. Read it as a reader, not as an owner. If it bored you, the book does not
+ship in this form and the answer is not more sources.</p>
+
+</div>
+<script>
+function show(w){
+  document.getElementById('view').hidden=w!=='view';
+  document.getElementById('notes').hidden=w!=='notes';
+  document.getElementById('tab-view').classList.toggle('active',w==='view');
+  document.getElementById('tab-notes').classList.toggle('active',w==='notes');
+  window.scrollTo(0,0);
+}
+</script></body></html>
