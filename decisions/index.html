@@ -615,5 +615,20 @@ scale, and a lone yes could not be read as taste rather than politeness.</p>
 <p><strong>Decision.</strong> Stop deriving design and copy from self-written rules and self-written judges. Collect real references (covers, book sites, social accounts, blurbs), put them in front of Matt as a like/no vote, and rebuild every surface against his picks. Surfaces are frozen until the picks exist. Working surface for this is the local workspace app (<code>data/workspace/</code>, port 8723), copied from the Nightshift prototype.</p>
 <p><strong>Why.</strong> Matt, 2026-09-04, on everything so far: "I don't like the website, I don't like the covers, I don't like the book descriptions… everything was a total failure." Cause: every surface was made from rules the agent invented (three stylescapes it also judged), then audited by judges sharing the maker's taste. Run 6 proved the circularity. The one design round Matt approved (layout D) was the one built by copying real sites.</p>
 <p><strong>Rejected.</strong> (a) Ask Matt to describe what he likes in words — failed three times, slow for him and lossy. (b) More quality criteria + audit subagents — the criteria are written by the same taste that failed. (c) The <code>/taste/</code> blind test — still grades our own output; dropped. (d) Giving the agent Matt's personal Chrome for Instagram — unnecessary; a one-time login in the agent's own profile does the job without exposing his accounts.</p>
+<h2>2026-09-04 — The picks gate was a delivery bug, not a taste problem</h2>
+<p><strong>Decision:</strong> publish the reference picker to the preview site at <code>/refs/</code>, and
+cut the ask from 54 items to 16 (covers only).</p>
+<p><strong>Why:</strong> the picker was built inside the local workspace app — <code>localhost:8723</code>,
+served by a Python process on Matt's laptop. Matt reads two things: Telegram and
+HTML pages on the preview site, on a phone. He was asked twice for picks and both
+times the thing he was asked to open was unreachable from where he reads. Two
+rounds of "waiting on Matt" were waiting on nothing.</p>
+<p><strong>Rejected:</strong> waiting another round (the block was ours, not his); porting the
+whole workspace app to the site (the picker is static HTML — copying it is one
+step, hosting an app is a project); keeping all 54 items (a one-minute ask gets
+done, a fifteen-minute ask has now failed three times).</p>
+<p><strong>The general lesson, worth more than the fix:</strong> before blaming a stalled ask on
+Matt, check that the ask arrived somewhere he can reach. Local files, terminals
+and localhost do not exist for him.</p>
 <footer>Draft — built by the agent, judged by Matt</footer>
 </div></body></html>
